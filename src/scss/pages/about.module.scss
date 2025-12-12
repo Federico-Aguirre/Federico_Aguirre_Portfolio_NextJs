@@ -1,0 +1,220 @@
+@use "../abstract/variables.scss" as variables;
+@use "../abstract/animations/aboutAnimations.scss";
+
+.about {
+    height: auto;
+    width: 100vw;
+    display: flex;
+    place-content: center;
+    flex-direction: row;
+
+    &__container {
+        height: auto;
+        width: calc(80% - 40px);
+        padding: 20px;
+        background-color: variables.$lightViolet;
+        border-radius: 10px;
+        border: 5px solid variables.$darkViolet;
+        display: grid;
+        grid-template-rows: auto auto auto;
+        row-gap: 30px;
+
+        &__skills__content {
+            grid-template-rows: 50px 200px;
+            grid-template-columns: auto auto;
+
+            &__languagesTitle {
+                grid-column: 1/-1;
+                font-size: variables.$bigFont;
+                font-weight: 600;
+                text-align: center;
+            }
+
+            &__languages1 {
+                display: grid;
+                place-content: center;
+            }
+
+            &__languages2 {
+                display: grid;
+                place-content: center;
+            }
+        }
+
+        &__studies__content {
+            grid-row: 2;
+            grid-column: 1/-1;
+            display: flex;
+            margin-top: 20px;
+            row-gap: 20px;
+
+            &__title {
+                margin-bottom: 20px;
+                place-content: center;
+                text-align: center;
+                font-size: variables.$bigFont;
+                font-weight: 600;
+            }
+
+            &__info {
+                text-align: center;
+            }
+
+            &__certificates,
+            &__CV {
+                display: flex;
+                place-content: center;
+                place-self: center;
+                padding: 10px;
+                width: 150px;
+                border-radius: 10px;
+                border: 2px solid white;
+            }
+        }
+
+        &__text__content {
+            height: 100%;
+            grid-template-rows: 130px auto;
+
+            &__title {
+                grid-row: 1;
+                place-content: center;
+                text-align: center;
+                font-size: variables.$bigFont;
+                font-weight: 600;
+            }
+
+            &__info {
+                margin: 0 50px;
+            }
+        }
+
+        &__aboutScroll {
+            display: none;
+        }
+
+        &__skills,
+        &__studies,
+        &__text,
+        &__scroll {
+            display: none;
+        }
+    }
+
+    &__containerWebDev {
+        display: none;
+
+        &__image {
+            height: 100%;
+            width: 100%;
+        }
+    }
+}
+
+@media (max-width:1024px) {
+
+    .about__container__skills__content,
+    .about__container__text__content,
+    .about__container__studies__content {
+        display: grid !important;
+    }
+}
+
+@media (min-width:1025px) {
+    .about {
+        height: 90vh;
+
+        &__container {
+            height: 70vh;
+            width: 50%;
+            padding: 0;
+            border-radius: 0;
+            border: none;
+            background-color: variables.$darkViolet;
+            grid-template-columns: 5px 120px auto;
+            grid-template-rows: 1fr 1fr 1fr;
+            row-gap: 5px;
+
+            &__text__content__textTitle {
+                display: none;
+            }
+
+            &__aboutScroll {
+                display: grid;
+                height: calc((70vh/3) - 7.5px);
+                grid-row: 1/-1;
+                background-color: variables.$skyBlue;
+                transition: 1s;
+            }
+
+            &__skills,
+            &__studies,
+            &__text {
+                display: grid;
+                place-content: center;
+                background-color: variables.$lightViolet;
+                color: inherit;
+                border: none;
+                font: inherit;
+                outline: inherit;
+                cursor: pointer;
+            }
+
+            &__skills {
+                grid-column: 2;
+
+                &__content {
+                    height: 100%;
+                    width: 100%;
+                    grid-template-rows: 100px auto;
+                    grid-template-columns: 1fr 1fr;
+                    grid-row: 1/-1;
+                    grid-column: 3;
+                    padding: 0;
+                    line-height: 22px;
+
+
+                    &__languagesTitle {
+                        grid-column: 1/-1;
+                        place-content: center;
+                    }
+
+                    &__languages1,
+                    &__languages2 {
+                        align-content: start;
+                        margin-right: 20px;
+                    }
+                }
+            }
+
+            &__studies {
+                grid-row: 2;
+
+                &__content {
+                    grid-row: 1/-1;
+                    grid-column: 3;
+                    margin: 20px;
+                    row-gap: 0;
+                }
+            }
+
+            &__text {
+                grid-row: 3;
+                grid-column: 2;
+
+                &__content {
+                    grid-row: 1/-1;
+                    grid-column: -1;
+                    place-self: center;
+                    margin: 10px;
+                }
+            }
+        }
+
+        &__containerWebDev {
+            width: calc(40% - 125px);
+            display: flex;
+            background-color: variables.$lightViolet;
+        }
+    }
+}

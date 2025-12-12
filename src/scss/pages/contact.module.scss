@@ -1,0 +1,76 @@
+@use "../abstract/variables.scss" as variables;
+
+.contact {
+    height: 550px;
+    width: 100vw;
+    place-content: center;
+    flex-direction: column;
+    gap: 10px;
+
+    &__formContainer {
+        width: 80%;
+        background-color: variables.$lightViolet;
+        border-radius: 10px;
+        border: 5px solid variables.$darkViolet;
+    
+        &__form {
+            display: flex;
+            flex-direction: column;
+            text-align: start;
+            margin: 0 20px;
+
+            div {
+                font-size: variables.$bigFont;
+                font-weight: 700;
+                text-align: center;
+            }
+
+            label,div {
+                margin-top: 12px;
+            }
+
+            label {
+                margin-bottom: 2px;
+            }
+
+            textarea {
+                height: 100px;
+                margin-bottom: 25px;
+            }
+
+            input[type="submit"] {
+                width: 100%;
+                margin-bottom: 25px;
+                font-size: 1em;
+                font-weight: 600;
+                cursor: pointer;
+            }
+        }
+    }
+
+    &__links {
+        height: auto;
+        display: flex;
+        flex-direction: row;
+        place-content: center;
+        gap: 25px;
+
+        &__linkedin, &__github {
+            height: 44px;
+            width: 44px;
+            border-radius: 23px;
+        }
+    }
+}
+
+@media (min-width:375px) {
+    .contact__formContainer {
+        width: 300px;
+    }
+}
+
+@media (min-width:800px) {
+    .contact {
+        height: 90vh;
+    }
+}

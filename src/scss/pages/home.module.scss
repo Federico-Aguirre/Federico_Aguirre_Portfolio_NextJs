@@ -1,0 +1,68 @@
+@use "../../scss/abstract/variables.scss" as variables;
+@use "../abstract/animations/globalAnimations.scss";
+@use "../abstract/animations/homeAnimations.scss";
+
+.homePage {
+    position: relative;
+    min-height: 90vh;
+    width: 100vw;
+    color: black;
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 50px;
+    flex-direction: column;
+    place-content: center;
+    font-size: variables.$bigFont;
+    font-weight: 500;
+
+    .particlesContainer {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 90%;
+        pointer-events: none;
+
+        .myParticles {
+        width: 100%;
+        height: 90%;
+        }
+
+        canvas {
+        width: 100%;
+        height: 90%;
+        display: block;
+        }
+    }
+
+
+    &__title {
+        display: flex;
+        flex-wrap: wrap;
+        place-content: center;
+        line-height: 1.2em;
+        letter-spacing: 2px;
+        width: 350px;
+        font-size: 1.9em;
+        font-weight: 600;
+        z-index: 100;
+    }
+
+    &__CallToAction {
+        display: flex;
+        place-self: center;
+        padding: 10px;
+        border-radius: 10px;
+        color: variables.$white;
+        background-color: variables.$lightViolet;
+        cursor: pointer;
+        z-index: 100;
+    }
+}
+
+.brightCallToActionClass{
+    animation: brightCallToActionAnimation 1s forwards ease-out;
+}
+
+.darkCallToActionClass {
+    animation: darkCallToActionAnimation 1s forwards ease-out;
+}

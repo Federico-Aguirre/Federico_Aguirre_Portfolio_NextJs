@@ -1,0 +1,21 @@
+@use "../variables.scss" as variables;
+
+@keyframes darkCallToActionAnimation {
+    0% {
+        box-shadow: variables.$shadowLight;
+      }
+    
+    to {
+        box-shadow: variables.$shadow;
+    }
+}
+
+@keyframes brightCallToActionAnimation {
+    from {
+        box-shadow: variables.$shadow;
+    }
+  
+    to {
+        box-shadow: variables.$shadowLight;
+    }
+}

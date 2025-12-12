@@ -1,0 +1,91 @@
+@use "../variables.scss" as variables;
+
+.darkModeLetterClass {
+    animation: darkModeLetterAnimation 1s forwards ease-out;
+}
+
+@keyframes darkModeLetterAnimation {
+    from {
+        background-color: variables.$white;
+        color: variables.$black;
+    }
+  
+    to {
+        background-color: variables.$black;
+        color: variables.$white;
+    }
+}
+
+.brightModeLetterClass {
+    animation: brightModeLetterAnimation 1s forwards ease-out;
+}
+
+@keyframes brightModeLetterAnimation {
+    from {
+        background-color: variables.$black;
+        color: variables.$white;
+    }
+  
+    to {
+        background-color: variables.$white;
+        color: variables.$black;
+    }
+}
+
+
+
+.darkModeClass {
+    animation: darkModeAnimation 1s forwards ease-out;
+}
+
+@keyframes darkModeAnimation {
+    from {
+        background-color: variables.$white;
+    }
+  
+    to {
+        background-color: variables.$black;
+    }
+}
+
+.brightModeClass{
+    animation: brightModeAnimation 1s forwards ease-out;
+}
+
+@keyframes brightModeAnimation {
+    from {
+        background-color: variables.$black;
+    }
+  
+    to {
+        background-color: variables.$white;
+    }
+}
+
+.brightModeShadowClass {
+    animation: brightModeShadowAnimation 1s forwards ease-out;
+}
+
+@keyframes brightModeShadowAnimation {
+    from {
+        box-shadow: variables.$shadow;
+    }
+
+    to {
+        box-shadow: variables.$shadowLight;
+    }
+}
+
+.darkModeShadowClass {
+    animation: darkModeShadowAnimation 1s forwards ease-out;
+}
+
+@keyframes darkModeShadowAnimation {
+    from {
+        box-shadow: variables.$shadowLight;
+    }
+
+    to {
+        box-shadow: variables.$shadow;
+    }
+}

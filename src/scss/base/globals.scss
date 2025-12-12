@@ -1,0 +1,35 @@
+@use "../abstract/variables.scss" as variables;
+@use "../abstract/animations/globalAnimations.scss" as globalAnimations;
+
+body {
+  color: variables.$white;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+section {
+  display: flex;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+section:not(:last-of-type) {
+  margin-bottom: 100px;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+textarea:focus, input:focus{
+  outline: none;
+}
+
+@media (min-width:800px) {
+  section {
+    height: 90vh;
+  }
+}
