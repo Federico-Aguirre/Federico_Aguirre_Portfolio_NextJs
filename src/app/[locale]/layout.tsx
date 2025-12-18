@@ -1,7 +1,5 @@
-// src/app/[locale]/layout.tsx
 import { NextIntlClientProvider } from 'next-intl';
 import Navbar from '../components/Navbar';
-
 
 export default async function LocaleLayout({
   children,

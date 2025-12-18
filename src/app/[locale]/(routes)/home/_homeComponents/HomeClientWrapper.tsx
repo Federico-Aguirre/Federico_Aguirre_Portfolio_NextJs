@@ -6,9 +6,13 @@ import TextSpan from "./TextSpan";
 import CallToAction from "./CallToAction";
 import ParticlesClient from "./ParticlesClient";
 import homeStyle from "scss/pages/home.module.scss";
+import { useTranslations } from "next-intl";
 
 export default function HomePageClientWrapper() {
-  const sentence = "Federico Aguirre Web Developer".split("");
+  const t = useTranslations("home");
+
+  const sentence = t("headline").split("");
+  
   const homeSectionRef = useRef<HTMLDivElement | null>(null);
   const { changeSectionVisible, darkMode } = contextStore();
   const [isClient, setIsClient] = useState(false);
@@ -26,7 +30,7 @@ export default function HomePageClientWrapper() {
     return () => {
       if (homeSectionRef.current) observer.unobserve(homeSectionRef.current);
     };
-  }, []);
+  }, [changeSectionVisible]);
 
   if (!isClient) return null;
 
@@ -42,7 +46,7 @@ export default function HomePageClientWrapper() {
           darkMode ? "darkModeLetterClass" : "brightModeLetterClass"
         }`}
         ref={homeSectionRef}
-        style={{ position: "relative", zIndex: 10 }}
+        style={{ position: "relative", zIndex: 0 }}
       >
         {sentence.map((letter, index) => (
           <TextSpan key={index}>
@@ -54,5 +58,4 @@ export default function HomePageClientWrapper() {
       <CallToAction />
     </section>
   );
-
 }

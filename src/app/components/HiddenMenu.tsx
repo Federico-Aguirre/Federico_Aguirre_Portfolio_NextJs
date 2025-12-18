@@ -4,9 +4,10 @@ import navbarStyle from "scss/base/navbar.module.scss"
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { Link } from "react-scroll"
+import { useTranslations } from "next-intl";
 
 const HiddenMenu = () => {
-
+    const t = useTranslations("hiddenMenu");
     const [showNav, setShowNav] = useState(true);
 
     const hiddenMenuAnimation = {
@@ -50,19 +51,33 @@ const HiddenMenu = () => {
     return (
         <motion.nav
             className={navbarStyle.navbar__hiddenMenu}
-            variants={hiddenMenuAnimation} initial="initial" animate={showNav ? "open" : "close"} exit="close"
+            variants={hiddenMenuAnimation} 
+            initial="initial" 
+            animate={showNav ? "open" : "close"} 
+            exit="close"
         >
             <motion.div variants={linkAnimation} whileHover={{ scale: 1.2 }}>
-                <Link to={"home"} smooth={true} offset={-40} duration={500} onClick={(): void => setShowNav(false)}>home</Link>
+                <Link to={"home"} smooth={true} offset={-40} duration={500} onClick={(): void => setShowNav(false)}>
+                    {t("home")}
+                </Link>
             </motion.div>
+            
             <motion.div variants={linkAnimation} whileHover={{ scale: 1.2 }}>
-                <Link to={"project"} smooth={true} offset={-40} duration={500} onClick={(): void => setShowNav(false)}>project</Link>
+                <Link to={"projects"} smooth={true} offset={-40} duration={500} onClick={(): void => setShowNav(false)}>
+                    {t("projects")}
+                </Link>
             </motion.div>
+            
             <motion.div variants={linkAnimation} whileHover={{ scale: 1.2 }}>
-                <Link to={"about"} smooth={true} offset={-40} duration={500} onClick={(): void => setShowNav(false)}>about</Link>
+                <Link to={"about"} smooth={true} offset={-40} duration={500} onClick={(): void => setShowNav(false)}>
+                    {t("about")}
+                </Link>
             </motion.div>
+            
             <motion.div variants={linkAnimation} whileHover={{ scale: 1.2 }}>
-                <Link to={"contact"} smooth={true} offset={-40} duration={500} onClick={(): void => setShowNav(false)}>contact</Link>
+                <Link to={"contact"} smooth={true} offset={-40} duration={500} onClick={(): void => setShowNav(false)}>
+                    {t("contact")}
+                </Link>
             </motion.div>
         </motion.nav>
     )

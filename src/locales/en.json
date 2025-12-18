@@ -1,7 +1,65 @@
 {
-  "greeting": "Hello!",
-  "about": "About me",
-  "projects": "Projects",
-  "contact": "Contact",
-  "watchProjects": "Watch projects"
+  "header": {
+    "home": "Home",
+    "about": "About Me",
+    "projects": "Projects",
+    "contact": "Contact",
+    "sunAlt": "Sun Icon",
+    "moonAlt": "Moon ICon"
+  },
+
+  "home": {
+    "headline": "Federico Aguirre Web Developer",
+    "greeting": "Hello!",
+    "watchProjects": "Watch Projects"
+  },
+
+  "projects": {
+    "dependencies": "Dependencies",
+    "projectAlt": "Project preview image"
+  },
+
+  "about": {
+    "title": "About Me",
+    "skills": "Skills",
+    "studies": "Studies",
+    "obtainedIn": "Obtained At",
+    "institution": "Higher Technical Formation Institute N.12",
+    "certificatesLink": "View Certificates",
+    "resumeLink": "View Resume",
+    "labels": {
+      "title": "TITLE"
+    },
+    "education": {
+      "systemAnalyst": "System Analyst",
+      "thirdYear": "3rd Year"
+    },
+    "description": {
+      "line1": "I was always attracted to technology, and in 2018 I was able to start",
+      "line2": "with my learnings. I enjoy bringing ideas to life in the",
+      "line3": "browser, learning and overcoming new challenges. My",
+      "line4": "specialty is front-end development with focus on producing",
+      "line5": "web pages and applications that are fast, easy to use,",
+      "line6": "with an optimal UX / UI design and accessible in a wide range of",
+      "line7": "devices and browsers."
+    }
+  },
+
+"contact": {
+    "sendMessage": "Send Message",
+    "name": "Name",
+    "email": "Email",
+    "affair": "Subject",
+    "message": "Message",
+    "send": "Send",
+    "linkedinAlt": "LinkedIn Icon",
+    "githubAlt": "GitHub Icon"
+  },
+
+  "hiddenMenu": {
+    "home": "Home",
+    "projects": "Projects",
+    "about": "About Me",
+    "contact": "Contact"
+  }
 }

@@ -1,7 +1,7 @@
 @use "../abstract/variables.scss" as variables;
 @use "../abstract/animations/projectsAnimations.module.scss";
 
-.project {
+.projects {
     display: flex;
     height: auto;
     width: 100vw;
@@ -61,7 +61,7 @@
 }
 
 @media (min-width:800px) {
-    .project {
+    .projects {
         height: 530px;
         margin-top: 100px;
         display: grid;
@@ -79,7 +79,7 @@
 }
 
 @media (min-width:1025px) {
-    .project {
+    .projects {
         height: 90vh;
     }
 }

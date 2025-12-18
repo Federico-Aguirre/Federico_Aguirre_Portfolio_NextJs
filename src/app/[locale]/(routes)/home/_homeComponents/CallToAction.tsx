@@ -8,7 +8,7 @@ import { Link } from "react-scroll";
 
 const CallToAction = () => {
   const { darkMode } = contextStore();
-  const t = useTranslations();
+  const t = useTranslations("home");
   const locale = useLocale();
 
   const toggleShadowClass = darkMode ? "darkModeShadowClass" : "brightModeShadowClass";
@@ -20,14 +20,14 @@ const CallToAction = () => {
 
   return (
     <motion.div
-      key={locale} // remonta al cambiar idioma
+      key={locale}
       className={`${homeStyle.homePage__CallToAction} ${toggleShadowClass}`}
       variants={animation}
       initial="initial"
       animate="animate"
       whileHover={{ scale: 1.2 }}
     >
-      <Link to="project" smooth offset={-40} duration={500}>
+      <Link to="projects" smooth offset={-40} duration={500}>
         {t("watchProjects")}
       </Link>
     </motion.div>

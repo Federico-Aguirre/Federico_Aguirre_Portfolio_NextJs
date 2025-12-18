@@ -6,16 +6,21 @@ import sun from "@/svg/sun.svg"
 import moon from "@/svg/moon.svg"
 import { motion } from "framer-motion";
 import { contextStore } from "../store/Context";
+import { useTranslations } from "next-intl";
 
 const BackgroundChange = () => {
-  let { darkMode } = contextStore()
-  let { changeDarkMode } = contextStore()
+  const t = useTranslations("header");
+  let { darkMode } = contextStore();
+  let { changeDarkMode } = contextStore();
 
   return (
-    <motion.button className={navbarStyle.navbar__lightDarkButton} onClick={changeDarkMode} data-darkmode={darkMode}
+    <motion.button 
+      className={navbarStyle.navbar__lightDarkButton} 
+      onClick={changeDarkMode} 
+      data-darkmode={darkMode}
       style={{justifySelf: darkMode ? "flex-start" : "flex-end"}}
       transition={{ duration: 2 }}
-      >
+    >
       <motion.span 
         className={navbarStyle.navbar__lightDarkButton__circle}
         layout={true}
@@ -23,10 +28,10 @@ const BackgroundChange = () => {
       >
       </motion.span>
       <div className={navbarStyle.navbar__lightDarkButton__sun}>
-        <Image src={sun} fill alt="sun image" />
+        <Image src={sun} fill alt={t("sunAlt")} />
       </div>
       <div className={navbarStyle.navbar__lightDarkButton__moon}>
-        <Image src={moon} fill alt="moon image" />
+        <Image src={moon} fill alt={t("moonAlt")} />
       </div>
     </motion.button>
   )

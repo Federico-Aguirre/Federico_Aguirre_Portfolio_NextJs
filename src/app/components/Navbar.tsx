@@ -7,23 +7,24 @@ import { Link } from "react-scroll"
 import { motion, useMotionValueEvent, useScroll } from "framer-motion"
 import Hamburger from "./Hamburger"
 import { useState, useEffect } from "react"
+import { useTranslations } from "next-intl" // Importación necesaria
+import LanguageSwitcher from "./LanguageSwitcher";
 
 const Navbar = () => {
+  const t = useTranslations("header"); // Usamos el scope de header
   const { sectionVisible, darkMode } = contextStore();
   let toggleClass: string = darkMode ? "darkModeLetterClass" : "brightModeLetterClass";
 
   const { scrollY } = useScroll();
   const [hidden, setHidden] = useState(false);
 
-  // ---- FIX PRINCIPAL ----
   const [isMobile, setIsMobile] = useState(false);
   useEffect(() => {
     setIsMobile(window.innerWidth < 800);
   }, []);
-  // -----------------------
 
   useMotionValueEvent(scrollY, "change", (latest: number): void => {
-    const previous: number = scrollY.getPrevious();
+    const previous: number = scrollY.getPrevious() || 0;
     if (latest > previous && latest > 150 && window.innerWidth < 800) {
       setHidden(true);
     } else {
@@ -55,41 +56,41 @@ const Navbar = () => {
         <div>
           <motion.div className={navbarStyle.navbar__homeLink} whileHover={{ scale: 1.2 }}>
             <Link to="home" smooth offset={-40} duration={500}
-              style={{ color: sectionVisible.sectionVisibleValue === "home" && "hsl(194, 85%, 62%)" }}
+              style={{ color: sectionVisible.sectionVisibleValue === "home" ? "hsl(194, 85%, 62%)" : "" }}
             >
-              home
+              {t("home")}
             </Link>
           </motion.div>
 
-          {/* ---- FIX: se renderiza SOLO en el cliente ---- */}
           {isMobile && <Hamburger />}
-          {/* --------------------------------------------- */}
 
-          <motion.div className={navbarStyle.navbar__projectLink} whileHover={{ scale: 1.2 }}>
-            <Link to="project" smooth offset={-40} duration={500}
-              style={{ color: sectionVisible.sectionVisibleValue === "project" && "hsl(194, 85%, 62%)" }}
+          <motion.div className={navbarStyle.navbar__projectsLink} whileHover={{ scale: 1.2 }}>
+            <Link to="projects" smooth offset={-40} duration={500}
+              style={{ color: sectionVisible.sectionVisibleValue === "projects" ? "hsl(194, 85%, 62%)" : "" }}
             >
-              project
+              {t("projects")} 
             </Link>
           </motion.div>
 
           <motion.div className={navbarStyle.navbar__aboutLink} whileHover={{ scale: 1.2 }}>
             <Link to="about" smooth offset={-40} duration={500}
-              style={{ color: sectionVisible.sectionVisibleValue === "about" && "hsl(194, 85%, 62%)" }}
+              style={{ color: sectionVisible.sectionVisibleValue === "about" ? "hsl(194, 85%, 62%)" : "" }}
             >
-              about
+              {t("about")}
             </Link>
           </motion.div>
 
           <motion.div className={navbarStyle.navbar__contactLink} whileHover={{ scale: 1.2 }}>
             <Link to="contact" smooth offset={-40} duration={500}
-              style={{ color: sectionVisible.sectionVisibleValue === "contact" && "hsl(194, 85%, 62%)" }}
+              style={{ color: sectionVisible.sectionVisibleValue === "contact" ? "hsl(194, 85%, 62%)" : "" }}
             >
-              contact
+              {t("contact")}
             </Link>
           </motion.div>
 
           <BackgroundChange />
+
+          <LanguageSwitcher />
         </div>
       </motion.nav>
     </motion.header>

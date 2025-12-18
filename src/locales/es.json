@@ -1,7 +1,65 @@
 {
-  "greeting": "¡Hola!",
-  "about": "Sobre mí",
-  "projects": "Proyectos",
-  "contact": "Contacto",
-  "watchProjects": "Mirar proyectos"
+  "header": {
+    "home": "Inicio",
+    "about": "Sobre Mí",
+    "projects": "Proyectos",
+    "contact": "Contacto",
+    "sunAlt": "Icono De Sol",
+    "moonAlt": "Icono De Luna"
+  },
+
+  "home": {
+    "headline": "Federico Aguirre Desarrollador Web",
+    "greeting": "¡Hola!",
+    "watchProjects": "Ver Proyectos"
+  },
+
+  "projects": {
+    "dependencies": "Dependencias",
+    "projectAlt": "Imagen de vista previa del proyecto"
+  },
+
+  "about": {
+    "title": "Sobre Mí",
+    "skills": "Habilidades",
+    "studies": "Estudios",
+    "obtainedIn": "Obtenido En",
+    "institution": "Instituto Superior De Formación Técnica N.º 12",
+    "certificatesLink": "Ver Certificados",
+    "resumeLink": "Ver CV",
+    "labels": {
+      "title": "TÍTULO"
+    },
+    "education": {
+      "systemAnalyst": "Analista De Sistemas",
+      "thirdYear": "3er Año"
+    },
+    "description": {
+      "line1": "Siempre me atrajo la tecnología, y en 2018 pude comenzar",
+      "line2": "con mis aprendizajes. Disfruto llevar ideas a la realidad en el",
+      "line3": "navegador, aprendiendo y superando nuevos desafíos. Mi",
+      "line4": "especialidad es el desarrollo front-end con foco en crear",
+      "line5": "páginas web y aplicaciones rápidas, fáciles de usar,",
+      "line6": "con un diseño UX / UI óptimo y accesibles en una amplia gama de",
+      "line7": "dispositivos y navegadores."
+    }
+  },
+
+  "contact": {
+    "sendMessage": "Enviar Mensaje",
+    "name": "Nombre",
+    "email": "Email",
+    "affair": "Asunto",
+    "message": "Mensaje",
+    "send": "Enviar",
+    "linkedinAlt": "Icono De LinkedIn",
+    "githubAlt": "Icono De GitHub"
+  },
+
+  "hiddenMenu": {
+    "home": "Inicio",
+    "projects": "Proyectos",
+    "about": "Sobre Mí",
+    "contact": "Contacto"
+  }
 }

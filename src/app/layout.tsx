@@ -1,9 +1,7 @@
-// src/app/layout.tsx
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
 import localFont from 'next/font/local';
 
-// 🔥 TODOS los estilos globales van acá
 import "scss/abstract/variables.scss";
 import "scss/base/globals.scss";
 import "scss/abstract/animations/globalAnimations.scss";
