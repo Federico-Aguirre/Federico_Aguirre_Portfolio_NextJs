@@ -27,6 +27,74 @@
     "institution": "Instituto Superior De Formación Técnica N.º 12",
     "certificatesLink": "Ver Certificados",
     "resumeLink": "Ver CV",
+    "SkillsSection": {
+      "categories": {
+        "frontend": "Frontend",
+        "backend": "Backend",
+        "db": "Base de Datos",
+        "hosting": "Infraestructura",
+        "devops": "DevOps",
+        "design": "Diseño",
+        "tools": "Herramientas",
+        "testing": "Testing"
+      },
+      "techs": {
+        "javascript": { "name": "JavaScript", "desc": "Lenguaje principal de la web." },
+        "typescript": { "name": "TypeScript", "desc": "Superset tipado de JS." },
+        "react": { "name": "React", "desc": "Librería para interfaces." },
+        "nextjs": { "name": "Next.js", "desc": "Framework React Full-stack." },
+        "redux": { "name": "Redux", "desc": "Contenedor de estado predecible." },
+        "zustand": { "name": "Zustand", "desc": "Gestor de estado fluido." },
+        "html": { "name": "HTML5", "desc": "Estructura semántica web." },
+        "css": { "name": "CSS3", "desc": "Estilos y diseño visual." },
+        "sass": { "name": "SASS", "desc": "CSS con superpoderes." },
+        "tailwind": { "name": "Tailwind", "desc": "Framework de utilidad." },
+        "materialui": { "name": "Material UI", "desc": "Componentes estilo Google." },
+        "bootstrap": { "name": "Bootstrap", "desc": "Toolkit de componentes UI." },
+        "framer": { "name": "Framer Motion", "desc": "Librería de animaciones." },
+        
+        "nodejs": { "name": "Node.js", "desc": "Entorno de ejecución JS." },
+        "express": { "name": "Express", "desc": "Framework web estándar." },
+        "php": { "name": "PHP", "desc": "Scripting del lado servidor." },
+        "laravel": { "name": "Laravel", "desc": "Framework PHP elegante." },
+        "socketio": { "name": "Socket.io", "desc": "Comunicación bidireccional real-time." },
+        "wordpress": { "name": "WordPress", "desc": "Gestión de contenidos (CMS)." },
+        "woocommerce": { "name": "WooCommerce", "desc": "Plataforma de comercio online." },
+        "restapi": { "name": "REST API", "desc": "Arquitectura de interfaz web." },
+
+        "sql": { "name": "SQL", "desc": "Lenguaje de consultas." },
+        "mysql": { "name": "MySQL", "desc": "Base de datos relacional." },
+        "postgresql": { "name": "PostgreSQL", "desc": "Base de datos avanzada." },
+        "supabase": { "name": "Supabase", "desc": "Backend como servicio." },
+        "firebase": { "name": "Firebase", "desc": "Plataforma app de Google." },
+
+        "vercel": { "name": "Vercel", "desc": "Despliegue frontend optimizado." },
+        "netlify": { "name": "Netlify", "desc": "Hosting y Serverless." },
+        "heroku": { "name": "Heroku", "desc": "Plataforma como servicio." },
+        "render": { "name": "Render", "desc": "Nube unificada para apps." },
+        "neon": { "name": "Neon", "desc": "Postgres Serverless." },
+        "aws": { "name": "AWS", "desc": "Servicios en la nube." },
+        "googlecloud": { "name": "Google Cloud", "desc": "Infraestructura de Google." },
+
+        "git": { "name": "Git", "desc": "Control de versiones." },
+        "github": { "name": "GitHub", "desc": "Hospedaje de código." },
+        "gitlab": { "name": "GitLab", "desc": "Ciclo de vida DevOps." },
+        "docker": { "name": "Docker", "desc": "Contenedores de apps." },
+        "jenkins": { "name": "Jenkins", "desc": "Servidor de automatización." },
+
+        "figma": { "name": "Figma", "desc": "Diseño de interfaces." },
+        "uxdesign": { "name": "UX Design", "desc": "Experiencia de usuario." },
+
+        "jira": { "name": "Jira", "desc": "Gestión ágil de proyectos." },
+        "trello": { "name": "Trello", "desc": "Tableros colaborativos." },
+        "postman": { "name": "Postman", "desc": "Pruebas de API." },
+
+        "jest": { "name": "Jest", "desc": "Testing en JavaScript." },
+        "phpunit": { "name": "PHPUnit", "desc": "Testing en PHP." },
+        "laraveldusk": { "name": "Laravel Dusk", "desc": "Pruebas de navegador." },
+        "manualtesting": { "name": "Manual Testing", "desc": "Aseguramiento de calidad." }
+      }
+    },
     "labels": {
       "title": "TÍTULO"
     },

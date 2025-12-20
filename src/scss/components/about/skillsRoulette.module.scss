@@ -1,0 +1,153 @@
+.rouletteWrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  // IMPORTANTE: Altura mínima suficiente para separar los elementos
+  min-height: 550px; 
+  // Distribuye: 1ro arriba, 2do centro, 3ro abajo
+  justify-content: space-between; 
+  position: relative;
+  overflow: visible; // Permite que brillos salgan si es necesario
+}
+
+.wheelContainer {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  // IMPORTANTE: Padding arriba/abajo suficiente (25px) para que
+  // al subir la card con translateY, no se corte el borde.
+  padding: 10px 0 0 0; 
+}
+
+.trackContainer {
+  width: 100%;
+  overflow: hidden;
+  mask-image: linear-gradient(to right, transparent, black 10%, black 80%, transparent);
+}
+
+.track {
+  display: flex;
+  align-items: center;
+  gap: 20px 0; // Gap base
+  cursor: grab;
+  &:active { cursor: grabbing; }
+  padding: 10px 0;
+}
+
+// --- CARD CATEGORÍA ---
+.card {
+  width: 130px; 
+  height: 120px; 
+  background: rgba(255, 255, 255, 0.03);
+  // Borde base tenue
+  border: 1px solid rgba(255, 255, 255, 0.1); 
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  position: relative;
+  
+  // Hover effect simple
+  &:hover {
+    background: rgba(255, 255, 255, 0.08);
+  }
+
+  span {
+    margin-top: 10px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: #aaa;
+    text-align: center;
+  }
+}
+
+// --- CARD SKILL (Con Hover añadido) ---
+.techItem {
+  // Dimensiones fijas
+  width: 100px;
+  height: 100px;
+  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: 12px;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  
+  // Reserva de borde transparente para evitar saltos
+  border: 1px solid transparent; 
+
+  span {
+    font-size: 0.75rem;
+    color: #888;
+    margin-top: 8px;
+    text-align: center;
+    transition: color 0.3s;
+  }
+
+  // EFECTO HOVER PARA SKILLS (Lo pediste)
+  &:hover {
+    transform: scale(1.15); // Crece igual que las categorias
+    background: rgba(255, 255, 255, 0.05);
+    span { color: white; }
+  }
+}
+
+// --- DESCRIPCIÓN (Pegada abajo) ---
+.descriptionBox {
+  width: 90%;
+  max-width: 700px;
+  margin: 0 auto; // Centrado horizontal
+  background: rgba(0, 0, 0, 0.5); // Un poco más oscuro para leer mejor
+  border-left: 4px solid #00E5FF; // Cyan fuerte
+  padding: 15px 20px;
+  border-radius: 0 8px 8px 0;
+  backdrop-filter: blur(5px);
+  
+  // Aseguramos que no se salga del layout
+  margin-bottom: 10px;
+
+  h4 {
+    margin: 0 0 6px 0;
+    color: #00E5FF;
+    font-size: 1.1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  p {
+    margin: 0;
+    color: #ddd;
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+}
+
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 20;
+  background: rgba(0,0,0,0.6);
+  border: 1px solid rgba(255,255,255,0.2);
+  color: white;
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  
+  &:hover { background: #00E5FF; color: black; border-color: #00E5FF; }
+  &Left { left: 10px; }
+  &Right { right: 10px; }
+}

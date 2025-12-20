@@ -166,23 +166,17 @@
                 &__content {
                     height: 100%;
                     width: 100%;
-                    grid-template-rows: 100px auto;
+                    grid-template-rows: auto;
                     grid-template-columns: 1fr 1fr;
                     grid-row: 1/-1;
                     grid-column: 3;
                     padding: 0;
                     line-height: 22px;
 
-
-                    &__languagesTitle {
+                    > div {
                         grid-column: 1/-1;
-                        place-content: center;
-                    }
-
-                    &__languages1,
-                    &__languages2 {
-                        align-content: start;
-                        margin-right: 20px;
+                        width: 100%; 
+                        place-self: center;
                     }
                 }
             }

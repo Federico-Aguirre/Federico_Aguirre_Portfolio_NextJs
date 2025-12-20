@@ -10,10 +10,10 @@ import { contextStore } from "@/store/Context"
 import { useRef, useState, useEffect } from "react"
 import { motion, useMotionValue, useTransform } from "framer-motion"
 import { useTranslations } from "next-intl"
+import SkillsRoulette from "./_aboutComponents/SkillsRoulette"
 
 const About = () => {
-  const t = useTranslations("about");
-
+  const t = useTranslations("about")
   const cardX = useMotionValue(0)
   const cardY = useMotionValue(0)
   const rotateX = useTransform(cardY, [-300, 300], [30, -30])
@@ -33,11 +33,9 @@ const About = () => {
 
   const aboutSectionRef = useRef<HTMLButtonElement | null>(null)
   const { changeSectionVisible, darkMode } = contextStore()
-
   const [toggleScrollClass, setToggleScrollClass] = useState("scrollToSkills")
-  const toggleShadowClass = darkMode
-    ? "darkModeShadowClass"
-    : "brightModeShadowClass"
+  
+  const toggleShadowClass = darkMode ? "darkModeShadowClass" : "brightModeShadowClass"
 
   const showFromLeftAnimation = {
     initial: { opacity: 0, x: -200 },
@@ -70,9 +68,7 @@ const About = () => {
         whileInView="animate"
         viewport={{ once: true }}
       >
-        <div
-          className={`${aboutStyle.about__container__aboutScroll} ${toggleScrollClass}`}
-        />
+        <div className={`${aboutStyle.about__container__aboutScroll} ${toggleScrollClass}`} />
 
         <button
           className={aboutStyle.about__container__skills}
@@ -84,50 +80,11 @@ const About = () => {
 
         <div
           className={aboutStyle.about__container__skills__content}
-          style={{
-            display: toggleScrollClass === "scrollToSkills" ? "grid" : "none",
-          }}
+          style={{ display: toggleScrollClass === "scrollToSkills" ? "grid" : "none" }}
         >
-          <div
-            className={
-              aboutStyle.about__container__skills__content__languagesTitle
-            }
-          >
-            {t("skills")}
+          <div>
+            <SkillsRoulette />
           </div>
-
-          <ul
-            className={
-              aboutStyle.about__container__skills__content__languages1
-            }
-          >
-            <li>HTML</li>
-            <li>UX/UI design</li>
-            <li>Git + GitHub</li>
-            <li>CSS</li>
-            <li>SASS</li>
-            <li>Bootstrap</li>
-            <li>TailwindCSS</li>
-            <li>JavaScript</li>
-            <li>EcmaScript</li>
-            <li>TypeScript</li>
-          </ul>
-
-          <ul
-            className={
-              aboutStyle.about__container__skills__content__languages2
-            }
-          >
-            <li>NodeJS</li>
-            <li>Express</li>
-            <li>ReactJS</li>
-            <li>NextJS</li>
-            <li>Redux</li>
-            <li>PHP</li>
-            <li>SQL</li>
-            <li>MySQL</li>
-            <li>Docker</li>
-          </ul>
         </div>
 
         <button
@@ -143,29 +100,21 @@ const About = () => {
             display: toggleScrollClass === "scrollToStudies" ? "grid" : "none",
           }}
         >
-          <div
-            className={aboutStyle.about__container__studies__content__title}
-          >
+          <div className={aboutStyle.about__container__studies__content__title}>
             {t("studies")}
           </div>
 
-          <div
-            className={aboutStyle.about__container__studies__content__info}
-          >
+          <div className={aboutStyle.about__container__studies__content__info}>
             {t("labels.title")}: {t("education.systemAnalyst")} –{" "}
             {t("education.thirdYear")}
           </div>
 
-          <div
-            className={aboutStyle.about__container__studies__content__info}
-          >
+          <div className={aboutStyle.about__container__studies__content__info}>
             {t("obtainedIn").toUpperCase()}: {t("institution")}
           </div>
 
           <motion.div
-            className={
-              aboutStyle.about__container__studies__content__certificates
-            }
+            className={aboutStyle.about__container__studies__content__certificates}
             whileHover={{ scale: 1.2 }}
           >
             <Link
@@ -204,15 +153,11 @@ const About = () => {
             display: toggleScrollClass === "scrollToAbout" ? "grid" : "none",
           }}
         >
-          <div
-            className={aboutStyle.about__container__text__content__title}
-          >
+          <div className={aboutStyle.about__container__text__content__title}>
             {t("title")}
           </div>
 
-          <div
-            className={aboutStyle.about__container__text__content__info}
-          >
+          <div className={aboutStyle.about__container__text__content__info}>
             <p>{t("description.line1")}</p>
             <p>{t("description.line2")}</p>
             <p>{t("description.line3")}</p>
