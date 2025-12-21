@@ -3,10 +3,12 @@
 
 .about {
     height: auto;
-    width: 100vw;
+    width: 100%;
+    max-width: 100vw;
     display: flex;
     place-content: center;
     flex-direction: row;
+    overflow-x: hidden;
 
     &__container {
         height: auto;
@@ -15,38 +17,40 @@
         background-color: variables.$lightViolet;
         border-radius: 10px;
         border: 5px solid variables.$darkViolet;
+        
+        // Mantenemos tu Grid base
         display: grid;
-        grid-template-rows: auto auto auto;
-        row-gap: 30px;
+        // Cambio clave: 1 columna, filas automáticas según el contenido
+        grid-template-columns: 1fr; 
+        grid-template-rows: auto auto auto; 
+        row-gap: 50px; // Un poco más de aire entre secciones apiladas
 
+        // --- 1. HABILIDADES (FILA 1) ---
         &__skills__content {
-            grid-template-rows: 50px 200px;
-            grid-template-columns: auto auto;
-
-            &__languagesTitle {
-                grid-column: 1/-1;
-                font-size: variables.$bigFont;
-                font-weight: 600;
-                text-align: center;
-            }
-
-            &__languages1 {
-                display: grid;
-                place-content: center;
-            }
-
-            &__languages2 {
-                display: grid;
-                place-content: center;
-            }
+            grid-row: 1;
+            display: flex;
+            flex-direction: column;
+            height: auto;
+            min-height: 400px;
+            
+            // CAMBIO 2: La solución al desborde horizontal
+            width: 100%;      // Ocupa todo el ancho del padre
+            max-width: 100%;  // No te pases de ese ancho
+            overflow: hidden; // <--- ESTO CORTA LO QUE SOBRA A LOS LADOS
+            
+            // Un poco de padding interno evita que se corten las sombras de las cards
+            padding: 10px 0; 
         }
 
+        // --- 2. ESTUDIOS (FILA 2) ---
         &__studies__content {
-            grid-row: 2;
+            grid-row: 2; // Forzamos posición 2
             grid-column: 1/-1;
             display: flex;
+            flex-direction: column; // Mejor column en móvil
             margin-top: 20px;
             row-gap: 20px;
+            height: auto; // Aseguramos que se vea
 
             &__title {
                 margin-bottom: 20px;
@@ -72,12 +76,17 @@
             }
         }
 
+        // --- 3. TEXTO (FILA 3) ---
         &__text__content {
-            height: 100%;
-            grid-template-rows: 130px auto;
+            grid-row: 3; // Forzamos posición 3
+            height: auto; // Quitamos el height 100% que puede dar problemas en grid auto
+            
+            // Quitamos el grid interno rígido si causa problemas, o lo ajustamos
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
 
             &__title {
-                grid-row: 1;
                 place-content: center;
                 text-align: center;
                 font-size: variables.$bigFont;
@@ -85,13 +94,12 @@
             }
 
             &__info {
-                margin: 0 50px;
+                margin: 0; // Ajustamos márgenes para móvil
+                text-align: center;
             }
         }
 
-        &__aboutScroll {
-            display: none;
-        }
+        &__aboutScroll { display: none; }
 
         &__skills,
         &__studies,
@@ -103,7 +111,6 @@
 
     &__containerWebDev {
         display: none;
-
         &__image {
             height: 100%;
             width: 100%;
@@ -111,12 +118,15 @@
     }
 }
 
+// IMPORTANTE: Asegurar que estos displays se activen en móvil
 @media (max-width:1024px) {
-
     .about__container__skills__content,
     .about__container__text__content,
     .about__container__studies__content {
-        display: grid !important;
+        // Aseguramos que se muestren (grid o flex está bien, block también)
+        display: flex !important; 
+        flex-direction: column;
+        position: relative; // Ayuda al z-index
     }
 }
 

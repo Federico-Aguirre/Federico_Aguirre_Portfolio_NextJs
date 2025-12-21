@@ -1,19 +1,19 @@
 "use client"
-import React, { useEffect, useState, useRef, useMemo, useCallback } from "react"
+import React, { useEffect, useState, useRef, useMemo, useCallback, useTransition } from "react"
 import { motion, useMotionValue, animate, PanInfo } from "framer-motion"
 import Image from "next/image"
 import styles from "@/scss/components/about/skillsRoulette.module.scss"
 import { useTranslations } from "next-intl"
 
-// --- ESTRUCTURA DE DATOS (IDs e Iconos solamente) ---
+// --- DATOS (Sin cambios) ---
 const DATA_SKELETON = [
   {
     id: "frontend",
-    mainIcon: "react.svg",
+    mainIcon: "reactjs.svg",
     techs: [
       { id: "javascript", icon: "javascript.svg" },
       { id: "typescript", icon: "typescript.svg" },
-      { id: "react", icon: "react.svg" },
+      { id: "react", icon: "reactjs.svg" },
       { id: "nextjs", icon: "nextjs.svg" },
       { id: "redux", icon: "redux.svg" },
       { id: "zustand", icon: "zustand.svg" },
@@ -117,35 +117,42 @@ const RouletteWheel = ({ items, selectedItem, onSelect, cardWidth, gap, renderCa
   const containerRef = useRef<HTMLDivElement>(null)
   const [containerWidth, setContainerWidth] = useState(0)
   const isDragging = useRef(false)
+  
   const x = useMotionValue(0)
+  
+  const ITEM_COUNT = items.length
+  const STRIDE = cardWidth + gap
+  const totalContentWidth = (ITEM_COUNT * cardWidth) + ((ITEM_COUNT - 1) * gap)
+  
+  const isStaticMode = containerWidth > 0 && (containerWidth >= totalContentWidth)
+  
+  const BUFFER_SETS = isStaticMode ? 1 : 5
+  const CENTER_SET_INDEX = Math.floor(BUFFER_SETS / 2)
 
   useEffect(() => {
     if (!containerRef.current) return
     const observer = new ResizeObserver((entries) => {
-      setContainerWidth(entries[0].contentRect.width)
+      window.requestAnimationFrame(() => {
+        if (!Array.isArray(entries) || !entries.length) return;
+        const width = entries[0].contentRect.width
+        if (width > 0) setContainerWidth(width)
+      })
     })
     observer.observe(containerRef.current)
     return () => observer.disconnect()
   }, [])
 
-  const ITEM_COUNT = items.length
-  const STRIDE = cardWidth + gap 
-  const totalContentWidth = items.length * STRIDE - gap
-  
-  // LOGICA ANTIPARPADEO
-  const isStaticMode = containerWidth === 0 || totalContentWidth < (containerWidth - 30)
-  
-  const BUFFER_SETS = isStaticMode ? 1 : 5
-  const CENTER_SET_INDEX = Math.floor(BUFFER_SETS / 2)
-
   const displayItems = useMemo(() => {
-    if (isStaticMode) return items.map((item, idx) => ({ ...item, uKey: `static-${idx}` }))
+    if (isStaticMode) return items.map((item, idx) => ({ ...item, uKey: `static-${item.id}-${idx}`, visualIndex: idx }))
     const sets = []
+    let globalIndexCounter = 0
     for (let i = 0; i < BUFFER_SETS; i++) {
-        sets.push(...items.map((item, idx) => ({
-            ...item,
-            uKey: `s${i}-${idx}-${item.id}` // Usamos item.id ahora
-        })))
+        const set = items.map((item, idx) => ({ 
+            ...item, 
+            uKey: `s${i}-${idx}-${item.id}`,
+            visualIndex: globalIndexCounter++ 
+        }))
+        sets.push(...set)
     }
     return sets
   }, [items, BUFFER_SETS, isStaticMode])
@@ -170,23 +177,29 @@ const RouletteWheel = ({ items, selectedItem, onSelect, cardWidth, gap, renderCa
      x.set(newX)
   }, [x, containerWidth, cardWidth, STRIDE, ITEM_COUNT, CENTER_SET_INDEX, getXForIndex, isStaticMode])
 
-  const animateTo = useCallback((target: number, immediate = false) => {
+  const animateTo = useCallback((targetX: number, immediate = false) => {
     if (immediate) {
-        x.set(target)
+        x.set(targetX)
     } else {
-        animate(x, target, { type: "spring", stiffness: 300, damping: 30, mass: 0.8, onComplete: snapToCenterSet })
+        animate(x, targetX, { 
+            type: "spring", 
+            stiffness: 250, 
+            damping: 30, 
+            onComplete: () => { snapToCenterSet() }
+        })
     }
   }, [x, snapToCenterSet])
 
   useEffect(() => {
-    if (containerWidth === 0) return
     if (isStaticMode) { x.set(0); return }
-    const itemIndex = items.findIndex(i => i.id === selectedItem.id)
-    const safeIndex = itemIndex === -1 ? 0 : itemIndex
-    const globalIndex = (CENTER_SET_INDEX * ITEM_COUNT) + safeIndex
-    const targetX = getXForIndex(globalIndex)
-    animateTo(targetX, true) 
-  }, [containerWidth, items, ITEM_COUNT, getXForIndex, animateTo, x, isStaticMode, CENTER_SET_INDEX, selectedItem])
+    if (containerWidth > 0) {
+        const itemIndex = items.findIndex(i => i.id === selectedItem.id)
+        const safeIndex = itemIndex === -1 ? 0 : itemIndex
+        const globalIndex = (CENTER_SET_INDEX * ITEM_COUNT) + safeIndex
+        const targetX = getXForIndex(globalIndex)
+        animateTo(targetX, true)
+    }
+  }, [containerWidth, items, isStaticMode]) 
 
   const handleDragEnd = (e: any, info: PanInfo) => {
     isDragging.current = false
@@ -201,8 +214,7 @@ const RouletteWheel = ({ items, selectedItem, onSelect, cardWidth, gap, renderCa
   }
 
   const handleArrow = (dir: "prev" | "next") => {
-    if (isDragging.current) return
-    snapToCenterSet() 
+    if (isDragging.current || isStaticMode) return
     const currentX = x.get()
     const targetX = dir === "next" ? currentX - STRIDE : currentX + STRIDE
     animateTo(targetX)
@@ -214,95 +226,155 @@ const RouletteWheel = ({ items, selectedItem, onSelect, cardWidth, gap, renderCa
   }
 
   const handleClick = (idx: number, item: any) => {
-    if (isStaticMode) { onSelect(item) } else { animateTo(getXForIndex(idx)); onSelect(item) }
+    if (isStaticMode) { 
+        onSelect(item) 
+    } else { 
+        const targetX = getXForIndex(idx)
+        animateTo(targetX)
+        onSelect(item)
+    }
   }
 
   return (
-    <div className={styles.wheelContainer} ref={containerRef} style={{ justifyContent: isStaticMode ? 'center' : 'flex-start' }}>
+    <div className={styles.wheelContainer} ref={containerRef} style={{ width: '100%', position: 'relative', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
       
-      {!isStaticMode && <button className={`${styles.arrow} ${styles.arrowLeft}`} onClick={() => handleArrow("prev")}>&#8249;</button>}
+      {!isStaticMode && (
+        <>
+            <button 
+                className={`${styles.arrow} ${styles.arrowLeft}`} 
+                onClick={() => handleArrow("prev")}
+                style={{ zIndex: 20, cursor: 'pointer' }}
+            >
+                &#8249;
+            </button>
+            <button 
+                className={`${styles.arrow} ${styles.arrowRight}`} 
+                onClick={() => handleArrow("next")}
+                style={{ zIndex: 20, cursor: 'pointer' }}
+            >
+                &#8250;
+            </button>
+        </>
+      )}
       
-      <div className={styles.trackContainer}>
+      <div style={{ width: '100%', overflow: 'hidden', padding: '20px 0', touchAction: 'pan-y' }}>
         {isStaticMode ? (
-            <div style={{ 
-                display: 'flex', 
-                justifyContent: 'center', 
-                alignItems: 'center', 
-                gap: gap, 
-                width: '100%',
-                padding: '30px 0' 
-            }}>
-                {displayItems.map((item) => {
-                     const isSelected = item.id === selectedItem.id
-                     return <div key={item.uKey} onClick={() => handleClick(0, item)} style={{ width: cardWidth, flexShrink: 0 }}>{renderCard(item, isSelected)}</div>
-                })}
+            <div style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap', gap: `${gap}px`, width: '100%' }}>
+                {displayItems.map((item) => (
+                    <div 
+                        key={item.uKey} 
+                        onClick={() => handleClick(0, item)}
+                        style={{
+                            width: `${cardWidth}px`,
+                            height: `${cardWidth}px`, 
+                            cursor: 'pointer',
+                            flexShrink: 0
+                        }}
+                    >
+                        {renderCard(item, item.id === selectedItem.id)}
+                    </div>
+                ))}
             </div>
         ) : (
             <motion.div 
-                className={styles.track}
-                style={{ x, width: 'max-content', gap: gap }}
-                drag="x" dragElastic={0.05} onDragStart={() => isDragging.current = true} onDragEnd={handleDragEnd}
+                // CORRECCIÓN CENTRADO: Padding estrictamente 0 para evitar desfase a la derecha.
+                style={{ x, display: "flex", flexDirection: "row", gap: `${gap}px`, width: "max-content", padding: 0 }} 
+                drag="x" 
+                dragConstraints={{ left: -50000, right: 50000 }} 
+                dragElastic={0.05} 
+                onDragStart={() => isDragging.current = true} 
+                onDragEnd={handleDragEnd}
                 whileTap={{ cursor: 'grabbing' }}
             >
                 {displayItems.map((item, idx) => {
                     const isSelected = item.id === selectedItem.id
-                    return <motion.div key={item.uKey} style={{ width: cardWidth, flexShrink: 0 }} onClick={() => handleClick(idx, item)} whileHover={{ scale: 1.05 }}>{renderCard(item, isSelected)}</motion.div>
+                    return (
+                        <motion.div 
+                            key={item.uKey} 
+                            style={{ 
+                                width: `${cardWidth}px`, 
+                                minWidth: `${cardWidth}px`, 
+                                height: `${cardWidth}px`, 
+                                flexShrink: 0,
+                                position: 'relative'
+                            }} 
+                            onClick={() => handleClick(item.visualIndex, item)} 
+                            whileHover={{ scale: 1.05 }}
+                        >
+                            {renderCard(item, isSelected)}
+                        </motion.div>
+                    )
                 })}
             </motion.div>
         )}
       </div>
-
-      {!isStaticMode && <button className={`${styles.arrow} ${styles.arrowRight}`} onClick={() => handleArrow("next")}>&#8250;</button>}
     </div>
   )
 }
 
 const SkillsRoulette = () => {
-  const t = useTranslations("about.SkillsSection") // <-- Hook de traducción
+  const t = useTranslations("about.SkillsSection") 
+  const [isMounted, setIsMounted] = useState(false)
+  const [isMobile, setIsMobile] = useState(false)
+  const [isPending, startTransition] = useTransition()
 
-  // Construimos los datos con textos dinámicos usando useMemo
+  useEffect(() => {
+    setIsMounted(true)
+    const handleResize = () => setIsMobile(window.innerWidth < 768)
+    handleResize() 
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
+
   const categoriesWithData = useMemo(() => {
     return DATA_SKELETON.map(cat => ({
       ...cat,
-      title: t(`categories.${cat.id}`), // Traduce "Frontend", "Backend", etc.
+      title: t(`categories.${cat.id}`),
       techs: cat.techs.map(tech => ({
         ...tech,
-        name: t(`techs.${tech.id}.name`), // Traduce "React"
-        desc: t(`techs.${tech.id}.desc`)  // Traduce la descripción
+        name: t(`techs.${tech.id}.name`),
+        desc: t(`techs.${tech.id}.desc`)
       }))
     }))
   }, [t])
 
-  // Usamos IDs para el estado para evitar problemas al cambiar de idioma
   const [activeCategoryId, setActiveCategoryId] = useState("frontend")
   const [activeTechId, setActiveTechId] = useState("javascript")
 
-  // Obtenemos los objetos activos basados en los IDs y la data traducida actual
   const activeCategory = categoriesWithData.find(c => c.id === activeCategoryId) || categoriesWithData[0]
   const activeTech = activeCategory.techs.find(t => t.id === activeTechId) || activeCategory.techs[0]
 
   const handleCategorySelect = (category: any) => {
-    setActiveCategoryId(category.id)
-    if (category.techs.length > 0) {
-      setActiveTechId(category.techs[0].id)
-    }
+    if (category.id === activeCategoryId) return
+    startTransition(() => {
+        setActiveCategoryId(category.id)
+        if (category.techs.length > 0) {
+            setActiveTechId(category.techs[0].id)
+        }
+    })
   }
 
   const NEON_BLUE = "#00E5FF" 
   const NEON_GLOW = "0 0 20px rgba(0, 229, 255, 0.4)" 
+  
+  const CATEGORY_WIDTH = isMobile ? 100 : 130
+  const TECH_WIDTH = isMobile ? 75 : 90
+  const GAP_SIZE = isMobile ? 15 : 25 
+
+  if (!isMounted) return <div style={{ minHeight: '600px', width: '100%' }}></div>;
 
   return (
-    <div className={styles.rouletteWrapper}>
+    <div className={styles.rouletteWrapper} style={{ display: 'flex', flexDirection: 'column', width: '100%', minHeight: '600px' }}>
       
-      {/* 1. CATEGORÍAS */}
+      {/* SECCIÓN CATEGORÍAS */}
       <div style={{ width: '100%', zIndex: 10 }}>
         <RouletteWheel 
             key="categories-wheel"
             items={categoriesWithData}
             selectedItem={activeCategory}
             onSelect={handleCategorySelect}
-            cardWidth={130}
-            gap={20}
+            cardWidth={CATEGORY_WIDTH}
+            gap={GAP_SIZE}
             renderCard={(item, isActive) => (
                 <div 
                     className={styles.card}
@@ -310,62 +382,118 @@ const SkillsRoulette = () => {
                         border: isActive ? `2px solid ${NEON_BLUE}` : '1px solid rgba(255, 255, 255, 0.1)',
                         boxShadow: isActive ? NEON_GLOW : 'none',
                         background: isActive ? 'rgba(0, 229, 255, 0.1)' : 'rgba(255, 255, 255, 0.03)',
-                        transform: isActive ? 'translateY(-5px)' : 'none',
+                        width: '100%', 
+                        height: '100%', 
+                        display: 'flex',
+                        flexDirection: 'column',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        borderRadius: '12px'
                     }}
                 >
-                    <Image src={`/svg/skills-logo/${item.mainIcon}`} alt={item.title} width={35} height={35} priority unoptimized />
-                    <span style={{ color: isActive ? NEON_BLUE : '#aaa', fontWeight: isActive ? 'bold' : 'normal' }}>
-                        {item.title}
-                    </span>
+                    {/* CORRECCIÓN DRAG: 'pointerEvents: none' en el contenido para que el drag lo capture el padre */}
+                    <div style={{ pointerEvents: 'none', userSelect: 'none', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                        <Image src={`/svg/skills-logo/${item.mainIcon}`} alt={item.title} width={isMobile ? 25 : 35} height={isMobile ? 25 : 35} priority unoptimized draggable={false} />
+                        <span style={{ 
+                            color: isActive ? NEON_BLUE : '#aaa', 
+                            fontWeight: isActive ? 'bold' : 'normal',
+                            fontSize: isMobile ? '0.8rem' : '1rem',
+                            textAlign: 'center',
+                            marginTop: '8px',
+                            lineHeight: '1.2'
+                        }}>
+                            {item.title}
+                        </span>
+                    </div>
                 </div>
             )}
         />
       </div>
 
-      {/* 2. SKILLS */}
-      <div key={activeCategory.id} style={{ width: '100%', zIndex: 5 }}>
+      {/* SECCIÓN SKILLS */}
+      <div style={{ width: '100%', zIndex: 5, opacity: isPending ? 0.5 : 1, transition: 'opacity 0.2s ease', marginTop: '15px' }}>
         <RouletteWheel 
+          key={`tech-wheel-${activeCategoryId}`}
           items={activeCategory.techs}
           selectedItem={activeTech}
-          onSelect={(tech) => setActiveTechId(tech.id)} // Guardamos solo el ID
-          cardWidth={90}
-          gap={30} 
+          onSelect={(tech) => setActiveTechId(tech.id)}
+          cardWidth={TECH_WIDTH}
+          gap={GAP_SIZE} 
           renderCard={(tech, isActive) => (
             <div 
                 className={styles.techItem}
                 style={{
-                    border: isActive ? `2px solid ${NEON_BLUE}` : '1px solid rgba(255, 255, 255, 0.1)', margin: "10px 0",
+                    border: isActive ? `2px solid ${NEON_BLUE}` : '1px solid rgba(255, 255, 255, 0.1)',
                     boxShadow: isActive ? NEON_GLOW : 'none',
                     background: isActive ? 'rgba(0, 229, 255, 0.08)' : 'rgba(255, 255, 255, 0.02)',
+                    width: '100%',
+                    height: '100%',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    padding: '5px',
+                    borderRadius: '8px',
+                    boxSizing: 'border-box'
                 }}
             >
-              <Image src={`/svg/skills-logo/${tech.icon}`} alt={tech.name} width={40} height={40} priority />
-              <span style={{ 
-                  color: isActive ? NEON_BLUE : '#888', 
-                  fontWeight: isActive ? 'bold' : 'normal',
-                  marginTop: '8px'
-               }}>
-                {tech.name}
-              </span>
+              {/* CORRECCIÓN DRAG: 'pointerEvents: none' en el contenido */}
+              <div style={{ pointerEvents: 'none', userSelect: 'none', display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%' }}>
+                  <Image src={`/svg/skills-logo/${tech.icon}`} alt={tech.name} width={isMobile ? 30 : 40} height={isMobile ? 30 : 40} priority draggable={false} />
+                  <span style={{ 
+                      color: isActive ? NEON_BLUE : '#888', 
+                      fontWeight: isActive ? 'bold' : 'normal',
+                      marginTop: '6px',
+                      fontSize: isMobile ? '0.75rem' : '0.9rem',
+                      textAlign: 'center',
+                      whiteSpace: 'nowrap',
+                      overflow: 'hidden',
+                      textOverflow: 'ellipsis',
+                      width: '90%'
+                   }}>
+                    {tech.name}
+                  </span>
+              </div>
             </div>
           )}
         />
       </div>
 
-      {/* 3. DESCRIPCIÓN */}
-      {activeTech && (
-          <motion.div 
-            className={styles.descriptionBox}
-            key={activeTech.id} // Key por ID para reinicio limpio de animación
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.3 }}
-          >
-            <h4>{activeTech.name}</h4>
-            <p>{activeTech.desc}</p>
-          </motion.div>
-      )}
+      {/* --- SPACER PARA FORZAR LA SEPARACIÓN --- 
+          Usamos un div vacío con altura fija. Esto garantiza que haya espacio 
+          antes de la descripción, independientemente de Flexbox o márgenes.
+      */}
+      <div style={{ width: '100%', height: '50px', flexShrink: 0 }} />
 
+      {/* DESCRIPCIÓN */}
+      <div style={{ flexGrow: 1, display: 'flex', alignItems: 'flex-start', justifyContent: 'center' }}>
+        {activeTech && (
+            <motion.div 
+                key={activeTech.id} 
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.3 }}
+                style={{
+                    margin: 0, // Quitamos marginTop porque usamos el Spacer
+                    padding: '8px 15px', 
+                    background: 'rgba(255,255,255,0.03)',
+                    border: '1px solid rgba(255,255,255,0.1)',
+                    borderRadius: '10px',
+                    textAlign: 'center',
+                    width: '100%',
+                    maxWidth: '600px',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    gap: '12px' 
+                }}
+            >
+                <h4 style={{ color: NEON_BLUE, margin: 0, fontSize: '1rem', lineHeight: '1' }}>{activeTech.name}</h4>
+                <p style={{ color: '#ccc', fontSize: '0.85rem', lineHeight: '1.3', margin: 0 }}>{activeTech.desc}</p>
+            </motion.div>
+        )}
+      </div>
     </div>
   )
 }
