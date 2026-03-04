@@ -4,32 +4,22 @@ import "scss/abstract/animations/globalAnimations.scss"
 import "scss/abstract/animations/aboutAnimations.scss"
 import aboutStyle from "scss/pages/about.module.scss"
 
-import Image from "next/image"
+import SkillsRoulette from "./_aboutComponents/SkillsRoulette"
+import WebDeveloperCard from "./_aboutComponents/WebDeveloperCard"
+
+// Se eliminó 'Image' porque ahora vive dentro de WebDeveloperCard
 import Link from "next/link"
 import { contextStore } from "@/store/Context"
 import { useRef, useState, useEffect } from "react"
-import { motion, useMotionValue, useTransform } from "framer-motion"
+// Se eliminaron useMotionValue y useTransform porque esa lógica ahora está en el componente hijo
+import { motion } from "framer-motion"
 import { useTranslations } from "next-intl"
-import SkillsRoulette from "./_aboutComponents/SkillsRoulette"
 
 const About = () => {
   const t = useTranslations("about")
-  const cardX = useMotionValue(0)
-  const cardY = useMotionValue(0)
-  const rotateX = useTransform(cardY, [-300, 300], [30, -30])
-  const rotateY = useTransform(cardX, [-300, 300], [-30, 30])
 
-  const handleMouseMove = (event: any): void => {
-    const offsetX = event.clientX - window.innerWidth / 2
-    const offsetY = event.clientY - window.innerHeight / 2
-    cardX.set(offsetX)
-    cardY.set(offsetY)
-  }
-
-  const handleMouseLeave = (): void => {
-    cardX.set(0)
-    cardY.set(0)
-  }
+  // NOTA: Se eliminó toda la lógica de cardX, cardY, rotateX, rotateY y handlers
+  // porque ahora el componente WebDeveloperCard se encarga de su propia física.
 
   const aboutSectionRef = useRef<HTMLButtonElement | null>(null)
   const { changeSectionVisible, darkMode } = contextStore()
@@ -169,37 +159,13 @@ const About = () => {
         </div>
       </motion.div>
 
-      <motion.div
-        style={{
-          transformStyle: "preserve-3d",
-          perspective: 800,
-          rotateX,
-          rotateY,
-        }}
+      {/* AQUÍ ESTÁ EL CAMBIO: Se sustituyó el bloque manual por el componente */}
+      <WebDeveloperCard 
         className={`${aboutStyle.about__containerWebDev} ${toggleShadowClass}`}
+        imageClassName={aboutStyle.about__containerWebDev__image}
         variants={showFromRightAnimation}
-        initial="initial"
-        whileInView="animate"
-        viewport={{ once: true }}
-        onMouseMove={handleMouseMove}
-        onMouseLeave={handleMouseLeave}
-      >
-        <motion.div
-          style={{
-            transformStyle: "preserve-3d",
-            perspective: 800,
-          }}
-        >
-          <Image
-            src="/svg/webDeveloper.svg"
-            className={aboutStyle.about__containerWebDev__image}
-            alt="about image"
-            priority
-            width={400}
-            height={400}
-          />
-        </motion.div>
-      </motion.div>
+      />
+      
     </section>
   )
 }

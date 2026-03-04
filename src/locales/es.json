@@ -47,6 +47,7 @@
         "zustand": { "name": "Zustand", "desc": "Gestor de estado fluido." },
         "html": { "name": "HTML5", "desc": "Estructura semántica web." },
         "css": { "name": "CSS3", "desc": "Estilos y diseño visual." },
+        "postcss": { "name": "PostCss", "desc": "Una herramienta para transformar CSS con JavaScript." },
         "sass": { "name": "SASS", "desc": "CSS con superpoderes." },
         "tailwind": { "name": "Tailwind", "desc": "Framework de utilidad." },
         "materialui": { "name": "Material UI", "desc": "Componentes estilo Google." },

@@ -5,11 +5,9 @@ import styles from "@/scss/components/about/skillsRoulette.module.scss"
 import { useTranslations } from "next-intl"
 
 // --- IMPORTACIÓN NAMESPACE DE ICONOS ---
-// Importamos todo lo que exporta el index.ts como un objeto 'Icons'
 import * as Icons from "@/app/components/icons"
 
-// --- MAPEO DE IMÁGENES (SVG ANTIGUOS) A NUEVOS COMPONENTES ---
-// Accedemos a los iconos a través del objeto Icons
+// --- MAPEO DE IMÁGENES ---
 const ICONS_MAP: Record<string, React.ElementType> = {
   // Frontend
   "reactjs.svg": Icons.ReactIcon,
@@ -20,6 +18,7 @@ const ICONS_MAP: Record<string, React.ElementType> = {
   "zustand.svg": Icons.ZustandIcon,
   "html.svg": Icons.HtmlIcon,
   "css.svg": Icons.CssIcon,
+  "postcss.svg": Icons.PostCssIcon,
   "sass.svg": Icons.SassIcon,
   "tailwind.svg": Icons.TailwindIcon,
   "material-ui.svg": Icons.MaterialUiIcon,
@@ -89,6 +88,7 @@ const DATA_SKELETON = [
       { id: "zustand", icon: "zustand.svg" },
       { id: "html", icon: "html.svg" },
       { id: "css", icon: "css.svg" },
+      { id: "postcss", icon: "postcss.svg" },
       { id: "sass", icon: "sass.svg" },
       { id: "tailwind", icon: "tailwind.svg" },
       { id: "materialui", icon: "material-ui.svg" },
@@ -426,14 +426,25 @@ const SkillsRoulette = () => {
   const NEON_BLUE = "#00E5FF" 
   const NEON_GLOW = "0 0 20px rgba(0, 229, 255, 0.4)" 
   
-  const CATEGORY_WIDTH = isMobile ? 100 : 130
-  const TECH_WIDTH = isMobile ? 75 : 90
+  const CATEGORY_WIDTH = isMobile ? 80 : 100 
+  const TECH_WIDTH = isMobile ? 65 : 75
   const GAP_SIZE = isMobile ? 15 : 25 
 
   if (!isMounted) return <div style={{ minHeight: '600px', width: '100%' }}></div>;
 
   return (
-    <div className={styles.rouletteWrapper} style={{ display: 'flex', flexDirection: 'column', width: '100%', minHeight: '600px' }}>
+    <div 
+        className={styles.rouletteWrapper} 
+        style={{ 
+            display: 'flex', 
+            flexDirection: 'column', 
+            width: '100%', 
+            // FIX: Asegura que el componente nunca exceda el ancho de la pantalla
+            maxWidth: '100%', 
+            overflowX: 'hidden',
+            minHeight: '600px' 
+        }}
+    >
       
       {/* SECCIÓN CATEGORÍAS */}
       <div style={{ width: '100%', zIndex: 10 }}>
@@ -450,26 +461,30 @@ const SkillsRoulette = () => {
                 <div 
                     className={styles.card}
                     style={{
-                        border: isActive ? `2px solid ${NEON_BLUE}` : '1px solid rgba(255, 255, 255, 0.1)',
+                        // FIX VISUAL: Inactivas = borde gris oscuro, fondo casi transparente, filtro gris y opacidad baja
+                        border: isActive ? `2px solid ${NEON_BLUE}` : '1px solid rgba(255, 255, 255, 0.05)',
                         boxShadow: isActive ? NEON_GLOW : 'none',
-                        background: isActive ? 'rgba(0, 229, 255, 0.1)' : 'rgba(255, 255, 255, 0.03)',
+                        background: isActive ? 'rgba(0, 229, 255, 0.1)' : 'rgba(0, 0, 0, 0.2)',
                         width: '100%', 
                         height: '100%', 
                         display: 'flex',
                         flexDirection: 'column',
                         alignItems: 'center',
                         justifyContent: 'center',
-                        borderRadius: '12px'
+                        borderRadius: '12px',
+                        // Transición suave para el efecto de activación
+                        transition: 'all 0.3s ease',
+                        opacity: isActive ? 1 : 0.5,
+                        filter: isActive ? 'none' : 'grayscale(10%)'
                     }}
                 >
                     <div style={{ pointerEvents: 'none', userSelect: 'none', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                        {IconComponent && <IconComponent width={isMobile ? 25 : 35} height={isMobile ? 25 : 35} />}
+                        {IconComponent && <IconComponent width={isMobile ? 22 : 28} height={isMobile ? 22 : 28} isActive={isActive} />}
                         <span style={{ 
-                            color: isActive ? NEON_BLUE : '#aaa', 
                             fontWeight: isActive ? 'bold' : 'normal',
-                            fontSize: isMobile ? '0.8rem' : '1rem',
+                            fontSize: isMobile ? '0.7rem' : '0.85rem',
                             textAlign: 'center',
-                            marginTop: '8px',
+                            marginTop: '6px',
                             lineHeight: '1.2'
                         }}>
                             {item.title}
@@ -481,7 +496,7 @@ const SkillsRoulette = () => {
       </div>
 
       {/* SECCIÓN SKILLS */}
-      <div style={{ width: '100%', zIndex: 5, opacity: isPending ? 0.5 : 1, transition: 'opacity 0.2s ease', marginTop: '15px' }}>
+      <div style={{ width: '100%', zIndex: 5, opacity: isPending ? 0.5 : 1, transition: 'opacity 0.2s ease'}}>
         <RouletteWheel 
           key={`tech-wheel-${activeCategoryId}`}
           items={activeCategory.techs}
@@ -495,9 +510,10 @@ const SkillsRoulette = () => {
             <div 
                 className={styles.techItem}
                 style={{
-                    border: isActive ? `2px solid ${NEON_BLUE}` : '1px solid rgba(255, 255, 255, 0.1)',
+                    // FIX VISUAL: Mismo tratamiento para items de tecnología
+                    border: isActive ? `2px solid ${NEON_BLUE}` : '1px solid rgba(255, 255, 255, 0.05)',
                     boxShadow: isActive ? NEON_GLOW : 'none',
-                    background: isActive ? 'rgba(0, 229, 255, 0.08)' : 'rgba(255, 255, 255, 0.02)',
+                    background: isActive ? 'rgba(0, 229, 255, 0.08)' : 'rgba(0, 0, 0, 0.2)',
                     width: '100%',
                     height: '100%',
                     display: 'flex',
@@ -506,16 +522,18 @@ const SkillsRoulette = () => {
                     justifyContent: 'center',
                     padding: '5px',
                     borderRadius: '8px',
-                    boxSizing: 'border-box'
+                    boxSizing: 'border-box',
+                    transition: 'all 0.3s ease',
+                    opacity: isActive ? 1 : 0.5,
+                    filter: isActive ? 'none' : 'grayscale(10%)'
                 }}
             >
               <div style={{ pointerEvents: 'none', userSelect: 'none', display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%' }}>
-                  {TechIconComponent && <TechIconComponent width={isMobile ? 30 : 40} height={isMobile ? 30 : 40} />}
+                  {TechIconComponent && <TechIconComponent width={isMobile ? 24 : 30} height={isMobile ? 24 : 30} isActive={isActive} />}
                   <span style={{ 
-                      color: isActive ? NEON_BLUE : '#888', 
                       fontWeight: isActive ? 'bold' : 'normal',
-                      marginTop: '6px',
-                      fontSize: isMobile ? '0.75rem' : '0.9rem',
+                      marginTop: '4px',
+                      fontSize: isMobile ? '0.65rem' : '0.75rem', 
                       textAlign: 'center',
                       whiteSpace: 'nowrap',
                       overflow: 'hidden',
@@ -533,7 +551,7 @@ const SkillsRoulette = () => {
       <div style={{ width: '100%', height: '50px', flexShrink: 0 }} />
 
       {/* DESCRIPCIÓN */}
-      <div style={{ flexGrow: 1, display: 'flex', alignItems: 'flex-start', justifyContent: 'center' }}>
+      <div style={{ flexGrow: 1, display: 'flex', alignItems: 'flex-start', justifyContent: 'center', marginTop: '-15px' }}>
         {activeTech && (
             <motion.div 
                 key={activeTech.id} 

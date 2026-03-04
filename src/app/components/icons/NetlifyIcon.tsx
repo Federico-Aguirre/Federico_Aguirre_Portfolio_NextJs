@@ -1,46 +1,151 @@
-import React from "react";
+"use client";
 
-export const NetlifyIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => {
+import React from "react";
+import { motion } from "framer-motion";
+
+interface IconProps extends React.HTMLAttributes<HTMLDivElement> {
+  isActive?: boolean;
+  size?: number | string;
+}
+
+export const NetlifyIcon = ({ isActive = false, size = 40, style, ...props }: IconProps) => {
+  const netlifyTeal = "#05BDBA";
+  // Un tono mucho más claro del turquesa para el momento del flash
+  const netlifyFlashColor = "#80FBF9"; 
+
   return (
-    <svg
-      width="800px"
-      height="800px"
-      viewBox="0 0 256 226"
-      version="1.1"
-      xmlns="http://www.w3.org/2000/svg"
-      preserveAspectRatio="xMidYMid"
+    <div
+      data-active={isActive.toString()}
+      style={{
+        position: "relative",
+        width: size,
+        height: size,
+        display: "inline-flex",
+        alignItems: "center",
+        justifyContent: "center",
+        ...style
+      }}
       {...props}
     >
-      <g>
-        <polygon
-          fill="#05BDBA"
-          points="69.1805953 188.087106 66.7635841 188.087106 54.6985267 176.022048 54.6985267 173.605237 73.1428857 155.161078 85.9210874 155.161078 87.6247543 156.864745 87.6247543 169.642947"
-        />
-        <polygon
-          fill="#05BDBA"
-          points="54.6985267 51.6279666 54.6985267 49.2109554 66.7635841 37.145898 69.1805953 37.145898 87.6247543 55.590057 87.6247543 68.3682587 85.9210874 70.0721256 73.1428857 70.0721256"
-        />
-        <path
-          d="M160.906229,149.197744 L143.3536,149.197744 L141.887515,147.731858 L141.887515,106.643468 C141.887515,99.3332396 139.014939,93.6670823 130.199028,93.4690977 C125.662183,93.350107 120.471588,93.4690977 114.924622,93.6868807 L114.092487,94.5388142 L114.092487,147.71206 L112.626401,149.177945 L95.0737724,149.177945 L93.6076869,147.71206 L93.6076869,77.5211437 L95.0737724,76.0550582 L134.577286,76.0550582 C149.930887,76.0550582 162.372315,88.4964862 162.372315,103.850087 L162.372315,147.731858 L160.906229,149.197744 Z"
-          fill="#014847"
-        />
-        <polygon
-          fill="#05BDBA"
-          points="71.6768002 122.888599 1.46602547 122.888599 0 121.422514 0 103.830288 1.46602547 102.364203 71.6768002 102.364203 73.1428857 103.830288 73.1428857 121.422514"
-        />
-        <polygon
-          fill="#05BDBA"
-          points="254.534115 122.888599 184.323 122.888599 182.856914 121.422514 182.856914 103.830288 184.323 102.364203 254.534115 102.364203 256 103.830288 256 121.422514"
-        />
-        <polygon
-          fill="#05BDBA"
-          points="117.876391 54.1241715 117.876391 1.46602547 119.342476 0 136.934702 0 138.400787 1.46602547 138.400787 54.1241715 136.934702 55.590057 119.342476 55.590057"
-        />
-        <polygon
-          fill="#05BDBA"
-          points="117.876391 223.786517 117.876391 171.128831 119.342476 169.662745 136.934702 169.662745 138.400787 171.128831 138.400787 223.786517 136.934702 225.252402 119.342476 225.252402"
-        />
-      </g>
-    </svg>
+      <style>
+        {`
+          /* Animación general de flotación (suave) */
+          @keyframes netlifyFloat {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-2px); }
+          }
+
+          /* NUEVA: Animación de pulso de energía MUCHO MÁS INTENSA */
+          @keyframes netlifyNodePulseStrong {
+            0%, 100% {
+              fill: ${netlifyTeal}; /* Color base */
+              filter: brightness(1) drop-shadow(0 0 0px transparent);
+            }
+            50% {
+              fill: ${netlifyFlashColor}; /* Color casi blanco durante el flash */
+              /* Brillo extremo + saturación + doble sombra para efecto neón potente */
+              filter: brightness(2) saturate(1.5) drop-shadow(0 0 4px #fff) drop-shadow(0 0 12px ${netlifyTeal});
+            }
+          }
+
+          .netlify-group {
+            transform-origin: center;
+          }
+
+          div[data-active="true"] .netlify-group {
+            animation: netlifyFloat 3s ease-in-out infinite;
+          }
+
+          /* Clase base para los nodos animados */
+          .netlify-node {
+            transition: all 0.3s ease;
+            /* Aseguramos que el fill base sea el correcto para la transición */
+            fill: ${netlifyTeal};
+          }
+
+          /* Aplicamos el pulso fuerte con retrasos escalonados */
+          /* He acelerado un poco la duración (1.8s) para que el flash sea más dinámico */
+          div[data-active="true"] .netlify-node-1 { animation: netlifyNodePulseStrong 1.8s infinite; }
+          div[data-active="true"] .netlify-node-2 { animation: netlifyNodePulseStrong 1.8s infinite 0.25s; }
+          div[data-active="true"] .netlify-node-3 { animation: netlifyNodePulseStrong 1.8s infinite 0.5s; }
+          div[data-active="true"] .netlify-node-4 { animation: netlifyNodePulseStrong 1.8s infinite 0.75s; }
+          div[data-active="true"] .netlify-node-5 { animation: netlifyNodePulseStrong 1.8s infinite 1.0s; }
+          div[data-active="true"] .netlify-node-6 { animation: netlifyNodePulseStrong 1.8s infinite 1.25s; }
+        `}
+      </style>
+
+      <motion.svg
+        viewBox="0 0 256 226"
+        version="1.1"
+        xmlns="http://www.w3.org/2000/svg"
+        preserveAspectRatio="xMidYMid"
+        style={{
+          width: "100%",
+          height: "100%",
+          objectFit: "contain",
+          overflow: "visible",
+        }}
+        initial={false}
+        animate={
+          isActive
+            ? {
+                // ESCALA CONTROLADA: Mantenemos el 0.8 para que no sea gigante
+                scale: 0.8, 
+                opacity: 1,
+                // Sombra base del conjunto
+                filter: `grayscale(0) drop-shadow(0px 4px 10px rgba(5, 189, 186, 0.4))`,
+              }
+            : {
+                scale: 0.6, 
+                opacity: 0.4,
+                filter: "grayscale(1) drop-shadow(0px 0px 0px rgba(0,0,0,0))",
+              }
+        }
+        transition={{
+          scale: { duration: 0.4, ease: "backOut" },
+          filter: { duration: 0.5 },
+          opacity: { duration: 0.3 },
+        }}
+      >
+        <g className="netlify-group">
+          {/* Quitamos el fill={...} hardcodeado en los polygons para que el CSS lo controle */}
+          {/* Nodo Diagonal Abajo-Izquierda */}
+          <polygon
+            className="netlify-node netlify-node-1"
+            points="69.1805953 188.087106 66.7635841 188.087106 54.6985267 176.022048 54.6985267 173.605237 73.1428857 155.161078 85.9210874 155.161078 87.6247543 156.864745 87.6247543 169.642947"
+          />
+          {/* Nodo Diagonal Arriba-Izquierda */}
+          <polygon
+            className="netlify-node netlify-node-2"
+            points="54.6985267 51.6279666 54.6985267 49.2109554 66.7635841 37.145898 69.1805953 37.145898 87.6247543 55.590057 87.6247543 68.3682587 85.9210874 70.0721256 73.1428857 70.0721256"
+          />
+          {/* Centro oscuro (Este NO se anima, no lleva la clase netlify-node) */}
+          <path
+            d="M160.906229,149.197744 L143.3536,149.197744 L141.887515,147.731858 L141.887515,106.643468 C141.887515,99.3332396 139.014939,93.6670823 130.199028,93.4690977 C125.662183,93.350107 120.471588,93.4690977 114.924622,93.6868807 L114.092487,94.5388142 L114.092487,147.71206 L112.626401,149.177945 L95.0737724,149.177945 L93.6076869,147.71206 L93.6076869,77.5211437 L95.0737724,76.0550582 L134.577286,76.0550582 C149.930887,76.0550582 162.372315,88.4964862 162.372315,103.850087 L162.372315,147.731858 L160.906229,149.197744 Z"
+            fill="#014847"
+          />
+          {/* Nodo Izquierdo */}
+          <polygon
+            className="netlify-node netlify-node-3"
+            points="71.6768002 122.888599 1.46602547 122.888599 0 121.422514 0 103.830288 1.46602547 102.364203 71.6768002 102.364203 73.1428857 103.830288 73.1428857 121.422514"
+          />
+          {/* Nodo Derecho */}
+          <polygon
+            className="netlify-node netlify-node-4"
+            points="254.534115 122.888599 184.323 122.888599 182.856914 121.422514 182.856914 103.830288 184.323 102.364203 254.534115 102.364203 256 103.830288 256 121.422514"
+          />
+          {/* Nodo Arriba */}
+          <polygon
+            className="netlify-node netlify-node-5"
+            points="117.876391 54.1241715 117.876391 1.46602547 119.342476 0 136.934702 0 138.400787 1.46602547 138.400787 54.1241715 136.934702 55.590057 119.342476 55.590057"
+          />
+          {/* Nodo Abajo */}
+          <polygon
+            className="netlify-node netlify-node-6"
+            points="117.876391 223.786517 117.876391 171.128831 119.342476 169.662745 136.934702 169.662745 138.400787 171.128831 138.400787 223.786517 136.934702 225.252402 119.342476 225.252402"
+          />
+        </g>
+      </motion.svg>
+    </div>
   );
 };
