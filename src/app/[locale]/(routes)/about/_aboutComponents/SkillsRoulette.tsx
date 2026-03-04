@@ -1,9 +1,79 @@
 "use client"
 import React, { useEffect, useState, useRef, useMemo, useCallback, useTransition } from "react"
 import { motion, useMotionValue, animate, PanInfo } from "framer-motion"
-import Image from "next/image"
 import styles from "@/scss/components/about/skillsRoulette.module.scss"
 import { useTranslations } from "next-intl"
+
+// --- IMPORTACIÓN NAMESPACE DE ICONOS ---
+// Importamos todo lo que exporta el index.ts como un objeto 'Icons'
+import * as Icons from "@/app/components/icons"
+
+// --- MAPEO DE IMÁGENES (SVG ANTIGUOS) A NUEVOS COMPONENTES ---
+// Accedemos a los iconos a través del objeto Icons
+const ICONS_MAP: Record<string, React.ElementType> = {
+  // Frontend
+  "reactjs.svg": Icons.ReactIcon,
+  "javascript.svg": Icons.JavaScriptIcon,
+  "typescript.svg": Icons.TypeScriptIcon,
+  "nextjs.svg": Icons.NextJsIcon,
+  "redux.svg": Icons.ReduxIcon,
+  "zustand.svg": Icons.ZustandIcon,
+  "html.svg": Icons.HtmlIcon,
+  "css.svg": Icons.CssIcon,
+  "sass.svg": Icons.SassIcon,
+  "tailwind.svg": Icons.TailwindIcon,
+  "material-ui.svg": Icons.MaterialUiIcon,
+  "bootstrap.svg": Icons.BootstrapIcon,
+  "framer-motion.svg": Icons.FramerMotionIcon,
+  
+  // Backend
+  "nodejs.svg": Icons.NodeJsIcon,
+  "express.svg": Icons.ExpressJsIcon,
+  "php.svg": Icons.PhpIcon,
+  "laravel.svg": Icons.LaravelIcon,
+  "socket-io.svg": Icons.SocketIoIcon,
+  "wordpress.svg": Icons.WordPressIcon,
+  "woocommerce.svg": Icons.WooCommerceIcon,
+  "rest-api.svg": Icons.RestApiIcon,
+
+  // DB
+  "sql.svg": Icons.SqlIcon,
+  "mysql.svg": Icons.MySqlIcon,
+  "postgresql.svg": Icons.PostgreSqlIcon,
+  "supabase.svg": Icons.SupabaseIcon,
+  "firebase.svg": Icons.FirebaseIcon,
+
+  // Hosting
+  "aws.svg": Icons.AwsIcon,
+  "vercel.svg": Icons.VercelIcon,
+  "netlify.svg": Icons.NetlifyIcon,
+  "heroku.svg": Icons.HerokuIcon,
+  "render.svg": Icons.RenderIcon,
+  "neon.svg": Icons.NeonIcon,
+  "google-cloud.svg": Icons.GoogleCloudIcon,
+
+  // DevOps
+  "git.svg": Icons.GitIcon,
+  "github.svg": Icons.GitHubIcon,
+  "gitlab.svg": Icons.GitLabIcon,
+  "docker.svg": Icons.DockerIcon,
+  "jenkins.svg": Icons.JenkinsIcon,
+
+  // Design
+  "figma.svg": Icons.FigmaIcon,
+  "ux-design.svg": Icons.UxDesignIcon,
+
+  // Tools
+  "jira.svg": Icons.JiraIcon,
+  "trello.svg": Icons.TrelloIcon,
+  "postman.svg": Icons.PostmanIcon,
+
+  // Testing
+  "jest.svg": Icons.JestIcon,
+  "php-unit.svg": Icons.PhpUnitIcon,
+  "laravel-dusk.svg": Icons.LaravelDuskIcon,
+  "manual-testing.svg": Icons.ManualTestingIcon,
+}
 
 // --- DATOS (Sin cambios) ---
 const DATA_SKELETON = [
@@ -277,7 +347,6 @@ const RouletteWheel = ({ items, selectedItem, onSelect, cardWidth, gap, renderCa
             </div>
         ) : (
             <motion.div 
-                // CORRECCIÓN CENTRADO: Padding estrictamente 0 para evitar desfase a la derecha.
                 style={{ x, display: "flex", flexDirection: "row", gap: `${gap}px`, width: "max-content", padding: 0 }} 
                 drag="x" 
                 dragConstraints={{ left: -50000, right: 50000 }} 
@@ -375,7 +444,9 @@ const SkillsRoulette = () => {
             onSelect={handleCategorySelect}
             cardWidth={CATEGORY_WIDTH}
             gap={GAP_SIZE}
-            renderCard={(item, isActive) => (
+            renderCard={(item, isActive) => {
+                const IconComponent = ICONS_MAP[item.mainIcon];
+                return (
                 <div 
                     className={styles.card}
                     style={{
@@ -391,9 +462,8 @@ const SkillsRoulette = () => {
                         borderRadius: '12px'
                     }}
                 >
-                    {/* CORRECCIÓN DRAG: 'pointerEvents: none' en el contenido para que el drag lo capture el padre */}
                     <div style={{ pointerEvents: 'none', userSelect: 'none', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                        <Image src={`/svg/skills-logo/${item.mainIcon}`} alt={item.title} width={isMobile ? 25 : 35} height={isMobile ? 25 : 35} priority unoptimized draggable={false} />
+                        {IconComponent && <IconComponent width={isMobile ? 25 : 35} height={isMobile ? 25 : 35} />}
                         <span style={{ 
                             color: isActive ? NEON_BLUE : '#aaa', 
                             fontWeight: isActive ? 'bold' : 'normal',
@@ -406,7 +476,7 @@ const SkillsRoulette = () => {
                         </span>
                     </div>
                 </div>
-            )}
+            )}}
         />
       </div>
 
@@ -419,7 +489,9 @@ const SkillsRoulette = () => {
           onSelect={(tech) => setActiveTechId(tech.id)}
           cardWidth={TECH_WIDTH}
           gap={GAP_SIZE} 
-          renderCard={(tech, isActive) => (
+          renderCard={(tech, isActive) => {
+            const TechIconComponent = ICONS_MAP[tech.icon];
+            return (
             <div 
                 className={styles.techItem}
                 style={{
@@ -437,9 +509,8 @@ const SkillsRoulette = () => {
                     boxSizing: 'border-box'
                 }}
             >
-              {/* CORRECCIÓN DRAG: 'pointerEvents: none' en el contenido */}
               <div style={{ pointerEvents: 'none', userSelect: 'none', display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%' }}>
-                  <Image src={`/svg/skills-logo/${tech.icon}`} alt={tech.name} width={isMobile ? 30 : 40} height={isMobile ? 30 : 40} priority draggable={false} />
+                  {TechIconComponent && <TechIconComponent width={isMobile ? 30 : 40} height={isMobile ? 30 : 40} />}
                   <span style={{ 
                       color: isActive ? NEON_BLUE : '#888', 
                       fontWeight: isActive ? 'bold' : 'normal',
@@ -455,14 +526,10 @@ const SkillsRoulette = () => {
                   </span>
               </div>
             </div>
-          )}
+          )}}
         />
       </div>
 
-      {/* --- SPACER PARA FORZAR LA SEPARACIÓN --- 
-          Usamos un div vacío con altura fija. Esto garantiza que haya espacio 
-          antes de la descripción, independientemente de Flexbox o márgenes.
-      */}
       <div style={{ width: '100%', height: '50px', flexShrink: 0 }} />
 
       {/* DESCRIPCIÓN */}
@@ -474,7 +541,7 @@ const SkillsRoulette = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.3 }}
                 style={{
-                    margin: 0, // Quitamos marginTop porque usamos el Spacer
+                    margin: 0, 
                     padding: '8px 15px', 
                     background: 'rgba(255,255,255,0.03)',
                     border: '1px solid rgba(255,255,255,0.1)',
