@@ -7,171 +7,70 @@ import { useTranslations } from "next-intl"
 // --- IMPORTACIÓN NAMESPACE DE ICONOS ---
 import * as Icons from "@/app/components/icons"
 
-// --- MAPEO DE IMÁGENES ---
 const ICONS_MAP: Record<string, React.ElementType> = {
-  // Frontend
-  "reactjs.svg": Icons.ReactIcon,
-  "javascript.svg": Icons.JavaScriptIcon,
-  "typescript.svg": Icons.TypeScriptIcon,
-  "nextjs.svg": Icons.NextJsIcon,
-  "redux.svg": Icons.ReduxIcon,
-  "zustand.svg": Icons.ZustandIcon,
-  "html.svg": Icons.HtmlIcon,
-  "css.svg": Icons.CssIcon,
-  "postcss.svg": Icons.PostCssIcon,
-  "sass.svg": Icons.SassIcon,
-  "tailwind.svg": Icons.TailwindIcon,
-  "material-ui.svg": Icons.MaterialUiIcon,
-  "bootstrap.svg": Icons.BootstrapIcon,
-  "framer-motion.svg": Icons.FramerMotionIcon,
-  
-  // Backend
-  "nodejs.svg": Icons.NodeJsIcon,
-  "express.svg": Icons.ExpressJsIcon,
-  "php.svg": Icons.PhpIcon,
-  "laravel.svg": Icons.LaravelIcon,
-  "socket-io.svg": Icons.SocketIoIcon,
-  "wordpress.svg": Icons.WordPressIcon,
-  "woocommerce.svg": Icons.WooCommerceIcon,
-  "rest-api.svg": Icons.RestApiIcon,
-
-  // DB
-  "sql.svg": Icons.SqlIcon,
-  "mysql.svg": Icons.MySqlIcon,
-  "postgresql.svg": Icons.PostgreSqlIcon,
-  "supabase.svg": Icons.SupabaseIcon,
-  "firebase.svg": Icons.FirebaseIcon,
-
-  // Hosting
-  "aws.svg": Icons.AwsIcon,
-  "vercel.svg": Icons.VercelIcon,
-  "netlify.svg": Icons.NetlifyIcon,
-  "heroku.svg": Icons.HerokuIcon,
-  "render.svg": Icons.RenderIcon,
-  "neon.svg": Icons.NeonIcon,
-  "google-cloud.svg": Icons.GoogleCloudIcon,
-
-  // DevOps
-  "git.svg": Icons.GitIcon,
-  "github.svg": Icons.GitHubIcon,
-  "gitlab.svg": Icons.GitLabIcon,
-  "docker.svg": Icons.DockerIcon,
-  "jenkins.svg": Icons.JenkinsIcon,
-
-  // Design
-  "figma.svg": Icons.FigmaIcon,
-  "ux-design.svg": Icons.UxDesignIcon,
-
-  // Tools
-  "jira.svg": Icons.JiraIcon,
-  "trello.svg": Icons.TrelloIcon,
-  "postman.svg": Icons.PostmanIcon,
-
-  // Testing
-  "jest.svg": Icons.JestIcon,
-  "php-unit.svg": Icons.PhpUnitIcon,
-  "laravel-dusk.svg": Icons.LaravelDuskIcon,
-  "manual-testing.svg": Icons.ManualTestingIcon,
+  "reactjs": Icons.ReactIcon,
+  "javascript": Icons.JavaScriptIcon,
+  "typescript": Icons.TypeScriptIcon,
+  "nextjs": Icons.NextJsIcon,
+  "redux": Icons.ReduxIcon,
+  "zustand": Icons.ZustandIcon,
+  "html": Icons.HtmlIcon,
+  "css": Icons.CssIcon,
+  "postcss": Icons.PostCssIcon,
+  "sass": Icons.SassIcon,
+  "tailwind": Icons.TailwindIcon,
+  "material-ui": Icons.MaterialUiIcon,
+  "bootstrap": Icons.BootstrapIcon,
+  "framer-motion": Icons.FramerMotionIcon,
+  "particle": Icons.ParticleIcon,
+  "million": Icons.MillionIcon,
+  "mantine": Icons.MantineIcon,
+  "nodejs": Icons.NodeJsIcon,
+  "express": Icons.ExpressJsIcon,
+  "php": Icons.PhpIcon,
+  "laravel": Icons.LaravelIcon,
+  "socket-io": Icons.SocketIoIcon,
+  "wordpress": Icons.WordPressIcon,
+  "woocommerce": Icons.WooCommerceIcon,
+  "rest-api": Icons.RestApiIcon,
+  "sql": Icons.SqlIcon,
+  "mysql": Icons.MySqlIcon,
+  "postgresql": Icons.PostgreSqlIcon,
+  "supabase": Icons.SupabaseIcon,
+  "firebase": Icons.FirebaseIcon,
+  "aws": Icons.AwsIcon,
+  "vercel": Icons.VercelIcon,
+  "netlify": Icons.NetlifyIcon,
+  "heroku": Icons.HerokuIcon,
+  "render": Icons.RenderIcon,
+  "neon": Icons.NeonIcon,
+  "google-cloud": Icons.GoogleCloudIcon,
+  "git": Icons.GitIcon,
+  "github": Icons.GitHubIcon,
+  "gitlab": Icons.GitLabIcon,
+  "docker": Icons.DockerIcon,
+  "jenkins": Icons.JenkinsIcon,
+  "figma": Icons.FigmaIcon,
+  "ux-design": Icons.UxDesignIcon,
+  "jira": Icons.JiraIcon,
+  "trello": Icons.TrelloIcon,
+  "postman": Icons.PostmanIcon,
+  "babel": Icons.BabelIcon,
+  "jest": Icons.JestIcon,
+  "php-unit": Icons.PhpUnitIcon,
+  "laravel-dusk": Icons.LaravelDuskIcon,
+  "manual-testing": Icons.ManualTestingIcon,
 }
 
-// --- DATOS (Sin cambios) ---
 const DATA_SKELETON = [
-  {
-    id: "frontend",
-    mainIcon: "reactjs.svg",
-    techs: [
-      { id: "javascript", icon: "javascript.svg" },
-      { id: "typescript", icon: "typescript.svg" },
-      { id: "react", icon: "reactjs.svg" },
-      { id: "nextjs", icon: "nextjs.svg" },
-      { id: "redux", icon: "redux.svg" },
-      { id: "zustand", icon: "zustand.svg" },
-      { id: "html", icon: "html.svg" },
-      { id: "css", icon: "css.svg" },
-      { id: "postcss", icon: "postcss.svg" },
-      { id: "sass", icon: "sass.svg" },
-      { id: "tailwind", icon: "tailwind.svg" },
-      { id: "materialui", icon: "material-ui.svg" },
-      { id: "bootstrap", icon: "bootstrap.svg" },
-      { id: "framer", icon: "framer-motion.svg" },
-    ]
-  },
-  {
-    id: "backend",
-    mainIcon: "nodejs.svg",
-    techs: [
-      { id: "nodejs", icon: "nodejs.svg" },
-      { id: "express", icon: "express.svg" },
-      { id: "php", icon: "php.svg" },
-      { id: "laravel", icon: "laravel.svg" },
-      { id: "socketio", icon: "socket-io.svg" },
-      { id: "wordpress", icon: "wordpress.svg" },
-      { id: "woocommerce", icon: "woocommerce.svg" },
-      { id: "restapi", icon: "rest-api.svg" },
-    ]
-  },
-  {
-    id: "db",
-    mainIcon: "sql.svg",
-    techs: [
-      { id: "sql", icon: "sql.svg" },
-      { id: "mysql", icon: "mysql.svg" },
-      { id: "postgresql", icon: "postgresql.svg" },
-      { id: "supabase", icon: "supabase.svg" },
-      { id: "firebase", icon: "firebase.svg" },
-    ]
-  },
-  {
-    id: "hosting",
-    mainIcon: "aws.svg",
-    techs: [
-      { id: "vercel", icon: "vercel.svg" },
-      { id: "netlify", icon: "netlify.svg" },
-      { id: "heroku", icon: "heroku.svg" },
-      { id: "render", icon: "render.svg" },
-      { id: "neon", icon: "neon.svg" },
-      { id: "aws", icon: "aws.svg" },
-      { id: "googlecloud", icon: "google-cloud.svg" },
-    ]
-  },
-  {
-    id: "devops",
-    mainIcon: "git.svg",
-    techs: [
-      { id: "git", icon: "git.svg" },
-      { id: "github", icon: "github.svg" },
-      { id: "gitlab", icon: "gitlab.svg" },
-      { id: "docker", icon: "docker.svg" },
-      { id: "jenkins", icon: "jenkins.svg" },
-    ]
-  },
-  {
-    id: "design",
-    mainIcon: "figma.svg",
-    techs: [
-      { id: "figma", icon: "figma.svg" },
-      { id: "uxdesign", icon: "ux-design.svg" },
-    ]
-  },
-  {
-    id: "tools",
-    mainIcon: "jira.svg",
-    techs: [
-      { id: "jira", icon: "jira.svg" },
-      { id: "trello", icon: "trello.svg" },
-      { id: "postman", icon: "postman.svg" },
-    ]
-  },
-  {
-    id: "testing",
-    mainIcon: "jest.svg",
-    techs: [
-      { id: "jest", icon: "jest.svg" },
-      { id: "phpunit", icon: "php-unit.svg" },
-      { id: "laraveldusk", icon: "laravel-dusk.svg" },
-      { id: "manualtesting", icon: "manual-testing.svg" },
-    ]
-  }
+  { id: "frontend", mainIcon: "reactjs", techs: [ { id: "javascript", icon: "javascript" }, { id: "typescript", icon: "typescript" }, { id: "react", icon: "reactjs" }, { id: "nextjs", icon: "nextjs" }, { id: "redux", icon: "redux" }, { id: "zustand", icon: "zustand" }, { id: "html", icon: "html" }, { id: "css", icon: "css" }, { id: "postcss", icon: "postcss" }, { id: "sass", icon: "sass" }, { id: "tailwind", icon: "tailwind" }, { id: "materialui", icon: "material-ui" }, { id: "bootstrap", icon: "bootstrap" }, { id: "framer", icon: "framer-motion" }, { id: "particle", icon: "particle" }, { id: "million", icon: "million" }, { id: "mantine", icon: "mantine" } ] },
+  { id: "backend", mainIcon: "nodejs", techs: [ { id: "nodejs", icon: "nodejs" }, { id: "express", icon: "express" }, { id: "php", icon: "php" }, { id: "laravel", icon: "laravel" }, { id: "socketio", icon: "socket-io" }, { id: "wordpress", icon: "wordpress" }, { id: "woocommerce", icon: "woocommerce" }, { id: "restapi", icon: "rest-api" } ] },
+  { id: "db", mainIcon: "sql", techs: [ { id: "sql", icon: "sql" }, { id: "mysql", icon: "mysql" }, { id: "postgresql", icon: "postgresql" }, { id: "supabase", icon: "supabase" }, { id: "firebase", icon: "firebase" } ] },
+  { id: "hosting", mainIcon: "aws", techs: [ { id: "vercel", icon: "vercel" }, { id: "netlify", icon: "netlify" }, { id: "heroku", icon: "heroku" }, { id: "render", icon: "render" }, { id: "neon", icon: "neon" }, { id: "aws", icon: "aws" }, { id: "googlecloud", icon: "google-cloud" } ] },
+  { id: "devops", mainIcon: "git", techs: [ { id: "git", icon: "git" }, { id: "github", icon: "github" }, { id: "gitlab", icon: "gitlab" }, { id: "docker", icon: "docker" }, { id: "jenkins", icon: "jenkins" } ] },
+  { id: "design", mainIcon: "figma", techs: [ { id: "figma", icon: "figma" }, { id: "uxdesign", icon: "ux-design" } ] },
+  { id: "tools", mainIcon: "jira", techs: [ { id: "jira", icon: "jira" }, { id: "trello", icon: "trello" }, { id: "postman", icon: "postman" }, { id: "babel", icon: "babel" } ] },
+  { id: "testing", mainIcon: "jest", techs: [ { id: "jest", icon: "jest" }, { id: "phpunit", icon: "php-unit" }, { id: "laraveldusk", icon: "laravel-dusk" }, { id: "manualtesting", icon: "manual-testing" } ] }
 ]
 
 interface RouletteProps {
@@ -179,7 +78,7 @@ interface RouletteProps {
   selectedItem: any
   onSelect: (item: any) => void
   cardWidth: number 
-  gap: number       
+  gap: number           
   renderCard: (item: any, isActive: boolean) => React.ReactNode
 }
 
@@ -187,15 +86,12 @@ const RouletteWheel = ({ items, selectedItem, onSelect, cardWidth, gap, renderCa
   const containerRef = useRef<HTMLDivElement>(null)
   const [containerWidth, setContainerWidth] = useState(0)
   const isDragging = useRef(false)
-  
   const x = useMotionValue(0)
   
   const ITEM_COUNT = items.length
   const STRIDE = cardWidth + gap
   const totalContentWidth = (ITEM_COUNT * cardWidth) + ((ITEM_COUNT - 1) * gap)
-  
   const isStaticMode = containerWidth > 0 && (containerWidth >= totalContentWidth)
-  
   const BUFFER_SETS = isStaticMode ? 1 : 5
   const CENTER_SET_INDEX = Math.floor(BUFFER_SETS / 2)
 
@@ -307,40 +203,17 @@ const RouletteWheel = ({ items, selectedItem, onSelect, cardWidth, gap, renderCa
 
   return (
     <div className={styles.wheelContainer} ref={containerRef} style={{ width: '100%', position: 'relative', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-      
       {!isStaticMode && (
         <>
-            <button 
-                className={`${styles.arrow} ${styles.arrowLeft}`} 
-                onClick={() => handleArrow("prev")}
-                style={{ zIndex: 20, cursor: 'pointer' }}
-            >
-                &#8249;
-            </button>
-            <button 
-                className={`${styles.arrow} ${styles.arrowRight}`} 
-                onClick={() => handleArrow("next")}
-                style={{ zIndex: 20, cursor: 'pointer' }}
-            >
-                &#8250;
-            </button>
+            <button className={`${styles.arrow} ${styles.arrowLeft}`} onClick={() => handleArrow("prev")} style={{ zIndex: 20, cursor: 'pointer' }}>&#8249;</button>
+            <button className={`${styles.arrow} ${styles.arrowRight}`} onClick={() => handleArrow("next")} style={{ zIndex: 20, cursor: 'pointer' }}>&#8250;</button>
         </>
       )}
-      
       <div style={{ width: '100%', overflow: 'hidden', padding: '20px 0', touchAction: 'pan-y' }}>
         {isStaticMode ? (
             <div style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap', gap: `${gap}px`, width: '100%' }}>
                 {displayItems.map((item) => (
-                    <div 
-                        key={item.uKey} 
-                        onClick={() => handleClick(0, item)}
-                        style={{
-                            width: `${cardWidth}px`,
-                            height: `${cardWidth}px`, 
-                            cursor: 'pointer',
-                            flexShrink: 0
-                        }}
-                    >
+                    <div key={item.uKey} onClick={() => handleClick(0, item)} style={{ width: `${cardWidth}px`, height: `${cardWidth}px`, cursor: 'pointer', flexShrink: 0 }}>
                         {renderCard(item, item.id === selectedItem.id)}
                     </div>
                 ))}
@@ -360,14 +233,9 @@ const RouletteWheel = ({ items, selectedItem, onSelect, cardWidth, gap, renderCa
                     return (
                         <motion.div 
                             key={item.uKey} 
-                            style={{ 
-                                width: `${cardWidth}px`, 
-                                minWidth: `${cardWidth}px`, 
-                                height: `${cardWidth}px`, 
-                                flexShrink: 0,
-                                position: 'relative'
-                            }} 
+                            style={{ width: `${cardWidth}px`, minWidth: `${cardWidth}px`, height: `${cardWidth}px`, flexShrink: 0, position: 'relative' }} 
                             onClick={() => handleClick(item.visualIndex, item)} 
+                            initial={{ scale: 1 }} // Valor inicial explícito
                             whileHover={{ scale: 1.05 }}
                         >
                             {renderCard(item, isSelected)}
@@ -425,7 +293,6 @@ const SkillsRoulette = () => {
 
   const NEON_BLUE = "#00E5FF" 
   const NEON_GLOW = "0 0 20px rgba(0, 229, 255, 0.4)" 
-  
   const CATEGORY_WIDTH = isMobile ? 80 : 100 
   const TECH_WIDTH = isMobile ? 65 : 75
   const GAP_SIZE = isMobile ? 15 : 25 
@@ -433,18 +300,7 @@ const SkillsRoulette = () => {
   if (!isMounted) return <div style={{ minHeight: '600px', width: '100%' }}></div>;
 
   return (
-    <div 
-        className={styles.rouletteWrapper} 
-        style={{ 
-            display: 'flex', 
-            flexDirection: 'column', 
-            width: '100%', 
-            // FIX: Asegura que el componente nunca exceda el ancho de la pantalla
-            maxWidth: '100%', 
-            overflowX: 'hidden',
-            minHeight: '600px' 
-        }}
-    >
+    <div className={styles.rouletteWrapper} style={{ display: 'flex', flexDirection: 'column', width: '100%', maxWidth: '100%', overflowX: 'hidden', minHeight: '600px' }}>
       
       {/* SECCIÓN CATEGORÍAS */}
       <div style={{ width: '100%', zIndex: 10 }}>
@@ -461,32 +317,16 @@ const SkillsRoulette = () => {
                 <div 
                     className={styles.card}
                     style={{
-                        // FIX VISUAL: Inactivas = borde gris oscuro, fondo casi transparente, filtro gris y opacidad baja
                         border: isActive ? `2px solid ${NEON_BLUE}` : '1px solid rgba(255, 255, 255, 0.05)',
                         boxShadow: isActive ? NEON_GLOW : 'none',
                         background: isActive ? 'rgba(0, 229, 255, 0.1)' : 'rgba(0, 0, 0, 0.2)',
-                        width: '100%', 
-                        height: '100%', 
-                        display: 'flex',
-                        flexDirection: 'column',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        borderRadius: '12px',
-                        // Transición suave para el efecto de activación
-                        transition: 'all 0.3s ease',
-                        opacity: isActive ? 1 : 0.5,
-                        filter: isActive ? 'none' : 'grayscale(10%)'
+                        width: '100%', height: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', borderRadius: '12px', transition: 'all 0.3s ease',
+                        opacity: isActive ? 1 : 0.5, filter: isActive ? 'none' : 'grayscale(10%)'
                     }}
                 >
                     <div style={{ pointerEvents: 'none', userSelect: 'none', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                         {IconComponent && <IconComponent width={isMobile ? 22 : 28} height={isMobile ? 22 : 28} isActive={isActive} />}
-                        <span style={{ 
-                            fontWeight: isActive ? 'bold' : 'normal',
-                            fontSize: isMobile ? '0.7rem' : '0.85rem',
-                            textAlign: 'center',
-                            marginTop: '6px',
-                            lineHeight: '1.2'
-                        }}>
+                        <span style={{ fontWeight: isActive ? 'bold' : 'normal', fontSize: isMobile ? '0.7rem' : '0.85rem', textAlign: 'center', marginTop: '6px', lineHeight: '1.2' }}>
                             {item.title}
                         </span>
                     </div>
@@ -510,36 +350,16 @@ const SkillsRoulette = () => {
             <div 
                 className={styles.techItem}
                 style={{
-                    // FIX VISUAL: Mismo tratamiento para items de tecnología
                     border: isActive ? `2px solid ${NEON_BLUE}` : '1px solid rgba(255, 255, 255, 0.05)',
                     boxShadow: isActive ? NEON_GLOW : 'none',
                     background: isActive ? 'rgba(0, 229, 255, 0.08)' : 'rgba(0, 0, 0, 0.2)',
-                    width: '100%',
-                    height: '100%',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    padding: '5px',
-                    borderRadius: '8px',
-                    boxSizing: 'border-box',
-                    transition: 'all 0.3s ease',
-                    opacity: isActive ? 1 : 0.5,
-                    filter: isActive ? 'none' : 'grayscale(10%)'
+                    width: '100%', height: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '5px', borderRadius: '8px', boxSizing: 'border-box', transition: 'all 0.3s ease',
+                    opacity: isActive ? 1 : 0.5, filter: isActive ? 'none' : 'grayscale(10%)'
                 }}
             >
               <div style={{ pointerEvents: 'none', userSelect: 'none', display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%' }}>
                   {TechIconComponent && <TechIconComponent width={isMobile ? 24 : 30} height={isMobile ? 24 : 30} isActive={isActive} />}
-                  <span style={{ 
-                      fontWeight: isActive ? 'bold' : 'normal',
-                      marginTop: '4px',
-                      fontSize: isMobile ? '0.65rem' : '0.75rem', 
-                      textAlign: 'center',
-                      whiteSpace: 'nowrap',
-                      overflow: 'hidden',
-                      textOverflow: 'ellipsis',
-                      width: '90%'
-                   }}>
+                  <span style={{ fontWeight: isActive ? 'bold' : 'normal', marginTop: '4px', fontSize: isMobile ? '0.65rem' : '0.75rem', textAlign: 'center', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', width: '90%' }}>
                     {tech.name}
                   </span>
               </div>
@@ -550,28 +370,17 @@ const SkillsRoulette = () => {
 
       <div style={{ width: '100%', height: '50px', flexShrink: 0 }} />
 
-      {/* DESCRIPCIÓN */}
+      {/* DESCRIPCIÓN - SECCIÓN CRÍTICA CORREGIDA */}
       <div style={{ flexGrow: 1, display: 'flex', alignItems: 'flex-start', justifyContent: 'center', marginTop: '-15px' }}>
         {activeTech && (
             <motion.div 
                 key={activeTech.id} 
-                initial={{ opacity: 0, y: 10 }}
+                initial={{ opacity: 0, y: 10 }} // Punto de inicio explícito para evitar undefined
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.3 }}
                 style={{
-                    margin: 0, 
-                    padding: '8px 15px', 
-                    background: 'rgba(255,255,255,0.03)',
-                    border: '1px solid rgba(255,255,255,0.1)',
-                    borderRadius: '10px',
-                    textAlign: 'center',
-                    width: '100%',
-                    maxWidth: '600px',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    gap: '12px' 
+                    margin: 0, padding: '8px 15px', background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '10px',
+                    textAlign: 'center', width: '100%', maxWidth: '600px', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', gap: '12px' 
                 }}
             >
                 <h4 style={{ color: NEON_BLUE, margin: 0, fontSize: '1rem', lineHeight: '1' }}>{activeTech.name}</h4>
@@ -583,4 +392,4 @@ const SkillsRoulette = () => {
   )
 }
 
-export default SkillsRoulette
+export default SkillsRoulette;

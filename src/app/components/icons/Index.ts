@@ -23,7 +23,7 @@ export * from './LinkedInIcon';
 export * from './MantineIcon';
 export * from './ManualTestingIcon';
 export * from './MaterialUiIcon';
-export * from './MillionJsIcon';
+export * from './MillionIcon';
 export * from './MoonIcon';
 export * from './MySqlIcon';
 export * from './NeonIcon';

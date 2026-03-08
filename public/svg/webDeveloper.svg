@@ -12,7 +12,7 @@
     .st6{fill:#000;}
     .st7{fill:url(#SVGID_3_);}
     .st8{fill:hsl(0, 0%, 100%);}
-    .st9{fill:none;stroke:hsl(0, 0%, 100%);stroke-width:3.3;stroke-miterlimit:10;}
+    .st9{fill:none;stroke:hsl(0, 0%, 100%);strokeWidth:3.3;stroke-miterlimit:10;}
     .st10{fill:url(#SVGID_4_);}
     .st11{fill:url(#SVGID_5_);}
     .st12{fill:url(#SVGID_6_);}

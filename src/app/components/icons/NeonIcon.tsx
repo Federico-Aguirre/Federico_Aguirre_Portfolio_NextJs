@@ -72,18 +72,27 @@ export const NeonIcon = ({ isActive = false, size = 40, style, ...props }: IconP
           objectFit: "contain",
           overflow: "visible",
         }}
-        initial={false}
-        animate={
+        initial={
           isActive
             ? {
-                // ESCALA CONTROLADA
                 scale: 0.85, 
                 opacity: 1,
-                // Sombra dual extrema: Turquesa extendido + Verde concentrado
                 filter: `grayscale(0) drop-shadow(0 0 15px ${neonTeal}) drop-shadow(0 0 6px ${neonGreen})`,
               }
             : {
-                // ESCALA INACTIVA (más pequeña)
+                scale: 0.65, 
+                opacity: 0.4,
+                filter: "grayscale(1) drop-shadow(0px 0px 0px rgba(0,0,0,0))",
+              }
+        }
+        animate={
+          isActive
+            ? {
+                scale: 0.85, 
+                opacity: 1,
+                filter: `grayscale(0) drop-shadow(0 0 15px ${neonTeal}) drop-shadow(0 0 6px ${neonGreen})`,
+              }
+            : {
                 scale: 0.65, 
                 opacity: 0.4,
                 filter: "grayscale(1) drop-shadow(0px 0px 0px rgba(0,0,0,0))",

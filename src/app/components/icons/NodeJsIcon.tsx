@@ -44,8 +44,8 @@ export const NodeJsIcon = ({ isActive = false, size = 40, style, ...props }: Ico
             fill: none;
             stroke: ${energyColor};
             /* AUMENTADO: Grosor mucho mayor para que se note */
-            stroke-width: 7; 
-            stroke-linecap: round;
+            strokeWidth: 7; 
+            strokeLinecap: round;
             /* AUMENTADO: El haz de luz es más largo (300px) */
             stroke-dasharray: 300 ${pathLength}; 
             stroke-dashoffset: 300; 
@@ -73,7 +73,19 @@ export const NodeJsIcon = ({ isActive = false, size = 40, style, ...props }: Ico
           objectFit: "contain",
           overflow: "visible",
         }}
-        initial={false}
+        initial={
+          isActive
+            ? {
+                scale: 0.95,
+                opacity: 1,
+                filter: `grayscale(0) drop-shadow(0px 0px 15px ${glowShadow})`,
+              }
+            : {
+                scale: 0.7,
+                opacity: 0.4,
+                filter: "grayscale(1) drop-shadow(0px 0px 0px rgba(0,0,0,0))",
+              }
+        }
         animate={
           isActive
             ? {

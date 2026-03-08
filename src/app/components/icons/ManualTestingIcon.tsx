@@ -94,7 +94,20 @@ export const ManualTestingIcon = ({ isActive = false, size = 40, style, ...props
           objectFit: "contain",
           overflow: "visible",
         }}
-        initial={false}
+        // LE DAMOS LOS VALORES INICIALES EXACTOS PARA QUE NO SE PIERDA
+        initial={
+          isActive
+            ? {
+                scale: 0.85, 
+                opacity: 1,
+                filter: `grayscale(0) drop-shadow(0px 6px 10px rgba(86, 172, 224, 0.35))`,
+              }
+            : {
+                scale: 0.65, 
+                opacity: 0.4,
+                filter: "grayscale(1) drop-shadow(0px 0px 0px rgba(0,0,0,0))",
+              }
+        }
         animate={
           isActive
             ? {

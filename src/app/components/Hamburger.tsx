@@ -46,16 +46,19 @@ const Hamburger = () => {
             >
                 <motion.span
                     className={`${navbarStyle.navbar__hamburger__line1} ${toggleClass}`}
-                    variants={topLineAnimation} initial={false} animate={show ? "open" : "closed"}
-                >
-                </motion.span>
+                    variants={topLineAnimation} 
+                    // REEMPLAZO: En lugar de false, pasamos el estado actual
+                    initial={show ? "open" : "closed"} 
+                    animate={show ? "open" : "closed"}
+                />
 
                 <motion.span
                     className={`${navbarStyle.navbar__hamburger__line2} ${toggleClass}`}
-                    variants={bottomLineAnimation} initial={false} animate={show ? "open" : "closed"}
-                >
-
-                </motion.span>
+                    variants={bottomLineAnimation} 
+                    // REEMPLAZO: Lo mismo aquí
+                    initial={show ? "open" : "closed"} 
+                    animate={show ? "open" : "closed"}
+                />
             </motion.button>
             <AnimatePresence>{show && <HiddenMenu />}</AnimatePresence>
         </motion.div>

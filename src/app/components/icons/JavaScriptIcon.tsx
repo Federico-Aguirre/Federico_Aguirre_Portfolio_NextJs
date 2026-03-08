@@ -34,6 +34,7 @@ export const JavaScriptIcon = ({ isActive = true, size = 30, style, ...props }: 
         viewBox="0 0 512 512"
         width="100%"
         height="100%"
+        initial={{ scale: 1 }}
         animate={{ scale: isActive ? 1.05 : 1 }}
         transition={{ duration: 0.4, ease: "backOut" }}
       >
@@ -41,7 +42,6 @@ export const JavaScriptIcon = ({ isActive = true, size = 30, style, ...props }: 
           <pattern id="js-grid" width="40" height="40" patternUnits="userSpaceOnUse">
             <path d="M 40 0 L 0 0 0 40" fill="none" stroke={brandBlack} strokeWidth="1" opacity="0.1" />
           </pattern>
-          
           <clipPath id="js-clip">
             <rect width="512" height="512" rx="76.8" />
           </clipPath>
@@ -50,6 +50,7 @@ export const JavaScriptIcon = ({ isActive = true, size = 30, style, ...props }: 
         <g clipPath="url(#js-clip)">
           <rect width="512" height="512" fill={brandYellow} />
 
+          {/* GRID: Evitamos undefined inicial */}
           <motion.rect
             width="512"
             height="512"
@@ -59,22 +60,25 @@ export const JavaScriptIcon = ({ isActive = true, size = 30, style, ...props }: 
             transition={{ duration: 0.5 }}
           />
 
+          {/* CÍRCULOS: El warning venía de animar opacity y rotate sin initial */}
           <motion.circle
             cx="256" cy="256" r="180"
-            fill="none" stroke={brandBlack} strokeWidth="4" strokeDasharray="30 20" opacity="0.15"
+            fill="none" stroke={brandBlack} strokeWidth="4" strokeDasharray="30 20"
             style={{ originX: "256px", originY: "256px" }}
+            initial={{ rotate: 0, opacity: 0 }}
             animate={isActive ? { rotate: 360, opacity: 1 } : { rotate: 0, opacity: 0 }}
-            transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
+            transition={isActive ? { duration: 10, repeat: Infinity, ease: "linear" } : { duration: 0.3 }}
           />
           <motion.circle
             cx="256" cy="256" r="130"
-            fill="none" stroke={brandBlack} strokeWidth="2" strokeDasharray="15 15" opacity="0.15"
+            fill="none" stroke={brandBlack} strokeWidth="2" strokeDasharray="15 15"
             style={{ originX: "256px", originY: "256px" }}
+            initial={{ rotate: 0, opacity: 0 }}
             animate={isActive ? { rotate: -360, opacity: 1 } : { rotate: 0, opacity: 0 }}
-            transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
+            transition={isActive ? { duration: 8, repeat: Infinity, ease: "linear" } : { duration: 0.3 }}
           />
 
-          {/* ESCÁNER LÁSER CON APAGADO AUTOMÁTICO */}
+          {/* ESCÁNER LÁSER: Solución al warning del grupo */}
           <motion.g
             initial={{ y: -50, opacity: 0 }}
             animate={{ 
@@ -83,13 +87,14 @@ export const JavaScriptIcon = ({ isActive = true, size = 30, style, ...props }: 
             }}
             transition={{ 
               y: { duration: 3, repeat: Infinity, ease: "linear" },
-              opacity: { duration: 0.3 } // Transición suave al aparecer/desaparecer
+              opacity: { duration: 0.3 }
             }}
           >
             <line x1="0" y1="25" x2="512" y2="25" stroke={brandBlack} strokeWidth="12" opacity="0.6" />
             <line x1="0" y1="0" x2="512" y2="0" stroke={brandBlack} strokeWidth="5" opacity="0.4" />
           </motion.g>
 
+          {/* TRAZO JS (Stroke) */}
           <motion.path
             d={jsPath}
             fill="none"
@@ -97,17 +102,18 @@ export const JavaScriptIcon = ({ isActive = true, size = 30, style, ...props }: 
             strokeWidth="12"
             strokeLinecap="round"
             strokeLinejoin="round"
-            initial={{ pathLength: 1, opacity: 0 }}
+            initial={{ pathLength: 0, opacity: 0 }}
             animate={isActive ? { pathLength: [0, 1, 1], opacity: [1, 1, 0] } : { pathLength: 1, opacity: 0 }}
-            transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+            transition={isActive ? { duration: 3, repeat: Infinity, ease: "easeInOut" } : { duration: 0.3 }}
           />
 
+          {/* RELLENO JS (Solid) */}
           <motion.path
             d={jsPath}
             fill={brandBlack}
             initial={{ opacity: 1 }}
             animate={isActive ? { opacity: [0.3, 1, 1] } : { opacity: 1 }}
-            transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+            transition={isActive ? { duration: 3, repeat: Infinity, ease: "easeInOut" } : { duration: 0.3 }}
           />
         </g>
       </motion.svg>

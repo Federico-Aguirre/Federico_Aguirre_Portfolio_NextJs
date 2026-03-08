@@ -53,6 +53,9 @@
         "materialui": { "name": "Material UI", "desc": "Google-style components." },
         "bootstrap": { "name": "Bootstrap", "desc": "UI component toolkit." },
         "framer": { "name": "Framer Motion", "desc": "Animation library." },
+        "particle": { "name": "Particle.js", "desc": "Animation library." },
+        "million": { "name": "Million.js", "desc": "Accelerates React applications by optimizing the Virtual DOM." },
+        "mantine": { "name": "Mantine", "desc": "Highly customizable UI component library for React." },
         
         "nodejs": { "name": "Node.js", "desc": "JS runtime environment." },
         "express": { "name": "Express", "desc": "Standard web framework." },
@@ -89,6 +92,7 @@
         "jira": { "name": "Jira", "desc": "Agile project management." },
         "trello": { "name": "Trello", "desc": "Collaborative boards." },
         "postman": { "name": "Postman", "desc": "API testing." },
+        "babel": { "name": "Babel", "desc": "Converts modern JavaScript into browser-compatible code." },
 
         "jest": { "name": "Jest", "desc": "JavaScript testing." },
         "phpunit": { "name": "PHPUnit", "desc": "PHP testing." },

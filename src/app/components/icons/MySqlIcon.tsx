@@ -73,7 +73,7 @@ export const MySqlIcon = ({ isActive = false, size = 40, style, ...props }: Icon
           .mysql-trace-path {
             fill: none;
             stroke: ${dbCyan};
-            stroke-width: 0.4;
+            strokeWidth: 0.4;
             stroke-dasharray: 40 150; /* Crea el efecto de segmento láser */
             stroke-dashoffset: 150;
             opacity: 0;
@@ -95,7 +95,19 @@ export const MySqlIcon = ({ isActive = false, size = 40, style, ...props }: Icon
           objectFit: "contain",
           overflow: "visible",
         }}
-        initial={false}
+        initial={
+          isActive
+            ? {
+                scale: 0.85, 
+                opacity: 1,
+                filter: `grayscale(0) drop-shadow(0px 4px 8px rgba(0, 117, 143, 0.4))`,
+              }
+            : {
+                scale: 0.65, 
+                opacity: 0.4,
+                filter: "grayscale(1) drop-shadow(0px 0px 0px rgba(0,0,0,0))",
+              }
+        }
         animate={
           isActive
             ? {

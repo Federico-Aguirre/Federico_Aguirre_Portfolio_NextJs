@@ -25,7 +25,6 @@ export const PhpIcon = ({ isActive = false, size = 40, style, ...props }: IconPr
       }}
       {...props}
     >
-      {/* INYECTAMOS CSS PURO PARA ASEGURAR LA ANIMACIÓN */}
       <style>
         {`
           @keyframes phpPulseBg {
@@ -62,7 +61,19 @@ export const PhpIcon = ({ isActive = false, size = 40, style, ...props }: IconPr
           objectFit: "contain",
           overflow: "visible",
         }}
-        initial={false}
+        initial={
+          isActive
+            ? {
+                scale: 1.0, 
+                opacity: 1,
+                filter: `grayscale(0) drop-shadow(0px 4px 10px ${glowShadow})`,
+              }
+            : {
+                scale: 0.75, 
+                opacity: 0.4,
+                filter: "grayscale(1) drop-shadow(0px 0px 0px rgba(0,0,0,0))",
+              }
+        }
         animate={
           isActive
             ? {
@@ -82,7 +93,6 @@ export const PhpIcon = ({ isActive = false, size = 40, style, ...props }: IconPr
           opacity: { duration: 0.3 },
         }}
       >
-        {/* --- CÍRCULO DE FONDO --- */}
         <circle 
           cx="16" 
           cy="16" 
@@ -92,9 +102,6 @@ export const PhpIcon = ({ isActive = false, size = 40, style, ...props }: IconPr
           style={{ transformOrigin: "16px 16px" }}
         />
 
-        {/* --- LETRAS ANIMADAS (Clases CSS Condicionales) --- */}
-        
-        {/* Primera 'P' */}
         <g className={isActive ? "php-active-letter-1" : ""}>
           <path
             fillRule="evenodd"
@@ -104,7 +111,6 @@ export const PhpIcon = ({ isActive = false, size = 40, style, ...props }: IconPr
           />
         </g>
 
-        {/* Letra 'H' */}
         <g className={isActive ? "php-active-letter-2" : ""}>
           <path
             d="M14.4392 10H16.1192L15.6444 12.5242H17.154C17.9819 12.5419 18.5986 12.7269 19.0045 13.0793C19.4184 13.4316 19.5402 14.1014 19.3698 15.0881L18.5541 19.4889H16.8497L17.6288 15.2863C17.7099 14.8457 17.6856 14.533 17.5558 14.348C17.426 14.163 17.146 14.0705 16.7158 14.0705L15.3644 14.0573L14.3661 19.4889H12.6861L14.4392 10Z"
@@ -112,7 +118,6 @@ export const PhpIcon = ({ isActive = false, size = 40, style, ...props }: IconPr
           />
         </g>
 
-        {/* Segunda 'P' */}
         <g className={isActive ? "php-active-letter-3" : ""}>
           <path
             fillRule="evenodd"
