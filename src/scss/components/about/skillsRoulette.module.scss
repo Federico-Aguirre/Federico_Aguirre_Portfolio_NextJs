@@ -4,10 +4,9 @@
   width: 100%;
   // IMPORTANTE: Altura mínima suficiente para separar los elementos
   min-height: 550px; 
-  // Distribuye: 1ro arriba, 2do centro, 3ro abajo
-  justify-content: space-between; 
   position: relative;
-  overflow: visible; // Permite que brillos salgan si es necesario
+  overflow: visible;
+  justify-content: center;
 }
 
 .wheelContainer {

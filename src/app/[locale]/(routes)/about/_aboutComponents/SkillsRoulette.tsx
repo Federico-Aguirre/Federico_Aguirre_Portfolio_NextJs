@@ -220,7 +220,7 @@ const RouletteWheel = ({ items, selectedItem, onSelect, cardWidth, gap, renderCa
             </div>
         ) : (
             <motion.div 
-                style={{ x, display: "flex", flexDirection: "row", gap: `${gap}px`, width: "max-content", padding: 0 }} 
+                style={{ x, display: "flex", flexDirection: "row", gap: `${gap}px`, width: "max-content"}} 
                 drag="x" 
                 dragConstraints={{ left: -50000, right: 50000 }} 
                 dragElastic={0.05} 
@@ -368,10 +368,8 @@ const SkillsRoulette = () => {
         />
       </div>
 
-      <div style={{ width: '100%', height: '50px', flexShrink: 0 }} />
-
       {/* DESCRIPCIÓN - SECCIÓN CRÍTICA CORREGIDA */}
-      <div style={{ flexGrow: 1, display: 'flex', alignItems: 'flex-start', justifyContent: 'center', marginTop: '-15px' }}>
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
         {activeTech && (
             <motion.div 
                 key={activeTech.id} 
@@ -379,7 +377,7 @@ const SkillsRoulette = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.3 }}
                 style={{
-                    margin: 0, padding: '8px 15px', background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '10px',
+                    background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '10px',
                     textAlign: 'center', width: '100%', maxWidth: '600px', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', gap: '12px' 
                 }}
             >

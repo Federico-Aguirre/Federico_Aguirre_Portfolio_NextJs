@@ -9,17 +9,15 @@ interface IconProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 export const PostCssIcon = ({ isActive = false, size = 40, style, ...props }: IconProps) => {
-  // 1. EFECTOS DEL NEÓN (ESTRUCTURAS IDÉNTICAS PARA TRANSICIÓN PERFECTA)
-  // Base roja
-  const baseRed = "invert(29%) sepia(58%) saturate(2758%) hue-rotate(342deg)";
+  // 1. BASE DE COLOR (Mantenemos la base constante)
+  const baseFilters = "invert(29%) sepia(58%) saturate(2758%) hue-rotate(342deg)";
   
-  // ENCENDIDO: 3 sombras activas, brillo alto, sin escala de grises
-  const neonOn = `${baseRed} brightness(1.3) grayscale(0) drop-shadow(0px 0px 3px rgba(255,255,255,0.9)) drop-shadow(0px 0px 12px rgba(255,0,0,1)) drop-shadow(0px 0px 25px rgba(221,55,53,1))`;
+  // CORRECCIÓN: Estructuras de filtros estrictamente idénticas
+  // IMPORTANTE: Los valores como '1' deben ser '1.0' para asegurar compatibilidad de tipos en algunos motores
+  const neonOn = `${baseFilters} brightness(1.3) grayscale(0) drop-shadow(0px 0px 3px rgba(255,255,255,0.9)) drop-shadow(0px 0px 12px rgba(255,0,0,1)) drop-shadow(0px 0px 25px rgba(221,55,53,1))`;
   
-  // APAGADO: Las MISMAS 3 sombras pero en tamaño 0 y transparentes, brillo bajo, con escala de grises
-  const neonOff = `${baseRed} brightness(0.3) grayscale(0.6) drop-shadow(0px 0px 0px rgba(255,255,255,0)) drop-shadow(0px 0px 0px rgba(255,0,0,0)) drop-shadow(0px 0px 0px rgba(221,55,53,0))`;
+  const neonOff = `${baseFilters} brightness(0.3) grayscale(0.6) drop-shadow(0px 0px 0px rgba(255,255,255,0)) drop-shadow(0px 0px 0px rgba(255,0,0,0)) drop-shadow(0px 0px 0px rgba(221,55,53,0))`;
 
-  // 2. CONFIGURACIÓN DEL LOOP INFINITO DE NIEBLA
   const FOG_CHUNK_WIDTH = 400; 
   
   const fogClouds = [
@@ -69,7 +67,6 @@ export const PostCssIcon = ({ isActive = false, size = 40, style, ...props }: Ic
         display: "inline-flex",
         alignItems: "center",
         justifyContent: "center",
-        overflow: "visible", 
         ...style
       }}
       {...props}
@@ -83,28 +80,29 @@ export const PostCssIcon = ({ isActive = false, size = 40, style, ...props }: Ic
         </defs>
       </svg>
 
-      {/* TUBO DE NEÓN (EL ICONO) */}
       <motion.img
         src="https://www.vectorlogo.zone/logos/postcss/postcss-icon.svg"
         alt="PostCSS Icon"
+        // CORRECCIÓN: Agregamos initial para evitar el salto de hidratación
+        initial={{ opacity: 0.4, filter: neonOff }}
         animate={{
           opacity: isActive ? 1 : 0.4,
-          filter: isActive ? neonOn : neonOff, // Ahora la interpolación es matemáticamente perfecta
+          filter: isActive ? neonOn : neonOff,
         }}
         transition={{ 
-          duration: 1.5, // 1.5 segundos exactos fluyendo de un estado al otro
+          duration: 1.5,
           ease: "easeInOut" 
         }}
         style={{
           width: "100%",
           height: "100%",
           objectFit: "contain",
+          // Mantenemos tu rotación scaleY(-1) si es intencional para el diseño
           transform: "scaleY(-1)",
           zIndex: 0,
         }}
       />
 
-      {/* SISTEMA DE NIEBLA DE BUCLE PERFECTO */}
       {isActive && (
         <div
           style={{
@@ -114,6 +112,7 @@ export const PostCssIcon = ({ isActive = false, size = 40, style, ...props }: Ic
             zIndex: 10,
             maskImage: 'linear-gradient(90deg, transparent 0%, black 20%, black 80%, transparent 100%)',
             WebkitMaskImage: 'linear-gradient(90deg, transparent 0%, black 20%, black 80%, transparent 100%)',
+            overflow: 'hidden'
           }}
         >
           <motion.div

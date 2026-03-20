@@ -78,7 +78,15 @@ const About = () => {
 
         <div
           className={aboutStyle.about__container__skills__content}
-          style={{ display: toggleScrollClass === "scrollToSkills" ? "grid" : "none" }}
+          style={{ display: toggleScrollClass === "scrollToSkills" ? "grid" : "none", 
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "flex-start",
+            padding: "0px 20px 40px 20px",
+            height: "100%",
+            width: "100%",
+            boxSizing: "border-box"
+          }}
         >
           <div>
             <SkillsRoulette />
@@ -99,9 +107,9 @@ const About = () => {
           style={{
             display: toggleScrollClass === "scrollToStudies" ? "flex" : "none",
             flexDirection: "column",
-            justifyContent: "flex-start",
+            justifyContent: "center",
             alignItems: "flex-start",
-            padding: "40px 20px",
+            padding: "0px 20px 40px 20px",
             height: "100%",
             width: "100%",
             boxSizing: "border-box"

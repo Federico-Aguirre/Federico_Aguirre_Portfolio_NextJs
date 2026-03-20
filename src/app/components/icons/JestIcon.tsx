@@ -16,7 +16,8 @@ export const JestIcon = ({ isActive = false, size = 40, style, ...props }: IconP
     setIsMounted(true);
   }, []);
 
-  const brandRed = "#c63d14";
+  const brandRed = "rgba(198, 61, 20, 1)"; // Formato consistente
+  const brandRedGlow = "rgba(198, 61, 20, 0.5)"; // Formato consistente para el glow
   const glowColor = "#ff7b54";
 
   const backgroundPath = "M27.089,15.786a2.606,2.606,0,0,0-2.606-2.606,2.633,2.633,0,0,0-.274.014l3.58-10.558H12.576l3.575,10.549c-.052,0-.105-.005-.158-.005a2.606,2.606,0,0,0-.791,5.09,11.383,11.383,0,0,1-2.049,2.579A10.436,10.436,0,0,1,9.5,23.116a3.323,3.323,0,0,1-1.665-4.23c.077-.18.155-.362.229-.544a2.607,2.607,0,1,0-2.09-.4,20.134,20.134,0,0,0-1.889,4.787c-.354,2.135,0,4.4,1.845,5.681,4.3,2.981,8.969-1.848,13.891-3.061,1.784-.44,3.742-.369,5.313-1.279a4.45,4.45,0,0,0,2.179-3.088,4.639,4.639,0,0,0-.831-3.522,2.6,2.6,0,0,0,.606-1.671ZM18.6,15.8v-.009a2.6,2.6,0,0,0-1.256-2.23L20.188,7.8l2.85,5.814a2.6,2.6,0,0,0-1.161,2.169c0,.019,0,.038,0,.057L18.6,15.8Z";
@@ -47,9 +48,13 @@ export const JestIcon = ({ isActive = false, size = 40, style, ...props }: IconP
         viewBox="0 0 32 32"
         xmlns="http://www.w3.org/2000/svg"
         style={{ overflow: "visible" }}
+        // CORRECCIÓN: Filtro con formato RGBA idéntico para evitar errores de interpolación
+        initial={{ scale: 1, filter: "drop-shadow(0px 0px 0px rgba(198,61,20,0))" }}
         animate={{
           scale: isActive ? 1.05 : 1,
-          filter: isActive ? `drop-shadow(0 0 8px ${brandRed}88)` : "drop-shadow(0 0px 0px rgba(0,0,0,0))",
+          filter: isActive 
+            ? `drop-shadow(0px 0px 8px ${brandRedGlow})` 
+            : "drop-shadow(0px 0px 0px rgba(198,61,20,0))",
         }}
         transition={{ duration: 0.4 }}
       >
@@ -64,11 +69,10 @@ export const JestIcon = ({ isActive = false, size = 40, style, ...props }: IconP
         </defs>
 
         <motion.g style={{ transformOrigin: "16px 16px" }}>
-          {/* Fondo Rojo */}
           <motion.path
             d={backgroundPath}
             fill={brandRed}
-            initial={{ opacity: 1 }} // Valor base explícito
+            initial={{ scale: 1, opacity: 1 }}
             animate={isActive ? {
               scale: [1, 1.02, 1],
             } : { scale: 1 }}
@@ -76,22 +80,20 @@ export const JestIcon = ({ isActive = false, size = 40, style, ...props }: IconP
             style={{ transformOrigin: "16px 16px" }}
           />
 
-          {/* Detalles Blancos (Fijos) */}
           <motion.path
             d={detailsPath}
             fill="#FFFFFF"
-            initial={{ opacity: 1 }} // Aquí evitamos el undefined
+            initial={{ opacity: 1 }}
             animate={{ opacity: isActive ? 0.2 : 1 }}
             transition={{ duration: 0.4 }}
           />
 
-          {/* Línea de dibujo animada */}
           <motion.path
             d={detailsPath}
             fill="none"
             stroke="#FFFFFF"
             strokeWidth="0.25"
-            initial={{ pathLength: 0, opacity: 0 }} // Definimos ambos como 0 inicialmente
+            initial={{ pathLength: 0, opacity: 0 }}
             animate={isActive ? {
               pathLength: [0, 1],
               opacity: [0, 1, 0],
@@ -99,11 +101,10 @@ export const JestIcon = ({ isActive = false, size = 40, style, ...props }: IconP
             transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
           />
 
-          {/* Campanas */}
-          <AnimatePresence mode="wait">
+          {/* CAMPANAS - CORREGIDO: Se maneja el isMounted en el contenedor de las campanas */}
+          <g>
             {isMounted && isActive && bellCoordinates.map((bell, i) => (
               <React.Fragment key={`${uniqueId}-bell-${i}`}>
-                {/* Ondas blancas */}
                 <motion.circle
                   cx={bell.cx} cy={bell.cy} r="0.8"
                   fill="none"
@@ -113,18 +114,17 @@ export const JestIcon = ({ isActive = false, size = 40, style, ...props }: IconP
                   animate={{ scale: 4, opacity: [0, 1, 0] }}
                   transition={{ duration: 2, repeat: Infinity, delay: bell.delay }}
                 />
-                {/* Centro brillante */}
                 <motion.circle
                   cx={bell.cx} cy={bell.cy} r="1.2"
                   fill={glowColor}
                   filter={`url(#jest-glow-${uniqueId})`}
-                  initial={{ scale: 0, opacity: 0 }} // Opacity 0 explícito
+                  initial={{ scale: 0, opacity: 0 }}
                   animate={{ scale: [0, 1.2, 0], opacity: [0, 1, 0] }}
                   transition={{ duration: 2, repeat: Infinity, delay: bell.delay }}
                 />
               </React.Fragment>
             ))}
-          </AnimatePresence>
+          </g>
         </motion.g>
       </motion.svg>
     </div>
