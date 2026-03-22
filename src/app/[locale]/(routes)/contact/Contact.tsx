@@ -61,8 +61,9 @@ const Contact = () => {
 
     // Valores de animación para que sea fácil ajustarlos (sin la propiedad color)
     const labelAnimation = (isActive: boolean) => ({
-        y: isActive ? -25 : 0, // Ajusta el -25 si quieres que suban más o menos
-        scale: isActive ? 0.85 : 1
+        y: isActive ? 0 : 20, // Ajusta el -25 si quieres que suban más o menos
+        scale: isActive ? 0.85 : 0.85,
+        color: isActive ? "hsl(194, 85%, 62%)" : "#000" 
     });
 
     return (
@@ -84,7 +85,7 @@ const Contact = () => {
                         className={contactStyle.contact__formContainer__form__labelName} 
                         htmlFor="name"
                         animate={labelAnimation(activeFields.name)}
-                        style={{ originX: 0 }}
+                        style={{ originX: 0}}
                     >
                         {t("name")}
                     </motion.label>
@@ -142,12 +143,12 @@ const Contact = () => {
 
             {/* Pasamos el ref al contenedor padre en lugar del hijo para evitar saltos en hover */}
             <motion.div className={contactStyle.contact__links} ref={contactSectionRef} variants={showFromRightAnimation} initial="hidden" whileInView="visible" viewport={{ once: true }}>
-                <motion.div className={`${contactStyle.contact__links__linkedin} ${toggleShadowClass}`} whileHover={{ scale: 1.2 }}>
+                <motion.div className={`${contactStyle.contact__links__linkedin} ${toggleShadowClass}`} whileHover={{ scale: 1.1 }}>
                     <a href="https://www.linkedin.com/in/federico-nicolas-aguirre/" target="_blank" rel="noopener noreferrer">
                         <Image src={linkedIn} alt={t("linkedinAlt")} />
                     </a>
                 </motion.div>
-                <motion.div className={`${contactStyle.contact__links__github} ${toggleShadowClass}`} whileHover={{ scale: 1.2 }}>
+                <motion.div className={`${contactStyle.contact__links__github} ${toggleShadowClass}`} whileHover={{ scale: 1.1 }}>
                     <a href="https://github.com/Federico-Aguirre" target="_blank" rel="noopener noreferrer">
                         <Image src={githubImage} alt={t("githubAlt")} />
                     </a>

@@ -88,7 +88,10 @@ const About = () => {
             boxSizing: "border-box"
           }}
         >
-          <div>
+          <div style={{ 
+            display: "flex",
+            width: "100%"
+          }}>
             <SkillsRoulette />
           </div>
         </div>
