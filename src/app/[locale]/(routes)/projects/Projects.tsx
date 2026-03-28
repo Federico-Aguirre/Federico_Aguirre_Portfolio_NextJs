@@ -5,7 +5,7 @@ import "scss/abstract/animations/globalAnimations.scss"
 import Image from 'next/image';
 import firstProject from "@/assets/cardImages/ReactJs-Chat-App/ReactJs-Chat-App.png";
 import secondProject from "@/assets/cardImages/ReactJs-E-commerce/ReactJs-E-commerce.png";
-import thirdProject from "@/assets/cardImages/Employee-CRUD/Employee-CRUD.png";
+import thirdProject from "@/assets/cardImages/Laravel-E-commerce/Laravel-E-commerce.jpg";
 import fourthProject from "@/assets/cardImages/ChessJs/ChessJs.png";
 import { contextStore } from "@/app/store/Context";
 import { motion } from "framer-motion"
@@ -81,12 +81,12 @@ const Projects = () => {
         <Image src={secondProject} alt={t("projectAlt")} loading="lazy" className={projectsStyle.projects__card__image} />
       </motion.a>
 
-      <motion.a href="http://reactjs-sql-employee-crud.netlify.app" target="_blank" className={`${projectsStyle.projects__card} ${toggleShadowClass}`} variants={fadeInChildrenAnimationVariant}>
+      <motion.a href="https://veterinaria-laravel.onrender.com" target="_blank" className={`${projectsStyle.projects__card} ${toggleShadowClass}`} variants={fadeInChildrenAnimationVariant}>
         <div className={projectsStyle.projects__card__text}>
-          React.js SQL Employee CRUD
+          Laravel E-commerce
         </div>
         <div className={projectsStyle.projects__card__hiddenText}>
-          {t("dependencies")}: React.js, MySQL, React-router-dom, Supabase, Axios, Body-parser, Cors, Nodemon, Wouter.
+          {t("dependencies")}: Laravel, JavaScript, SASS, Tailwind, PHP Unit, Laravel Dusk, Laravel Socialite, Paypal SDK, OAuth 2.0, Render, Neon, Docker.
         </div>
 
         <Image src={thirdProject} alt={t("projectAlt")} loading="lazy" className={projectsStyle.projects__card__image} />

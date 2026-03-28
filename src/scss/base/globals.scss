@@ -1,12 +1,60 @@
 @use "../abstract/variables.scss" as variables;
 @use "../abstract/animations/globalAnimations.scss" as globalAnimations;
 
-body {
-  color: variables.$white;
+/* ====================================================== */
+/* 1. RESET PARA LIBRERÍA                                 */
+/* ====================================================== */
+
+html, body {
+  height: 100%;
   margin: 0;
   padding: 0;
-  overflow-x: hidden;
+  overflow: hidden !important; 
+  color: variables.$white;
 }
+
+/* ====================================================== */
+/* 2. CONFIGURACIÓN DEL THEME (Estable y sin flickeo)     */
+/* ====================================================== */
+
+.os-theme-custom {
+  // Variables de color
+  --os-handle-bg: hsl(194, 85%, 62%);
+  --os-handle-bg-hover: hsl(194, 85%, 50%); // Un poco más oscuro al pasar el mouse
+  --os-handle-bg-active: hsl(194, 85%, 40%);
+  
+  --os-track-bg: rgba(255, 255, 255, 0.08); 
+  --os-track-border-radius: 10px;
+
+  // Dimensiones
+  --os-size: 10px;
+  --os-handle-border-radius: 10px;
+
+  /* CORRECCIÓN: Aplicamos la transición solo a la opacidad.
+     Dejamos que la librería maneje el hover internamente 
+     para evitar que desaparezca.
+  */
+  .os-scrollbar {
+    transition: opacity 0.6s ease-in-out !important;
+  }
+
+  // Aseguramos que el track sea siempre visible mientras la scrollbar esté activa
+  .os-scrollbar-track {
+    opacity: 1 !important;
+    background: var(--os-track-bg) !important;
+  }
+
+  // El handle (la barra que drageas)
+  .os-scrollbar-handle {
+    opacity: 1 !important;
+    // Transición suave solo para el cambio de color en el hover
+    transition: background-color 0.2s ease !important;
+  }
+}
+
+/* ====================================================== */
+/* 3. RESTO DE TUS COMPONENTES (Sin cambios)             */
+/* ====================================================== */
 
 section {
   display: flex;
@@ -24,11 +72,12 @@ a {
   text-decoration: none;
 }
 
-textarea:focus, input:focus{
+textarea:focus, 
+input:focus {
   outline: none;
 }
 
-@media (min-width:800px) {
+@media (min-width: 800px) {
   section {
     height: 90vh;
   }

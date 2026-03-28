@@ -1,6 +1,7 @@
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
 import localFont from 'next/font/local';
+import ScrollbarCustom from "./components/ScrollbarCustom";
 
 import "scss/abstract/variables.scss";
 import "scss/base/globals.scss";
@@ -21,7 +22,9 @@ export default async function RootLayout({
     <html lang="en">
       <body className={public_Sans.className}>
         <NextIntlClientProvider messages={messages}>
-          {children}
+          <ScrollbarCustom>
+            {children}
+          </ScrollbarCustom>
         </NextIntlClientProvider>
       </body>
     </html>
