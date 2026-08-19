@@ -1,0 +1,163 @@
+"use client";
+
+import React from "react";
+import { m, useReducedMotion } from "framer-motion";
+
+interface IconProps extends React.HTMLAttributes<HTMLDivElement> {
+  isActive?: boolean;
+  size?: number | string;
+}
+
+const cleanPath = "M 11.2141 0.006459 C 11.1625 0.011151 10.9982 0.027573 10.8504 0.039304 C 7.44164 0.346635 4.24868 2.18593 2.22639 5.01291 C 1.10029 6.58476 0.380059 8.36775 0.107918 10.2563 C 0.011730 10.9156 0 11.1103 0 12.0041 C 0 12.898 0.011730 13.0927 0.107918 13.7519 C 0.760117 18.2587 3.96716 22.0452 8.31672 23.4481 C 9.0956 23.6991 9.91672 23.8704 10.8504 23.9736 C 11.2141 24.0135 12.7859 24.0135 13.1496 23.9736 C 14.7613 23.7953 16.1267 23.3965 17.4733 22.7091 C 17.6798 22.6035 17.7196 22.5754 17.6915 22.5519 C 17.6727 22.5378 16.793 21.3578 15.7372 19.9314 L 13.8182 17.339 L 11.4135 13.7801 C 10.0903 11.8235 9.00176 10.2235 8.99238 10.2235 C 8.98299 10.2211 8.97361 11.8024 8.96891 13.7331 C 8.96188 17.1138 8.95953 17.2499 8.9173 17.3296 C 8.85631 17.4446 8.80938 17.4915 8.71085 17.5431 C 8.63578 17.5807 8.57009 17.5877 8.21584 17.5877 H 7.80997 L 7.70205 17.5197 C 7.63167 17.4751 7.58006 17.4164 7.54487 17.3484 L 7.4956 17.2428 L 7.50029 12.539 L 7.50733 7.83285 L 7.58006 7.74136 C 7.6176 7.69209 7.69736 7.62875 7.75367 7.59825 C 7.84985 7.55133 7.88739 7.54664 8.29325 7.54664 C 8.77185 7.54664 8.85161 7.5654 8.97595 7.70147 C 9.01114 7.73901 10.3132 9.7003 11.871 12.0628 C 13.4287 14.4252 15.5589 17.651 16.6053 19.2346 L 18.5056 22.1132 L 18.6018 22.0499 C 19.4534 21.4962 20.3543 20.7079 21.0674 19.8868 C 22.5853 18.1437 23.5636 16.0182 23.8921 13.7519 C 23.9883 13.0927 24 12.898 24 12.0041 C 24 11.1103 23.9883 10.9156 23.8921 10.2563 C 23.2399 5.74957 20.0328 1.96306 15.6833 0.560125 C 14.9161 0.311445 14.0997 0.140184 13.1848 0.036958 C 12.9595 0.013498 11.4088 -0.012309 11.2141 0.006459 Z M 16.1267 7.26511 C 16.2393 7.32142 16.3308 7.42933 16.3636 7.54194 C 16.3824 7.60294 16.3871 8.90734 16.3824 11.8469 L 16.3754 16.0651 L 15.6317 14.9249 L 14.8856 13.7848 V 10.7185 C 14.8856 8.73608 14.895 7.62171 14.9091 7.56775 C 14.9466 7.43637 15.0287 7.33315 15.1413 7.27215 C 15.2375 7.22288 15.2727 7.21819 15.6411 7.21819 C 15.9883 7.21819 16.0493 7.22288 16.1267 7.26511 Z";
+
+export const NextJsIcon = ({ isActive = false, size = 40, style, ...props }: IconProps) => {
+  const glowShadow = `rgba(255, 255, 255, 0.6)`; 
+  const pathLength = 200;
+
+  // ACCESIBILIDAD: Detectar preferencia de movimiento reducido
+  const shouldReduceMotion = useReducedMotion();
+  const animateIcon = isActive && !shouldReduceMotion;
+
+  return (
+    <div
+      data-active={animateIcon.toString()}
+      style={{
+        position: "relative",
+        width: size,
+        height: size,
+        display: "inline-flex",
+        alignItems: "center",
+        justifyContent: "center",
+        ...style
+      }}
+      {...props}
+    >
+      <style>
+        {`
+          @keyframes nextTraceFlow {
+            to { stroke-dashoffset: -${pathLength}; }
+          }
+          @keyframes nextFloat {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-1.5px); }
+          }
+          @keyframes nextRippleAnim {
+            0% { transform: scale(1); opacity: 0.6; strokeWidth: 0.5px; }
+            100% { transform: scale(1.9); opacity: 0; strokeWidth: 0.1px; }
+          }
+
+          .next-ripple {
+            fill: none;
+            stroke: #fff;
+            opacity: 0;
+            transform-origin: 12px 12px;
+          }
+          .next-logo-group {
+            transform-origin: 12px 12px;
+          }
+          .next-trace {
+            fill: none;
+            stroke: #fff;
+            strokeWidth: 0.4;
+            stroke-dasharray: 20 ${pathLength};
+            stroke-dashoffset: ${pathLength};
+            opacity: 0;
+            transition: opacity 0.4s;
+            filter: drop-shadow(0px 0px 1px rgba(255,255,255,1));
+          }
+
+          /* --- ESTADOS ACTIVOS --- */
+          div[data-active="true"] .next-ripple-1 {
+            animation: nextRippleAnim 2s cubic-bezier(0.1, 0.5, 0.8, 1) infinite;
+          }
+          div[data-active="true"] .next-ripple-2 {
+            animation: nextRippleAnim 2s cubic-bezier(0.1, 0.5, 0.8, 1) infinite 1s;
+          }
+          div[data-active="true"] .next-logo-group {
+            animation: nextFloat 3s ease-in-out infinite;
+          }
+          div[data-active="true"] .next-trace {
+            opacity: 1;
+            animation: nextTraceFlow 2s linear infinite;
+          }
+
+          /* ACCESIBILIDAD: Desactivar animaciones CSS si el usuario prefiere movimiento reducido */
+          @media (prefers-reduced-motion: reduce) {
+            div[data-active="true"] .next-ripple,
+            div[data-active="true"] .next-logo-group,
+            div[data-active="true"] .next-trace {
+              animation: none !important;
+            }
+          }
+        `}
+      </style>
+
+      <m.svg
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        // ACCESIBILIDAD: Ocultar SVG a lectores de pantalla
+        aria-hidden="true"
+        focusable="false"
+        style={{
+          width: "100%",
+          height: "100%",
+          objectFit: "contain",
+          overflow: "visible",
+        }}
+        initial={
+          isActive
+            ? {
+                scale: 0.85,
+                opacity: 1,
+                filter: `grayscale(0) drop-shadow(0px 0px 8px ${glowShadow})`,
+              }
+            : {
+                scale: 0.65,
+                opacity: 0.4,
+                filter: "grayscale(1) drop-shadow(0px 0px 0px rgba(0,0,0,0))",
+              }
+        }
+        animate={
+          isActive
+            ? {
+                scale: 0.85,
+                opacity: 1,
+                filter: `grayscale(0) drop-shadow(0px 0px 8px ${glowShadow})`,
+              }
+            : {
+                scale: 0.65,
+                opacity: 0.4,
+                filter: "grayscale(1) drop-shadow(0px 0px 0px rgba(0,0,0,0))",
+              }
+        }
+        transition={{
+          scale: { duration: shouldReduceMotion ? 0 : 0.4, ease: "backOut" },
+          filter: { duration: shouldReduceMotion ? 0 : 0.5 },
+          opacity: { duration: shouldReduceMotion ? 0 : 0.3 },
+        }}
+      >
+        {/* CAPA 1: Ondas de red */}
+        <circle className="next-ripple next-ripple-1" cx="12" cy="12" r="11" />
+        <circle className="next-ripple next-ripple-2" cx="12" cy="12" r="11" />
+
+        {/* Grupo del logo central */}
+        <g className="next-logo-group" clipPath="url(#clip0_nextjs)">
+          {/* CAPA 2: Logo base */}
+          <path d={cleanPath} fill="#fff" />
+          
+          {/* CAPA 3: Láser de flujo de datos */}
+          <path className="next-trace" d={cleanPath} />
+        </g>
+        
+        <defs>
+          <clipPath id="clip0_nextjs">
+            <rect width="24" height="24" fill="white" />
+          </clipPath>
+        </defs>
+      </m.svg>
+    </div>
+  );
+};
+
+export default NextJsIcon;

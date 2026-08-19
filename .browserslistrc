@@ -1,0 +1,7 @@
+# Excluye navegadores antiguos para eliminar polyfills innecesarios
+chrome >= 90
+firefox >= 88
+safari >= 14.1
+edge >= 90
+not dead
+not IE 11

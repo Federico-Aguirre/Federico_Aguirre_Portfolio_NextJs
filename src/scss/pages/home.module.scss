@@ -1,0 +1,99 @@
+@use "../../scss/abstract/variables.scss" as variables;
+@use "../abstract/animations/globalAnimations.scss";
+
+.homePage {
+    position: relative;
+    color: black;
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 50px;
+    flex-direction: column;
+    place-content: center;
+    font-size: variables.$bigFont;
+    font-weight: 500;
+    overflow: hidden !important; 
+
+    .particlesContainer {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+
+        .myParticles {
+        width: 100%;
+        height: 100%;
+        }
+
+        canvas {
+        width: 100%;
+        height: 100%;
+        display: block;
+        }
+    }
+
+    &__title {
+        display: flex;
+        flex-wrap: wrap;
+        place-content: center;
+        line-height: 1.2em;
+        letter-spacing: 2px;
+        width: 400px;
+        font-size: 1.9em;
+        font-weight: 600;
+        z-index: 100;
+    }
+
+    &__CallToAction {
+        display: inline-block;
+        text-decoration: none;
+        cursor: pointer;
+        place-self: center;
+        padding: 10px;
+        border-radius: 10px;
+        color: variables.$white;
+        background-color: variables.$lightViolet;
+        cursor: pointer;
+        z-index: 100;
+        transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
+    }
+}
+
+/* Animación de entrada y micro-interacciones nativas en CSS */
+.ctaAnimated {
+  opacity: 1;
+  transform: translateY(0);
+  transition: transform 0.2s cubic-bezier(0.2, 0, 0, 1), box-shadow 0.2s ease;
+  will-change: transform;
+
+  &:hover {
+    transform: translateY(0) scale(1.05);
+  }
+
+  &:active {
+    transform: translateY(0) scale(0.98);
+  }
+}
+
+/* Accesibilidad: Desactiva animaciones automáticamente si el sistema lo prefiere */
+@media (prefers-reduced-motion: reduce) {
+  .ctaAnimated {
+    opacity: 1;
+    transform: none;
+    animation: none;
+    transition: none;
+
+    &:hover,
+    &:active {
+      transform: none;
+    }
+  }
+}
+
+.brightCallToActionClass{
+    box-shadow: variables.$shadowLight;
+}
+
+.darkCallToActionClass {
+    box-shadow: variables.$shadow;
+}

@@ -1,0 +1,349 @@
+{
+  "header": {
+    "home": "Home",
+    "about": "About Me",
+    "projects": "Projects",
+    "contact": "Contact",
+    "sunAlt": "Sun Icon",
+    "moonAlt": "Moon ICon"
+  },
+
+  "home": {
+    "headline": "Federico Aguirre Web Developer",
+    "greeting": "Hello!",
+    "watchProjects": "Watch Projects"
+  },
+
+  "projects": {
+    "title": "Projects",
+    "categoryFilter": "Filter projects by category",
+    "mainProjects": "Main Projects",
+    "labProjects": "Laboratory",
+    "previousSlide":"Previous slide",
+    "nextSlide":"Next slide",
+    "dependencies": "Dependencies",
+    "projectAlt": "Project preview image",
+    "projectDetail": {
+      "notFound": "Project not found",
+      "backHome": "Back to home",
+      "backToProjects": "Back to Projects",
+      "technologies": "Technologies used",
+      "aboutProject": "About the project",
+      "visitSite": "Visit Live Site",
+      "videoPlayerFor": "Video Player For",
+      
+
+      "nextJsEcommerceDescription": {
+        "title": "Senior Store - High-Performance E-Commerce",
+        "subtitle": "Modern, fast, and scalable e-commerce web application built with cutting-edge Next.js architecture.",
+        "description": "The project simulates an exclusive clothing store integrating complex authentication flows, cloud data persistence, payment gateway integration, and automated E2E testing.",
+
+        "stackTitle": "Tech Stack & Architecture",
+        "stackList": [
+          "Frontend: Next.js 15+ (App Router) leveraging React Server Components (RSC) for immediate async loading and optimized SEO.",
+          "Styling: Tailwind CSS with a minimalist, responsive design and smooth motion animations.",
+          "Cloud Database: Aiven (PostgreSQL) guaranteeing robust persistence for purchase history and user profiles.",
+          "API Layer: Local GraphQL using native fetch requests, optimizing data transfer and preventing over-fetching.",
+          "Global State Management: Zustand for in-memory shopping cart management, achieving real-time updates without unnecessary re-renders.",
+          "Authentication: NextAuth.js securely integrated with Google OAuth and database-backed sessions.",
+          "Payment Gateway: Mercado Pago SDK dynamically integrated via Webhooks and Query Params to transition order statuses to APPROVED (PAID)."
+        ],
+
+        "featuresTitle": "Key Features",
+        "featuresList": [
+          "URL-Synced Search Bar: Instant catalog filtering using Query Params (?search=...), allowing users to organically share pre-filtered links.",
+          "Premium Skeleton Loaders: Animated loading screens (animate-pulse) within <Suspense /> blocks to elevate perceived performance (UX).",
+          "Wishlist System: Independent, reactive persistence of favorite products per user.",
+          "Dynamic Order History: Exclusive protected section ('My Purchases') reading and mapping processed orders from Aiven securely."
+        ],
+
+        "testingTitle": "QA & Testing Automation (Playwright)",
+        "testingDescription": "The repository includes a comprehensive End-to-End (E2E) testing suite engineered under the Page Object Model (POM) pattern.",
+        "testingList": [
+          "Maintainability: Strict separation of selectors and logical flows into dedicated classes (CatalogPage).",
+          "Environment Agnostic: Dynamic setup allowing tests to run seamlessly against localhost or live production domains.",
+          "Route Interception: Flow simulation by mocking API responses (page.route) to test empty or server error states in isolation."
+        ]
+      },
+
+      "chatAppDescription": {
+        "title": "Chat App - Real-Time Instant Messaging",
+        "subtitle": "Distributed Full-Stack application for real-time bidirectional communication featuring group channels, direct chats, and hybrid authentication.",
+        "description": "A modern distributed messaging platform engineered for low-latency instant communication. Features support for group channels and direct messages, contact management, multimedia file sharing, and seamless cross-client synchronization powered by a WebSocket architecture.",
+
+        "stackTitle": "Tech Stack & Architecture",
+        "stackList": [
+          "Frontend: SPA built with React 19 and TypeScript for a reactive, modular interface with strict static typing.",
+          "Backend & Real-Time: Node.js server with Express and Socket.IO deployed on Render for managing real-time bidirectional events.",
+          "Database & Persistence: MongoDB Atlas with Mongoose, optimizing persistence through atomic operations ($addToSet, $pull).",
+          "Authentication & Security: Hybrid system utilizing JWT tokens and Google OAuth 2.0 for secure and flexible access.",
+          "Global State & Styling: Redux Toolkit for centralized state management, styled with Tailwind CSS v4.",
+          "Multimedia & Storage: Cloudinary integration for efficient media uploading, optimization, and cloud storage."
+        ],
+
+        "featuresTitle": "Key Features",
+        "featuresList": [
+          "Real-Time Bidirectional Communication: Instant event and message transmission via WebSockets (Socket.IO).",
+          "Hybrid Authentication (JWT + Google OAuth): Supports traditional login as well as fast social login via Google.",
+          "Dynamic Rooms & Channels: Creation and management of group channels and direct 1-on-1 chats.",
+          "Atomic Contact Management: Efficient database-level operations for adding or removing contacts while ensuring data consistency.",
+          "Multimedia Support: Sending and sharing optimized cloud-hosted images."
+        ],
+
+        "testingTitle": "Code Quality & Setup",
+        "testingDescription": "Development adhered strictly to modern web architecture best practices and industry standards.",
+        "testingList": [
+          "Strict TypeScript Typing: Comprehensive coverage of types and interfaces to guarantee data flow integrity across client and server.",
+          "Distributed Deployment: Continuous deployment setup with the frontend hosted on Vercel and the backend service on Render.",
+          "Linter & Strict Rules: ESLint configuration to enforce clean, consistent code standards across the entire repository."
+        ]
+      },
+
+      "reactJsEcommerceDescription": {
+        "title": "React.js E-Commerce - Interactive Catalog & Cart",
+        "subtitle": "Modern virtual store prototype focused on seamless user experience and real-time search.",
+        "description": "An e-commerce web application prototype built with React and Firebase. Features a fluid product selection flow, reactive filtering without page reloads, and a dynamic shopping cart with strict variant validations.",
+
+        "stackTitle": "Tech Stack & Architecture",
+        "stackList": [
+          "Frontend: React 18 powered by Vite + SWC for lightning-fast render performance.",
+          "Routing: React Router DOM v6 enabling smooth SPA navigation between catalog and detail views.",
+          "Backend & DB: Firebase (Firestore) for persistent product catalog and user data storage.",
+          "Authentication: Firebase Auth with dual support (email/password login and Google OAuth).",
+          "Styling & UI: Bootstrap 5 and React-Bootstrap delivering a clean, responsive layout."
+        ],
+
+        "featuresTitle": "Key Features",
+        "featuresList": [
+          "Instant Reactive Search: Real-time product filtering as the user types without leaving or refreshing the current page.",
+          "Flexible Authentication: Access options via traditional credentials or one-click Google sign-in.",
+          "Variant-Validated Cart: Strictly requires selecting size and color options before adding an item to the shopping cart.",
+          "Seamless SPA Experience: Instant transitions across categories and product details."
+        ],
+
+        "testingTitle": "Project Status & Code Quality",
+        "testingDescription": "Built following clean code principles with a strong focus on future scalability.",
+        "testingList": [
+          "Linter & Standards: Strict ESLint setup to enforce React Hooks best practices and component lifecycle consistency.",
+          "Modular Architecture: Decoupled logic prepared for upcoming payment gateway integration and order processing."
+        ]
+      },
+
+      "laravelEcommerceDescription": {
+        "title": "Veterinary & E-Commerce - Full-Stack Laravel Platform",
+        "subtitle": "Enterprise-grade Full-Stack system for pet care appointments and e-commerce built on advanced MVC architecture.",
+        "description": "A comprehensive Laravel web application merging a veterinary appointment booking system with an online pet store. Features strict route security via custom Middlewares, async product filtering, PayPal integration, and Dockerized orchestration.",
+
+        "stackTitle": "Tech Stack & Architecture",
+        "stackList": [
+          "Backend: Laravel (PHP) implementing MVC pattern with custom Middlewares, Caching, and CSRF/Sanctum Token protection.",
+          "Frontend & Assets: Vite bundled with Tailwind CSS, Sass, Axios, and PostCSS for high-performance asset compilation.",
+          "Environment & DevOps: Fully Dockerized setup ensuring seamless environment parity between dev and production.",
+          "Auth & OAuth 2.0: Dual authentication via secure hashed credentials and Google OAuth 2.0.",
+          "Payments & Mail Services: Integrated PayPal SDK for online payments and functional SMTP email service for inquiries."
+        ],
+
+        "featuresTitle": "Key Features",
+        "featuresList": [
+          "E-Commerce & Appointment Booking: Dual-purpose system for buying pet supplies and scheduling medical appointments.",
+          "Async Filtering (AJAX): Dynamic, no-reload product fetching by category (e.g., 'Pet Food') powered by Axios.",
+          "Profile & Pet Management: Full CRUD functionality for personal user accounts and detailed pet medical records.",
+          "Strict Business Logic: Gatekeeping system preventing order checkout or appointment booking until profiles are complete.",
+          "Order History & Filters: Private user area equipped with multi-attribute filtering to track past purchases."
+        ],
+
+        "testingTitle": "Security, QA & Automated Testing",
+        "testingDescription": "Engineered with a primary focus on data integrity, unauthorized access prevention, and automated test coverage.",
+        "testingList": [
+          "Middlewares & Route Guards: Granular endpoint protection ensuring strict access control based on user status.",
+          "PHPUnit & Laravel Dusk: Unit testing for backend logic and browser E2E automated tests for core workflows.",
+          "Cache & Performance: Optimized database query caching and session management for low latency."
+        ]
+      },
+
+      "chessAppDescription": {
+      "title": "Chess App - Vanilla JavaScript Chess Engine",
+      "subtitle": "Framework-less chess game showcasing core JavaScript mastery, DOM manipulation, and matrix-based logic.",
+      "description": "An interactive chess engine built strictly with HTML5, CSS3, and Vanilla JavaScript (ES Modules). Features a matrix-represented gameboard, native Drag and Drop mechanics, piece-specific mathematical movement validation, and an advanced unlimited premove system.",
+
+      "stackTitle": "Tech Stack & Architecture",
+      "stackList": [
+        "Core: Vanilla JavaScript (ES6+) using native ES Modules (script type='module') for a clean, decoupled file structure.",
+        "DOM Manipulation: Dynamic board rendering from state arrays, native event handling, and real-time CSS class mutations.",
+        "Styling & Theming: Modular CSS3 using global custom properties (:root) for color schemes and style resets.",
+        "Deployment & CI/CD: Continuous deployment setup on Netlify linked directly to GitHub."
+      ],
+
+      "featuresTitle": "Key Features",
+      "featuresList": [
+        "Native Drag and Drop: Smooth piece manipulation powered by browser-native Drag and Drop events.",
+        "Dynamic Board Matrix: Internal state representation structured on a 64-index array with collision boundaries.",
+        "Movement Rules Engine: Algorithmic conditional logic validating path trajectories for pawns, knights, bishops, and rooks.",
+        "Unlimited Premove System: Queue-based mechanism allowing users to set multiple future moves executed automatically on turn shifts.",
+        "Capture & Check Validation: Internal algorithm constantly checking turn changes, piece captures, and win conditions."
+      ],
+
+      "testingTitle": "Foundations & Best Practices",
+      "testingDescription": "Designed to demonstrate deep mastery of core JavaScript fundamentals before abstracting with React.",
+      "testingList": [
+        "Modular JS Architecture: Strict separation of concerns with clean import/export syntax for logic, UI, and piece rules.",
+        "Efficient State Management: Heavy use of array operations (splice, includes, query selectors) to maintain sync across turns."
+      ]
+      },
+
+      "figmaProjectDescription": {
+        "title": "UI/UX Design - Veterinary Prototype",
+        "subtitle": "Interactive interface design for a veterinary clinic and pet e-commerce store.",
+        "description": "High-fidelity functional prototype built in Figma. Defines the full visual experience for the veterinary site, including component states (default, hover, click) and navigation flows for booking appointments and browsing products.",
+
+        "stackTitle": "Tools & Design Stack",
+        "stackList": [
+          "UI/UX: Figma for interface layout and interactive high-fidelity prototyping.",
+          "Design System: Implementation of reusable global color and typography variables.",
+          "Interactive Components: Multi-state component variants (Default, Hover, and OnClick).",
+          "Web Prototyping: Dynamic screen connections simulating real user navigation."
+        ],
+
+        "featuresTitle": "Design Highlights",
+        "featuresList": [
+          "Real Micro-interactions: Reactive buttons and cards responding to hover and click events.",
+          "Appointment & Store Flows: Layout mapping for pet appointment booking and pet supplies shop.",
+          "Global Variables: Centralized color palette management ensuring overall visual consistency."
+        ],
+
+        "testingTitle": "Validation & Prototyping",
+        "testingDescription": "Focused on user experience (UX) through real-world navigation simulations.",
+        "testingList": [
+          "Usability Testing: Verification of interaction flows to guarantee intuitive site navigation.",
+          "Online Presentation Mode: Prototype accessible via direct interactive link or embedded view."
+        ]
+      }
+    }
+  },
+
+  "about": {
+    "title": "About Me",
+    "skills": "Skills",
+    "studiesTitle": "Studies",
+    "studies": "Education & Certifications",
+    "qualifications": {
+      "title1": "Systems Analyst", 
+      "title2": "Full Stack Developer",
+      "title3": "Web Developer 1 & 2",
+      "title4": "PHP Developer",
+      "title5": "WordPress Developer",
+      "title6": "React + Redux Development"
+    },
+    "certificatesLink": "View Certificates",
+    "resumeLink": "View Resume",
+    "SkillsSection": {
+      "categories": {
+        "frontend": "Frontend",
+        "backend": "Backend",
+        "db": "Database",
+        "hosting": "Infrastructure",
+        "devops": "DevOps",
+        "design": "Design",
+        "tools": "Tools",
+        "testing": "Testing"
+      },
+      "techs": {
+        "javascript": { "name": "JavaScript", "desc": "Core language of the web." },
+        "typescript": { "name": "TypeScript", "desc": "Typed superset of JS." },
+        "reactJs": { "name": "React", "desc": "Library for user interfaces." },
+        "nextJs": { "name": "Next.js", "desc": "Full-stack React framework." },
+        "redux": { "name": "Redux", "desc": "Predictable state container." },
+        "zustand": { "name": "Zustand", "desc": "Fluid state manager." },
+        "html": { "name": "HTML5", "desc": "Semantic web structure." },
+        "css": { "name": "CSS3", "desc": "Styles and visual design." },
+        "postCss": { "name": "PostCss", "desc": "Una herramienta para transformar CSS con JavaScript." },
+        "sass": { "name": "SASS", "desc": "CSS with superpowers." },
+        "tailwind": { "name": "Tailwind", "desc": "Utility-first framework." },
+        "materialUi": { "name": "Material UI", "desc": "Google-style components." },
+        "bootstrap": { "name": "Bootstrap", "desc": "UI component toolkit." },
+        "framerMotion": { "name": "FramerMotion", "desc": "Animation library." },
+        "particle": { "name": "Particle.js", "desc": "Animation library." },
+        "million": { "name": "Million.js", "desc": "Accelerates React applications by optimizing the Virtual DOM." },
+        "mantine": { "name": "Mantine", "desc": "Highly customizable UI component library for React." },
+        
+        "nodeJs": { "name": "Node.js", "desc": "JS runtime environment." },
+        "express": { "name": "Express", "desc": "Standard web framework." },
+        "php": { "name": "PHP", "desc": "Server-side scripting." },
+        "laravel": { "name": "Laravel", "desc": "Elegant PHP framework." },
+        "socketIo": { "name": "Socket.io", "desc": "Real-time bidirectional communication." },
+        "wordPress": { "name": "WordPress", "desc": "Content management (CMS)." },
+        "wooCommerce": { "name": "WooCommerce", "desc": "Online commerce platform." },
+        "restApi": { "name": "REST API", "desc": "Web interface architecture." },
+
+        "sql": { "name": "SQL", "desc": "Query language." },
+        "mySql": { "name": "MySQL", "desc": "Relational database." },
+        "postgreSql": { "name": "PostgreSQL", "desc": "Advanced database." },
+        "supabase": { "name": "Supabase", "desc": "Backend as a Service." },
+        "firebase": { "name": "Firebase", "desc": "Google app platform." },
+
+        "vercel": { "name": "Vercel", "desc": "Optimized frontend deployment." },
+        "netlify": { "name": "Netlify", "desc": "Hosting and Serverless." },
+        "heroku": { "name": "Heroku", "desc": "Platform as a Service." },
+        "render": { "name": "Render", "desc": "Unified cloud for apps." },
+        "neon": { "name": "Neon", "desc": "Serverless Postgres." },
+        "aws": { "name": "AWS", "desc": "Cloud services." },
+        "googleCloud": { "name": "Google Cloud", "desc": "Google infrastructure." },
+
+        "git": { "name": "Git", "desc": "Version control." },
+        "gitHub": { "name": "GitHub", "desc": "Code hosting." },
+        "gitLab": { "name": "GitLab", "desc": "DevOps lifecycle." },
+        "docker": { "name": "Docker", "desc": "App containers." },
+        "jenkins": { "name": "Jenkins", "desc": "Automation server." },
+
+        "figma": { "name": "Figma", "desc": "Interface design." },
+        "uxDesign": { "name": "UX Design", "desc": "User experience." },
+
+        "jira": { "name": "Jira", "desc": "Agile project management." },
+        "trello": { "name": "Trello", "desc": "Collaborative boards." },
+        "postman": { "name": "Postman", "desc": "API testing." },
+        "babel": { "name": "Babel", "desc": "Converts modern JavaScript into browser-compatible code." },
+
+        "jest": { "name": "Jest", "desc": "JavaScript testing." },
+        "phpUnit": { "name": "PHPUnit", "desc": "PHP testing." },
+        "laravelDusk": { "name": "Laravel Dusk", "desc": "Browser testing." },
+        "manualTesting": { "name": "Manual Testing", "desc": "Quality assurance." }
+      }
+    },
+    "labels": {
+      "title": "Title"
+    },
+    "education": {
+      "systemAnalyst": "System Analyst"
+    },
+    "description": {
+      "line1": "I was always attracted to technology, and in 2018 I was able to start",
+      "line2": "with my learnings. I enjoy bringing ideas to life in the",
+      "line3": "browser, learning and overcoming new challenges. My",
+      "line4": "specialty is front-end development with focus on producing",
+      "line5": "web pages and applications that are fast, easy to use,",
+      "line6": "with an optimal UX / UI design and accessible in a wide range of",
+      "line7": "devices and browsers."
+    }
+  },
+
+"contact": {
+    "sendMessage": "Send Message",
+    "name": "Name",
+    "email": "Email",
+    "affair": "Subject",
+    "message": "Message",
+    "send": "Send",
+    "linkedinAlt": "LinkedIn Icon",
+    "githubAlt": "GitHub Icon"
+  },
+  "hiddenMenu": {
+    "home": "Home",
+    "projects": "Projects",
+    "about": "About Me",
+    "contact": "Contact"
+  },
+  "metadata": {
+    "title": "Federico Aguirre | Full Stack Developer",
+    "description": "Federico Aguirre's professional portfolio, projects, and experience."
+  }
+}

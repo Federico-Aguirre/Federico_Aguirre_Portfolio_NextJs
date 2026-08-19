@@ -1,0 +1,346 @@
+{
+  "header": {
+    "home": "Inicio",
+    "about": "Sobre Mí",
+    "projects": "Proyectos",
+    "contact": "Contacto",
+    "sunAlt": "Icono De Sol",
+    "moonAlt": "Icono De Luna"
+  },
+
+  "home": {
+    "headline": "Federico Aguirre Desarrollador  Web",
+    "greeting": "¡Hola!",
+    "watchProjects": "Ver Proyectos"
+  },
+  "projects": {
+    "title": "Proyectos",
+    "categoryFilter": "Filtrar proyectos por categoría",
+    "mainProjects": "Proyectos Principales",
+    "labProjects": "Laboratorio",
+    "previousSlide":"Diapositiva anterior",
+    "nextSlide":"Diapositiva siguiente",
+    "dependencies": "Dependencias",
+    "projectAlt": "Imagen de vista previa del proyecto",
+    "projectDetail": {
+      "notFound": "Proyecto no encontrado",
+      "backHome": "Volver al inicio",
+      "backToProjects": "Volver a Proyectos",
+      "technologies": "Tecnologías utilizadas",
+      "aboutProject": "Sobre el proyecto",
+      "visitSite": "Visitar Sitio Web",
+      "videoPlayerFor": "Reproductor De Video Para",
+      
+      "chatAppDescription": {
+        "title": "Chat App - Mensajería Instantánea en Tiempo Real",
+        "subtitle": "Aplicación Full-Stack distribuida de comunicación bidireccional en tiempo real con canales grupales, chats directos y autenticación híbrida.",
+        "description": "Plataforma moderna de mensajería distribuida desarrollada para ofrecer comunicación instantánea sin latencia. Integra soporte para salas/canales de chat y conversaciones directas, gestión de contactos, envío de archivos multimedia y sincronización fluida entre clientes gracias a una arquitectura basada en WebSockets.",
+
+        "stackTitle": "Stack Tecnológico & Arquitectura",
+        "stackList": [
+          "Frontend: SPA desarrollada con React 19 y TypeScript para una interfaz reactiva, modular y con tipado estático estricto.",
+          "Backend & Real-Time: Servidor Node.js con Express y Socket.IO desplegado en Render para la gestión de eventos bidireccionales en tiempo real.",
+          "Base de Datos & Persistencia: MongoDB Atlas con Mongoose, optimizando la persistencia mediante operaciones atómicas ($addToSet, $pull).",
+          "Autenticación & Seguridad: Sistema híbrido mediante tokens JWT y Google OAuth 2.0 para un acceso seguro y flexible.",
+          "Estado Global & Estilos: Redux Toolkit para una gestión centralizada del estado de la aplicación, estilizado con Tailwind CSS v4.",
+          "Multimedia & Storage: Integración con Cloudinary para la carga, optimización y almacenamiento eficiente de archivos multimedia."
+        ],
+
+        "featuresTitle": "Características Principales",
+        "featuresList": [
+          "Comunicación Bidireccional en Tiempo Real: Emisión y recepción instantánea de mensajes y eventos a través de WebSockets (Socket.IO).",
+          "Autenticación Híbrida (JWT + Google OAuth): Permite inicio de sesión tradicional o autenticación social rápida mediante Google.",
+          "Salas & Canales Dinámicos: Creación y gestión de canales grupales y chats directos entre usuarios.",
+          "Gestión Atómica de Contactos: Operaciones eficientes a nivel de base de datos para agregar o eliminar contactos garantizando consistencia de datos.",
+          "Soporte Multimedia: Envío e intercambio de imágenes optimizadas y alojadas en la nube."
+        ],
+
+        "testingTitle": "Calidad de Código & Configuración",
+        "testingDescription": "El desarrollo mantuvo un enfoque estricto en buenas prácticas de arquitectura web y estándares de desarrollo moderno.",
+        "testingList": [
+          "Tipado Estricto con TypeScript: Cobertura de tipos e interfaces para garantizar la integridad del flujo de datos en cliente y servidor.",
+          "Despliegue Distribuido: Configuración de integración continua con el frontend alojado en Vercel y el servicio backend en Render.",
+          "Linter & Reglas Estrictas: Configuración de ESLint para asegurar estándares de código limpios y consistentes en todo el repositorio."
+        ]
+      },
+
+      "reactJsEcommerceDescription": {
+        "title": "React.js E-Commerce - Catálogo Interactivo & Carrito",
+        "subtitle": "Prototipo de tienda virtual moderna orientada a la experiencia de usuario y la búsqueda en tiempo real.",
+        "description": "Una aplicación web de comercio electrónico en etapa de prototipo desarrollada con React y Firebase. Destaca por un flujo fluido de selección de productos, filtrado reactivo sin recargas y un carrito de compras dinámico con validaciones estrictas de variantes.",
+
+        "stackTitle": "Stack Tecnológico & Arquitectura",
+        "stackList": [
+          "Frontend: React 18 impulsado por Vite + SWC para un rendimiento de renderizado instantáneo.",
+          "Rutado: React Router DOM v6 para una navegación SPA fluida entre vistas de catálogo y detalle.",
+          "Backend & DB: Firebase (Firestore) para la persistencia del catálogo de productos y usuarios.",
+          "Autenticación: Firebase Auth con soporte dual (login por correo/contraseña y Google OAuth).",
+          "Estilos & UI: Bootstrap 5 y React-Bootstrap para un diseño responsivo, limpio y adaptable."
+        ],
+
+        "featuresTitle": "Características Principales",
+        "featuresList": [
+          "Búsqueda Reactiva al Instante: Filtrado dinámico de productos en tiempo real a medida que el usuario escribe, sin cambiar de página.",
+          "Autenticación Flexible: Opción de acceso mediante credenciales tradicionales o autenticación rápida con Google.",
+          "Carrito con Validación de Variantes: Exige la selección obligatoria de talle y color antes de permitir añadir un producto al carrito.",
+          "Experiencia SPA Fluida: Navegación instantánea entre categorías y detalles sin refrescos de pantalla."
+        ],
+
+        "testingTitle": "Estado del Proyecto & Calidad",
+        "testingDescription": "Construido bajo estándares de desarrollo limpio con enfoque en evolutividad futura.",
+        "testingList": [
+          "Linter & Calidad: Configuración estricta de ESLint para garantizar buenas prácticas en React Hooks y el ciclo de vida de componentes.",
+          "Lógica Modular: Arquitectura desacoplada lista para integrar pasarelas de pago y gestión de órdenes en futuras versiones."
+        ]
+      },
+    
+      "laravelEcommerceDescription": {
+        "title": "Veterinaria & E-Commerce - Plataforma Integral Laravel",
+        "subtitle": "Sistema Full-Stack para gestión médica de mascotas y comercio electrónico con arquitectura MVC avanzada.",
+        "description": "Una solución web completa desarrollada en Laravel que combina un sistema de reserva de turnos veterinarios con una tienda en línea. Destaca por su estricto control de seguridad en rutas via Middlewares, carga asíncrona de productos, integración con PayPal y contenedorización en Docker.",
+
+        "stackTitle": "Stack Tecnológico & Arquitectura",
+        "stackList": [
+          "Backend: Laravel (PHP) implementando el patrón MVC con Middlewares personalizados, Caching y protección por Tokens CSRF/Sanctum.",
+          "Frontend & Assets: Vite integrado con Tailwind CSS, Sass, Axios y PostCSS para un empaquetado ágil de recursos.",
+          "Entorno & Infraestructura: Entorno totalmente dockerizado para garantizar la paridad entre desarrollo y producción.",
+          "Autenticación & OAuth: Login tradicional con hashing seguro de contraseñas y Google OAuth 2.0.",
+          "Pasarela de Pagos & Mailing: Integración con PayPal SDK para transacciones en línea y servicio de correo funcional para contactos."
+        ],
+
+        "featuresTitle": "Características Principales",
+        "featuresList": [
+          "E-Commerce & Reserva de Turnos: Plataforma dual para adquisición de alimentos/productos y agendamiento de citas médicas.",
+          "Filtros Asíncronos (AJAX): Carga dinámica de productos por categorías (ej. 'Alimentos') mediante Axios sin recargar la página.",
+          "Gestión de Perfiles y Mascotas: CRUD completo para la edición de perfiles personales y registros clínicos de las mascotas.",
+          "Reglas de Negocio Estrictas: Restricción de compras y solicitudes de turnos hasta completar el perfil del usuario y la mascota.",
+          "Historial de Compras & Auditoría: Sección privada con filtros avanzados para el seguimiento detallado de órdenes pasadas."
+        ],
+
+        "testingTitle": "Seguridad, QA & Testing Automation",
+        "testingDescription": "Construido priorizando la integridad de datos, protección contra accesos no autorizados y pruebas automatizadas.",
+        "testingList": [
+          "Middlewares & Seguridad de Rutas: Protección exhaustiva de endpoints para restringir vistas según autenticación y estado del perfil.",
+          "PHPUnit & Laravel Dusk: Pruebas unitarias de backend y pruebas End-to-End (E2E) en el navegador para flujos críticos.",
+          "Gestión de Caché & Rendimiento: Optimización de consultas a base de datos y retención de sesiones con soporte de caché."
+        ]
+      },
+
+      "chessAppDescription": {
+        "title": "Chess App - Motor de Ajedrez en JavaScript Vainilla",
+        "subtitle": "Juego de ajedrez desarrollado sin frameworks para demostrar el dominio profundo de JS moderno y manipulación del DOM.",
+        "description": "Un motor de ajedrez interactivo construido exclusivamente con HTML5, CSS3 y Vanilla JavaScript (ES Modules). Implementa un tablero representado mediante matrices de estados, drag and drop nativo, validación matemática de movimientos por pieza y un sistema avanzado de 'premoves' ilimitados.",
+
+        "stackTitle": "Stack Tecnológico & Arquitectura",
+        "stackList": [
+          "Core: Vanilla JavaScript (ES6+) utilizando ES Modules (script type='module') para una arquitectura limpia, modular y desacoplada.",
+          "Manipulación del DOM: Renderizado dinámico del tablero a partir de arrays de estado, gestión de eventos y mutación de clases CSS.",
+          "Estilos & Temas: CSS3 modular con variables globales (:root) para paletas de colores y reset de estilos dinámicos.",
+          "Despliegue & CI/CD: Automatización de deploys continuos en Netlify conectados directamente con GitHub."
+        ],
+
+        "featuresTitle": "Características Principales",
+        "featuresList": [
+          "Drag and Drop Nativo: Interacción fluida de arrastrar y soltar piezas mediante la API nativa del navegador.",
+          "Matriz de Tablero Dinámica: Representación interna del estado del juego en un array de 64 casillas con celdas de colisión.",
+          "Motor de Reglas y Movimientos: Lógica basada en condicionales y switches para calcular trayectorias de peones, caballos, alfiles y torres.",
+          "Sistema de Premoves Ilimitados: Mecanismo de cola para encadenar jugadas por adelantado y ejecutarlas automáticamente al cambiar el turno.",
+          "Validación de Capturas y Jaque: Algoritmo interno para la verificación dinámica del turno del jugador y condiciones de victoria."
+        ],
+
+        "testingTitle": "Fundamentos & Buenas Prácticas",
+        "testingDescription": "Proyecto enfocado en dominar los cimientos sobre los que se construyen librerías modernas como React.",
+        "testingList": [
+          "Arquitectura Modular de JS: Importación y exportación explícita de lógica de negocio, reglas e interfaz gráfica en archivos independientes.",
+          "Gestión Eficiente de Arrays: Uso intensivo de métodos como splice(), include() y ordenamiento de historial para la sincronización de estados."
+        ]
+      },
+      
+      "nextJsEcommerceDescription": {
+        "title": "Senior Store - E-Commerce de Alta Performance",
+        "subtitle": "Aplicación web de comercio electrónico moderna, rápida y escalable con arquitectura de vanguardia en Next.js.",
+        "description": "El proyecto simula una tienda de ropa exclusiva integrando flujos complejos de autenticación, persistencia de datos en la nube, pasarela de pagos y testing automatizado.",
+        
+        "stackTitle": "Stack Tecnológico & Arquitectura",
+        "stackList": [
+          "Frontend: Next.js 15+ (App Router) aprovechando Server Components (RSC) para cargas asíncronas inmediatas y SEO optimizado.",
+          "Estilos: Tailwind CSS con un diseño minimalista, responsivo y animaciones fluidas.",
+          "Base de Datos: Aiven (PostgreSQL) para garantizar persistencia robusta del historial de compras y perfiles.",
+          "API Layer: GraphQL local mediante peticiones fetch nativas, optimizando la transferencia de datos.",
+          "Estado Global: Zustand para el manejo del carrito de compras en memoria en tiempo real.",
+          "Autenticación: NextAuth.js integrado con Google OAuth y sesiones en base de datos.",
+          "Pasarela de Pagos: Mercado Pago SDK integrado dinámicamente mediante Webhooks y Query Params."
+        ],
+
+        "featuresTitle": "Características Principales",
+        "featuresList": [
+          "Buscador Sincronizado en URL: Filtrado instantáneo del catálogo mediante Query Params (?search=...).",
+          "Skeleton Loader Premium: Pantallas de carga animadas (animate-pulse) dentro de bloques <Suspense />.",
+          "Lista de Deseos (Wishlist): Persistencia independiente de productos favoritos por usuario.",
+          "Historial de Órdenes Dinámico: Sección exclusiva ('Mis Compras') protegida por NextAuth."
+        ],
+
+        "testingTitle": "QA & Testing Automation (Playwright)",
+        "testingDescription": "El repositorio incluye una suite completa de pruebas End-to-End (E2E) diseñada bajo el patrón de arquitectura Page Object Model (POM).",
+        "testingList": [
+          "Mantenibilidad: Separación estricta de selectores y flujos lógicos en clases independientes.",
+          "Agnóstico al Entorno: Configuración dinámica para ejecutar tests en localhost o producción.",
+          "Interceptación de Rutas: Simulación de flujos mediante mockeo de respuestas API (page.route)."
+        ]
+      },
+
+      "figmaProjectDescription": {
+        "title": "Diseño UI/UX - Prototipo Veterinaria",
+        "subtitle": "Maquetado de interfaz interactivo para clínica veterinaria y e-commerce de mascotas.",
+        "description": "Prototipo funcional de alta fidelidad diseñado en Figma. Define la experiencia visual completa de la veterinaria, incluyendo estados de componentes (default, hover, click) y la navegación entre flujos de reserva de turnos y catálogo.",
+
+        "stackTitle": "Herramientas & Herramientas de Diseño",
+        "stackList": [
+          "UI/UX: Figma para maquetado de interfaz y prototipado interactivo de alta fidelidad.",
+          "Design System: Definición y aplicación de variables globales de color y tipografía reutilizables.",
+          "Componentes Interactivos: Creación de componentes con variantes para estados Default, Hover y OnClick.",
+          "Prototipado Web: Conexión dinámica entre pantallas para simular la navegación real de un usuario."
+        ],
+        "featuresTitle": "Puntos Clave del Diseño",
+        "featuresList": [
+          "Microinteracciones Reales: Botones y tarjetas reactivas al pasar el cursor (hover) y al hacer clic.",
+          "Flujo de Reserva y E-Commerce: Maquetado visual del sistema de turnos para mascotas y tienda de alimentos.",
+          "Variables Globales: Gestión centralizada de paleta de colores para mantener consistencia visual en todo el sitio."
+        ],
+
+        "testingTitle": "Validación & Prototipado",
+        "testingDescription": "Enfoque en la experiencia de usuario (UX) mediante simulaciones de navegación real.",
+        "testingList": [
+          "Testing de Usabilidad: Validación de flujos de interacción para garantizar una navegación intuitiva.",
+          "Modo Presentación Online: Prototipo accesible mediante enlace interactivo directo o vista embebida."
+        ]
+      }
+    }
+  },
+
+  "about": {
+    "title": "Sobre Mí",
+    "skills": "Habilidades",
+    "studiesTitle": "Estudios",
+    "studies": "Formación Académica y Complementaria",
+    "qualifications": {
+      "title1": "Analista de Sistemas",
+      "title2": "Desarrollador Full Stack",
+      "title3": "Desarrollador Web 1 & 2",
+      "title4": "Desarrollador PHP",
+      "title5": "Desarrollador WordPress",
+      "title6": "Desarrollo React + Redux"
+    },
+    "certificatesLink": "Ver Certificados",
+    "resumeLink": "Ver CV",
+    "SkillsSection": {
+      "categories": {
+        "frontend": "Frontend",
+        "backend": "Backend",
+        "db": "Base de Datos",
+        "hosting": "Infraestructura",
+        "devops": "DevOps",
+        "design": "Diseño",
+        "tools": "Herramientas",
+        "testing": "Testing"
+      },
+      "techs": {
+        "javascript": { "name": "JavaScript", "desc": "Lenguaje principal de la web." },
+        "typescript": { "name": "TypeScript", "desc": "Superset tipado de JS." },
+        "reactJs": { "name": "React", "desc": "Librería para interfaces." },
+        "nextJs": { "name": "Next.js", "desc": "Framework React Full-stack." },
+        "redux": { "name": "Redux", "desc": "Contenedor de estado predecible." },
+        "zustand": { "name": "Zustand", "desc": "Gestor de estado fluido." },
+        "html": { "name": "HTML5", "desc": "Estructura semántica web." },
+        "css": { "name": "CSS3", "desc": "Estilos y diseño visual." },
+        "postCss": { "name": "PostCss", "desc": "Una herramienta para transformar CSS con JavaScript." },
+        "sass": { "name": "SASS", "desc": "CSS con superpoderes." },
+        "tailwind": { "name": "Tailwind", "desc": "Framework de utilidad." },
+        "materialUi": { "name": "Material UI", "desc": "Componentes estilo Google." },
+        "bootstrap": { "name": "Bootstrap", "desc": "Toolkit de componentes UI." },
+        "framerMotion": { "name": "FramerMotion", "desc": "Librería de animaciones." },
+        "particle": { "name": "Particle.js", "desc": "Librería de animaciones." },
+        "million": { "name": "Million.js", "desc": "Acelera aplicaciones React optimizando su Virtual DOM." },
+        "mantine": { "name": "Mantine", "desc": "Librería de componentes UI altamente personalizables para React." },
+        
+        "nodeJs": { "name": "Node.js", "desc": "Entorno de ejecución JS." },
+        "express": { "name": "Express", "desc": "Framework web estándar." },
+        "php": { "name": "PHP", "desc": "Scripting del lado servidor." },
+        "laravel": { "name": "Laravel", "desc": "Framework PHP elegante." },
+        "socketIo": { "name": "Socket.io", "desc": "Comunicación bidireccional real-time." },
+        "wordPress": { "name": "WordPress", "desc": "Gestión de contenidos (CMS)." },
+        "wooCommerce": { "name": "WooCommerce", "desc": "Plataforma de comercio online." },
+        "restApi": { "name": "REST API", "desc": "Arquitectura de interfaz web." },
+
+        "sql": { "name": "SQL", "desc": "Lenguaje de consultas." },
+        "mySql": { "name": "MySQL", "desc": "Base de datos relacional." },
+        "postgreSql": { "name": "PostgreSQL", "desc": "Base de datos avanzada." },
+        "supabase": { "name": "Supabase", "desc": "Backend como servicio." },
+        "firebase": { "name": "Firebase", "desc": "Plataforma app de Google." },
+
+        "vercel": { "name": "Vercel", "desc": "Despliegue frontend optimizado." },
+        "netlify": { "name": "Netlify", "desc": "Hosting y Serverless." },
+        "heroku": { "name": "Heroku", "desc": "Plataforma como servicio." },
+        "render": { "name": "Render", "desc": "Nube unificada para apps." },
+        "neon": { "name": "Neon", "desc": "Postgres Serverless." },
+        "aws": { "name": "AWS", "desc": "Servicios en la nube." },
+        "googleCloud": { "name": "Google Cloud", "desc": "Infraestructura de Google." },
+
+        "git": { "name": "Git", "desc": "Control de versiones." },
+        "gitHub": { "name": "GitHub", "desc": "Hospedaje de código." },
+        "gitLab": { "name": "GitLab", "desc": "Ciclo de vida DevOps." },
+        "docker": { "name": "Docker", "desc": "Contenedores de apps." },
+        "jenkins": { "name": "Jenkins", "desc": "Servidor de automatización." },
+
+        "figma": { "name": "Figma", "desc": "Diseño de interfaces." },
+        "uxDesign": { "name": "UX Design", "desc": "Experiencia de usuario." },
+
+        "jira": { "name": "Jira", "desc": "Gestión ágil de proyectos." },
+        "trello": { "name": "Trello", "desc": "Tableros colaborativos." },
+        "postman": { "name": "Postman", "desc": "Pruebas de API." },
+        "babel": { "name": "Babel", "desc": "Convierte JavaScript moderno en código compatible con navegadores." },
+
+        "jest": { "name": "Jest", "desc": "Testing en JavaScript." },
+        "phpUnit": { "name": "PhpUnit", "desc": "Testing en PHP." },
+        "laravelDusk": { "name": "Laravel Dusk", "desc": "Pruebas de navegador." },
+        "manualTesting": { "name": "Manual Testing", "desc": "Aseguramiento de calidad." }
+      }
+    },
+    "labels": {
+      "title": "Título"
+    },
+    "education": {
+      "systemAnalyst": "Analista De Sistemas"
+    },
+    "description": {
+      "line1": "Siempre me atrajo la tecnología, y en 2018 pude comenzar",
+      "line2": "con mis aprendizajes. Disfruto llevar ideas a la realidad en el",
+      "line3": "navegador, aprendiendo y superando nuevos desafíos. Mi",
+      "line4": "especialidad es el desarrollo front-end con foco en crear",
+      "line5": "páginas web y aplicaciones rápidas, fáciles de usar,",
+      "line6": "con un diseño UX / UI óptimo y accesibles en una amplia gama de",
+      "line7": "dispositivos y navegadores."
+    }
+  },
+
+  "contact": {
+    "sendMessage": "Enviar Mensaje",
+    "name": "Nombre",
+    "email": "Email",
+    "affair": "Asunto",
+    "message": "Mensaje",
+    "send": "Enviar",
+    "linkedinAlt": "Icono De LinkedIn",
+    "githubAlt": "Icono De GitHub"
+  },
+  "hiddenMenu": {
+    "home": "Inicio",
+    "projects": "Proyectos",
+    "about": "Sobre Mí",
+    "contact": "Contacto"
+  },
+  "metadata": {
+    "title": "Federico Aguirre | Desarrollador Full Stack",
+    "description": "Portafolio profesional de Federico Aguirre, proyectos y experiencia."
+  }
+}

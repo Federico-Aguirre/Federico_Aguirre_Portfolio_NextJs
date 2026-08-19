@@ -1,0 +1,87 @@
+@use "../abstract/variables.scss" as variables;
+
+.contact {
+    height: 650px;
+    width: 100vw;
+    align-content: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+    overflow: hidden !important; 
+
+    &__formContainer {
+        width: 80%;
+        background-color: variables.$lightViolet;
+        border-radius: 10px;
+        border: 5px solid variables.$darkViolet;
+    
+        &__form {
+            display: flex;
+            flex-direction: column;
+            text-align: start;
+            margin: 0 20px;
+            box-sizing: border-box;
+            padding-bottom: 20px;
+
+            &__title {
+                text-align: center;
+            }
+
+            div {
+                font-size: variables.$bigFont;
+                font-weight: 700;
+                text-align: center;
+            }
+
+            label,div {
+                margin-top: 12px;
+            }
+
+            label {
+                margin-left: 4px;
+            }
+
+            textarea {
+                height: 100px;
+                margin-bottom: 25px;
+            }
+
+            input[type="submit"] {
+                width: 100%;
+                font-size: 1em;
+                font-weight: 600;
+                cursor: pointer;
+            }
+        }
+    }
+
+    &__links {
+        height: auto;
+        display: flex;
+        flex-direction: row;
+        place-content: center;
+        column-gap: 25px;
+
+        &__linkedin, &__github {
+            height: 44px;
+            width: 44px;
+            border-radius: 23px;
+        }
+    }
+}
+
+@media (min-width:375px) {
+    .contact__formContainer {
+        width: 300px;
+    }
+}
+
+@media (min-width:800px) {
+    .contact {
+        height: 90dvh;
+
+        &__formContainer{
+            margin-top: 5%;
+        }
+    }
+}

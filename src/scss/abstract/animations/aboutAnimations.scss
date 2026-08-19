@@ -1,0 +1,11 @@
+@media (min-width:800px) {
+    .scrollToStudies {
+        margin-top: calc(23dvh + 2px);
+        transition: 1s;
+    }
+
+    .scrollToAbout {
+        margin-top: calc(47dvh + 3px);
+        transition: 1s;
+    }
+}
