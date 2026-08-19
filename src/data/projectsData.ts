@@ -49,7 +49,7 @@ export const PROJECTS_DATA: ProjectData[] = [
     title: "React.js Chat App",
     dependencies: "React 19, TypeScript, Node.js, Express, Socket.IO, Redux Toolkit, Tailwind CSS v4, MongoDB, JWT, Google OAuth 2.0, Cloudinary.",
     image: firstProject,
-    liveUrl: "https://federico-aguirre.github.io/ChatApp",
+    liveUrl: "https://federico-aguirre-chat-app.vercel.app",
     videoUrl: "",
     descriptionKey: "chatAppDescription",
   },
