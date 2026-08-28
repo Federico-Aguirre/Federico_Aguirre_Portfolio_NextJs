@@ -1,6 +1,8 @@
-# 🚀 Portafolio de Desarrollador Web — SPA
+🌐 **Language:** **English** | [Versión en Español](README.es.md)
 
-🌐 **Idioma:** **Español** | [English Version](README.en.md)
+# 🚀 Web Developer Portfolio — SPA
+
+[![View Live Project](https://img.shields.io/badge/🚀_View_Live_Demo-007ACC?style=for-the-badge&logo=vercel&logoColor=white)](https://federico-aguirre-portfolio-next-js.vercel.app)
 
 [![Vercel Status](https://img.shields.io/badge/Vercel-Deployed-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://federico-aguirre-portfolio-next-js.vercel.app/)
 [![Next.js](https://img.shields.io/badge/Next.js-14_App_Router-000000?style=for-the-badge&logo=nextdotjs&logoColor=white)](https://nextjs.org/)
@@ -8,116 +10,104 @@
 [![PageSpeed](https://img.shields.io/badge/PageSpeed-99%2F100_Desktop-brightgreen?style=for-the-badge&logo=googlechrome&logoColor=white)](https://pagespeed.web.dev/analysis/https-federico-aguirre-portfolio-next-js-vercel-app-en/rw1kyveopj?form_factor=desktop)
 [![License](https://img.shields.io/badge/License-MIT-green.style=for-the-badge)](LICENSE)
 
-> Un portafolio web interactivo de alto rendimiento construido como una **Single Page Application (SPA)** con Next.js 14, enfocado en la accesibilidad universal (**a11y**), animación vectorial y 3D, soporte multiidioma (**i18n**) y validación de datos segura.
+> An interactive, high-performance web portfolio built as a **Single Page Application (SPA)** using Next.js 14, focused on universal accessibility (**a11y**), 3D & vector animations, multi-language support (**i18n**), and secure data validation.
 
 ---
 
-## ⚡ PageSpeed Benchmarks & Auditoría Web Vitals
+## ⚡ PageSpeed Benchmarks & Web Vitals Audit
 
-Este proyecto fue auditado minuciosamente y optimizado a nivel de hilo principal, bundle de JavaScript y marcado semántico para cumplir con los estándares de rendimiento y accesibilidad más exigentes de la web actual:
+This project was thoroughly audited and optimized at the main thread level, JavaScript bundle footprint, and semantic markup to meet the highest industry standards for modern web performance and accessibility:
 
-| Métrica | Resultado | Estado |
-| :--- | :---: | :---: |
-| **Rendimiento (Desktop)** | **99%** | 🟢 Sobresaliente |
-| **Accesibilidad (a11y)** | **100%** | 🟢 Perfecto |
-| **Buenas Prácticas** | **100%** | 🟢 Perfecto |
-| **SEO** | **100%** | 🟢 Perfecto |
-| **Navegación Agéntica (Compatibilidad IA)** | **2 / 2** | 🟢 WCAG Completo |
+| Metric                                    |   Score   |      Status       |
+| :---------------------------------------- | :-------: | :---------------: |
+| **Performance (Desktop)**                 |  **99%**  |  🟢 Outstanding   |
+| **Accessibility (a11y)**                  | **100%**  |    🟢 Perfect     |
+| **Best Practices**                        | **100%**  |    🟢 Perfect     |
+| **SEO**                                   | **100%**  |    🟢 Perfect     |
+| **Agentic Navigation (AI Compatibility)** | **2 / 2** | 🟢 WCAG Compliant |
 
-> 🔗 **[Ver Auditoría Oficial e Informe en Vivo en Google PageSpeed Insights](https://pagespeed.web.dev/analysis/https-federico-aguirre-portfolio-next-js-vercel-app-en/rw1kyveopj?form_factor=desktop)**
+> 🔗 **[View Official Live Audit & Report on Google PageSpeed Insights](https://pagespeed.web.dev/analysis/https-federico-aguirre-portfolio-next-js-vercel-app-en/rw1kyveopj?form_factor=desktop)**
 
-### 📷 Captura de Auditoría (PageSpeed)
+### 📷 Audit Screenshot (PageSpeed)
 
-[![PageSpeed Audit Score](./public/readMeImages/pagespeed-reporte-valores.png)](https://pagespeed.web.dev/analysis/https-federico-aguirre-portfolio-next-js-vercel-app-en/rw1kyveopj?form_factor=desktop)
+[![PageSpeed Audit Score](./public/readMeImages/pagespeed-report-values.png)](https://pagespeed.web.dev/analysis/https-federico-aguirre-portfolio-next-js-vercel-app-en/rw1kyveopj?form_factor=desktop)
 
-[![PageSpeed Audit Score](./public/readMeImages/pagespeed-reporte-metricas.png)](https://pagespeed.web.dev/analysis/https-federico-aguirre-portfolio-next-js-vercel-app-en/rw1kyveopj?form_factor=desktop)
+[![PageSpeed Audit Score](./public/readMeImages/pagespeed-report-metrics.png)](https://pagespeed.web.dev/analysis/https-federico-aguirre-portfolio-next-js-vercel-app-en/rw1kyveopj?form_factor=desktop)
 
 ---
 
-## 🔒 Arquitectura de Rendimiento & Accesibilidad (A11y)
+## 🔒 Performance & Accessibility (a11y) Architecture
 
-* 🏎️ **Tree-Shaking de Animaciones con `LazyMotion`:**
-  * Reducción de **~70% del bundle inicial de animación** mediante `LazyMotion` y la variante liviana `domAnimation` de Framer Motion al nivel del `RootLayout`.
-  * Migración completa de componentes pesados `<motion.*>` a componentes optimizados `<m.*>` para evitar la descarga del motor completo en la primera carga.
-* 🚀 **Optimización del LCP (Largest Contentful Paint):**
-  * Eliminación de bloques invisibles (`opacity: 0` inicial) y demoras de animación *Above the Fold* en el Hero, garantizando la renderización inmediata del primer render desde SSR.
-* ♿ **Navegación Agéntica & Estándares WCAG:**
-  * Estructura estricta de componentes de pestañas (`role="tablist"`, `role="tab"`, `role="tabpanel"`) y aislamiento de contenedores decorativos con `role="presentation"` y `aria-hidden="true"`.
-  * Jerarquía descendente de encabezados semánticos (`h1` ➔ `h2` ➔ `h3`) sin saltos de nivel visuales.
-  * Detección activa de preferencia de movimiento reducido (`useReducedMotion`) para prevenir mareos en usuarios con sensibilidad vestibular.
-* ⚡ **Aceleración por Hardware (GPU Compositing):**
-  * Pistas de composición directa mediante CSS `will-change: transform, opacity` para asegurar animaciones suaves a 60 FPS sin provocar repintados de diseño (*Layout Shifts / CLS*).
+- 🏎️ **Animation Tree-Shaking with `LazyMotion`:**
+  - Reduced **~70% of the initial animation bundle size** by implementing `LazyMotion` with the lightweight `domAnimation` feature set at the `RootLayout` level.
+  - Migrated all heavy `<motion.*>` JSX tags to optimized `<m.*>` components to prevent loading the full Framer Motion engine during initial load.
+- 🚀 **LCP (Largest Contentful Paint) Optimization:**
+  - Eliminated invisible render-blocking states (`opacity: 0` initial state) and layout delay animations _Above the Fold_ in the Hero section, ensuring instant SSR paint.
+- ♿ **Agentic Navigation & WCAG Standards:**
+  - Strict tab component structure (`role="tablist"`, `role="tab"`, `role="tabpanel"`) and isolation of purely decorative elements using `role="presentation"` and `aria-hidden="true"`.
+  - Proper descending semantic heading hierarchy (`h1` ➔ `h2` ➔ `h3`) without visual level skipping.
+  - Active motion preference detection (`useReducedMotion`) to prevent motion sickness for users with vestibular sensitivities.
+- ⚡ **Hardware Acceleration (GPU Compositing):**
+  - Direct CSS composition hints (`will-change: transform, opacity`) ensuring smooth 60 FPS animations without triggering unnecessary Layout Shifts (CLS) or main-thread repaints.
 
 ---
 
 ## 🛠️ Tech Stack
 
 ### Core & Framework
+
 ![Next.js](https://img.shields.io/badge/Next.js_14-000000?style=for-the-badge&logo=nextdotjs&logoColor=white)
 ![React](https://img.shields.io/badge/React_18-61DAFB?style=for-the-badge&logo=react&logoColor=black)
 ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
 
-### Estilos & Animaciones
+### Styling & Animations
+
 ![Sass/SCSS](https://img.shields.io/badge/Sass_Modules-CC6699?style=for-the-badge&logo=sass&logoColor=white)
 ![Framer Motion](https://img.shields.io/badge/Framer_Motion_LazyMotion-0055FF?style=for-the-badge&logo=framer&logoColor=white)
 ![tsParticles](https://img.shields.io/badge/tsParticles_3D-000000?style=for-the-badge&logo=tsnode&logoColor=white)
 ![OverlayScrollbars](https://img.shields.io/badge/OverlayScrollbars-007ACC?style=for-the-badge&logo=windowsterminal&logoColor=white)
 
-### Estado & Formularios
+### State & Forms
+
 ![Zustand](https://img.shields.io/badge/Zustand-443E38?style=for-the-badge&logo=react&logoColor=white)
 ![React Hook Form](https://img.shields.io/badge/React_Hook_Form-EC5990?style=for-the-badge&logo=reacthookform&logoColor=white)
 ![Zod](https://img.shields.io/badge/Zod-3E67B1?style=for-the-badge&logo=zod&logoColor=white)
 
-### Internacionalización & UI Utils
+### Internationalization & UI Utils
+
 ![next-intl](https://img.shields.io/badge/next--intl-000000?style=for-the-badge&logo=i18next&logoColor=white)
 ![Embla Carousel](https://img.shields.io/badge/Embla_Carousel-000000?style=for-the-badge&logo=target&logoColor=white)
 
 ---
 
-## ✨ Características Principales
+## ✨ Key Features
 
-* ⚡ **Experiencia SPA Fluida:** Navegación continua entre las secciones *Home, Projects, About Me* y *Contact* sin recargas molestas de página.
-* 🌍 **Internacionalización (i18n):**
-  * Soporte multilenguaje (Español / Inglés) implementado con `next-intl`.
-  * Preservación de posición de scroll en transiciones mediante almacenamiento de sesión y sincronización dinámica.
-* 🎡 **Carrusel & Filtro de Proyectos (`Projects`):**
-  * Segmentación dinámica por categorías (Principales y Laboratorio).
-  * Slider/Ruleta responsiva impulsada por **Embla Carousel**.
-  * Rutas dinámicas `/projects/[slug]` para ver detalles ampliados de cada proyecto, video demostrativo y enlaces en vivo.
-* 🎨 **Más de 70 Componentes SVG Animados Nativos en TSX (`About Me / Skills`):**
-  * Iconografía interactiva desarrollada en código puro (`m.svg` y `m.path`) utilizando **Framer Motion**.
-  * Micro-interacciones vectoriales ultra livianas y completamente adaptables al tema dinámico sin librerías pesadas externas.
-* 🌌 **Animaciones & Partículas 3D:**
-  * Fondo reactivo de partículas 3D utilizando `@tsparticles` (con arquitectura Singleton para evitar fugas de memoria).
-* 🌓 **Tema Claro / Oscuro Dinámico:**
-  * Estado global gestionado con **Zustand** y sombras dinámicas personalizadas (*Glowing Shadows*).
-* 🛡️ **Formulario de Contacto Seguro:**
-  * Validación estricta en cliente y servidor mediante **React Hook Form** y esquemas tipados con **Zod**.
-
----
-
-🌐 Despliegue
-Este proyecto está hosteado y desplegado de forma continua en Vercel, aprovechando las optimizaciones nativas para Next.js, como el renderizado híbrido, la compresión de imágenes al vuelo y una Edge Network global para tiempos de carga mínimos.
+- ⚡ **Seamless SPA Experience:** Continuous navigation across _Home, Projects, About Me_, and _Contact_ without page reloads.
+- 🌍 **Internationalization (i18n):**
+  - Multi-language support (English / Spanish) powered by `next-intl`.
+  - Scroll position retention across locale switches managed through session storage and dynamic state sync.
+- 🎡 **Project Carousel & Category Filter:**
+  - Categorized showcase (Featured Projects & Lab/Experiments).
+  - Responsive slider driven by **Embla Carousel**.
+  - Dynamic `/projects/[slug]` routes for detailed project breakdowns, video demos, and live URLs.
+- 🎨 **70+ Native TSX Animated Vector Icons (`About Me / Skills`):**
+  - Custom interactive iconography built in pure TSX (`m.svg` & `m.path`) using **Framer Motion**.
+  - Ultra-lightweight vector micro-interactions tailored to active theme palettes without third-party dependencies.
+- 🌌 **3D Particles & Background Animations:**
+  - Interactive 3D canvas using `@tsparticles` (implemented via Singleton architecture to prevent memory leaks).
+- 🌓 **Dynamic Light / Dark Theme:**
+  - Global state powered by **Zustand** with custom glowing drop shadows.
+- 🛡️ **Secure Contact Form:**
+  - Client and server-side validation enforced with **React Hook Form** and strict **Zod** schema inference.
 
 ---
 
-## 💻 Instalación y Configuración Local
+## 💻 Local Installation & Setup
 
-Sigue estos pasos para ejecutar el proyecto en tu entorno local:
+Follow these steps to run the project locally:
 
-1. **Clonar el repositorio:**
+1. **Clone the repository:**
    ```bash
    git clone [https://github.com/Federico-Aguirre/Federico_Aguirre_Portfolio_NextJs.git](https://github.com/Federico-Aguirre/Federico_Aguirre_Portfolio_NextJs.git)
    cd Federico_Aguirre_Portfolio_NextJs
-
-2. Instalar dependencias:
-
-   npm install
-   # o bien: yarn install / pnpm install / bun install
-
-3. Iniciar el servidor de desarrollo:
-
-   npm run dev
-
-4. Abrir en el navegador:
-   Visita http://localhost:3000 para ver la aplicación en funcionamiento.
+   ```

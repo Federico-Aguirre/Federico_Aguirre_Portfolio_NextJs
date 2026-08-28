@@ -214,6 +214,33 @@
           "Testing de Usabilidad: Validación de flujos de interacción para garantizar una navegación intuitiva.",
           "Modo Presentación Online: Prototipo accesible mediante enlace interactivo directo o vista embebida."
         ]
+      },
+
+      "wordPressEcommerceDescription": {
+        "title": "E-Commerce WordPress - Tienda Deportiva",
+        "subtitle": "Plataforma de comercio electrónico con catálogo dinámico y maquetación personalizada.",
+        "description": "Sitio e-commerce funcional desarrollado en WordPress y WooCommerce. Incluye maquetación responsiva personalizada, integración de catálogo de productos mediante componentes HTML/shortcodes y resolución de arquitectura de enlaces en servidor.",
+
+        "stackTitle": "Tecnologías & Herramientas CMS",
+        "stackList": [
+          "CMS & E-Commerce: WordPress y WooCommerce para la gestión integral de catálogo, productos y flujo de tienda.",
+          "Maquetación Web: Tema Astra y Elementor para la construcción visual responsiva de la interfaz.",
+          "Componentes Custom: Integración de tarjetas de producto mediante HTML personalizado y shortcodes dinámicos.",
+          "Infraestructura & Servidor: Configuración de permalinks, archivos .htaccess y despliegue en hosting."
+        ],
+        "featuresTitle": "Puntos Clave del Proyecto",
+        "featuresList": [
+          "Catálogo Dinámico: Organización de productos deportivos con navegación fluida a sus fichas individuales.",
+          "Navegación & Cabecera: Estructuración del menú principal y encabezado optimizados para la usabilidad.",
+          "Diseño Adaptativo: Experiencia visual uniforme en dispositivos móviles y de escritorio."
+        ],
+
+        "testingTitle": "Validación & Despliegue",
+        "testingDescription": "Enfoque en la resolución de arquitectura de servidor y experiencia de usuario.",
+        "testingList": [
+          "Gestión de Rutas: Resolución de permalinks amigables para el acceso correcto a productos.",
+          "Sitio Web Activo: Despliegue funcional en servidor con acceso público mediante enlace directo."
+        ]
       }
     }
   },

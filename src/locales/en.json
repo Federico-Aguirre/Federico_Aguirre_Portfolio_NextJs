@@ -217,6 +217,32 @@
           "Usability Testing: Verification of interaction flows to guarantee intuitive site navigation.",
           "Online Presentation Mode: Prototype accessible via direct interactive link or embedded view."
         ]
+      },
+      "wordPressEcommerceDescription": {
+        "title": "WordPress E-Commerce - Sports Store",
+        "subtitle": "E-commerce platform featuring a dynamic catalog and custom layout.",
+        "description": "Functional e-commerce website built with WordPress and WooCommerce. Features custom responsive layout, product catalog integration via HTML components/shortcodes, and server-side link architecture troubleshooting.",
+
+        "stackTitle": "Technologies & CMS Tools",
+        "stackList": [
+          "CMS & E-Commerce: WordPress and WooCommerce for end-to-end management of catalogs, products, and store flows.",
+          "Web Layout: Astra Theme and Elementor for responsive visual interface building.",
+          "Custom Components: Integration of product cards using custom HTML and dynamic shortcodes.",
+          "Infrastructure & Server: Permalink configuration, .htaccess file optimization, and hosting deployment."
+        ],
+        "featuresTitle": "Key Project Highlights",
+        "featuresList": [
+          "Dynamic Catalog: Organization of sports products with seamless navigation to individual product pages.",
+          "Navigation & Header: Optimized main menu and header structure focused on usability.",
+          "Responsive Design: Consistent visual experience across mobile and desktop devices."
+        ],
+
+        "testingTitle": "Validation & Deployment",
+        "testingDescription": "Focused on server architecture troubleshooting and user experience.",
+        "testingList": [
+          "Route Management: Resolution of SEO-friendly permalinks for seamless product access.",
+          "Live Website: Functional server deployment with public access via direct link."
+        ]
       }
     }
   },

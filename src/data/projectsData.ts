@@ -3,8 +3,10 @@ import firstProject from "@/assets/cardImages/ReactJs-Chat-App/ReactJs-Chat-App.
 import secondProject from "@/assets/cardImages/ReactJs-E-commerce/ReactJs-E-commerce.png";
 import thirdProject from "@/assets/cardImages/Laravel-E-commerce/Laravel-E-commerce.jpg";
 import fourthProject from "@/assets/cardImages/ChessJs/ChessJs.png";
-import fifthProject from "@/assets/cardImages/NextJs E-commerce/nextjs ecommerce.jpg";
+import fifthProject from "@/assets/cardImages/NextJs-E-commerce/NextJs-E-commerce.jpg";
 import sixthProject from "@/assets/cardImages/Figma/figma.jpg";
+import seventhProject from "@/assets/cardImages/WordPress-E-commerce/WordPress-E-commerce.png";
+
 import { StaticImageData } from "next/image";
 
 export interface ProjectData {
@@ -82,5 +84,15 @@ export const PROJECTS_DATA: ProjectData[] = [
     liveUrl: "https://www.figma.com/design/PNNaoufOWP0vxIJh3ffMIE/pp3-veterinaria?node-id=0-1&t=hYgPxQSrvHHWgPE0-1",
     videoUrl: "/videos/figma-video.mp4", 
     descriptionKey: "figmaProjectDescription",
+  },
+  {
+    slug: "wordPress-ecommerce",
+    category: "main",
+    title: "WordPress E-commerce",
+    dependencies: "WordPress, WooCommerce, Elementor, Astra Theme",
+    image: seventhProject,
+    liveUrl: "https://wordpress-e-commerce.infinityfreeapp.com",
+    videoUrl: "",
+    descriptionKey: "wordPressEcommerceDescription",
   }
 ];
