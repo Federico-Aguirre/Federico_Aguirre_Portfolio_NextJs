@@ -2,7 +2,7 @@
 
 # 🚀 Web Developer Portfolio — SPA
 
-[![View Live Project](https://img.shields.io/badge/🚀_View_Live_Demo-007ACC?style=for-the-badge&logo=vercel&logoColor=white)](https://federico-aguirre-portfolio-next-js.vercel.app)
+[![View Live Project](https://img.shields.io/badge/🚀_View_Live_Project-007ACC?style=for-the-badge&logo=vercel&logoColor=white)](https://federico-aguirre-portfolio-next-js.vercel.app)
 
 [![Vercel Status](https://img.shields.io/badge/Vercel-Deployed-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://federico-aguirre-portfolio-next-js.vercel.app/)
 [![Next.js](https://img.shields.io/badge/Next.js-14_App_Router-000000?style=for-the-badge&logo=nextdotjs&logoColor=white)](https://nextjs.org/)
