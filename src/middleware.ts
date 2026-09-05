@@ -12,7 +12,7 @@ export const config = {
     // Coincide con todas las rutas que ya tengan prefijo de idioma '/es/...' o '/en/...'
     '/(es|en)/:path*',
 
-    // Coincide con el resto de páginas web, excluyendo archivos con punto (imágenes, favicons, etc.), API y _next
-    '/((?!api|_next|_vercel|.*\\..*).*)'
+    // Excluye api, _next, _vercel, archivos con extensión y rutas puente
+    '/((?!api|_next|_vercel|github|certificados|.*\\..*).*)'
   ]
 };
