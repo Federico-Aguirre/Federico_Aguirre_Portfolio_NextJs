@@ -7,8 +7,8 @@ export const metadata: Metadata = {
 };
 
 export default function CredentialsBridgePage() {
-  // ⚠️ Enlace público a tu carpeta de Google Drive
-  const driveUrl = 'drive.google.com/drive/folders/10ba68nUmdU_Oy7nGn8oUexGqy85KSSnU?usp=sharing';
+  // Enlace público a carpeta de Google Drive
+const driveUrl = 'https://drive.google.com/drive/folders/10ba68nUmdU_Oy7nGn8oUexGqy85KSSnU?usp=sharing';
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center p-6 text-center">
