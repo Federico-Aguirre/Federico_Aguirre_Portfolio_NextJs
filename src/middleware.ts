@@ -13,6 +13,7 @@ export const config = {
     '/(es|en)/:path*',
 
     // Excluye api, _next, _vercel, archivos con extensión y rutas puente
-    '/((?!api|_next|_vercel|github|certificados|.*\\..*).*)'
+    '/((?!api|_next|_vercel|github|certificados|.*\\..*).*)',
+    '/((?!api|_next|_vercel|github|credentials|.*\\..*).*)'
   ]
 };
