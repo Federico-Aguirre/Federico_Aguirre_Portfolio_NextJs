@@ -244,7 +244,7 @@ const About = () => {
                 style={{ borderRadius: "8px" }}
               >
                 <Link
-                  href="https://drive.google.com/file/d/1Kl9MpGvMNTJ4vpDSfrtPnSeAnJ6cEMx6/view?usp=sharing"
+                  href={t('url')}
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={`${t("resumeLink")} (abre en una pestaña nueva)`}
