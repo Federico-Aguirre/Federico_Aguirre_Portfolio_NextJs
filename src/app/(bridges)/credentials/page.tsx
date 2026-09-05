@@ -1,14 +1,18 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
+  // ⚡ Necesario para que Next.js cree la URL absoluta de la imagen Open Graph
+  metadataBase: new URL('https://federico-aguirre-portafolio-next-js.vercel.app'),
   title: 'Academic Degrees & Credentials | Federico Aguirre',
-  description: 'Official academic diplomas, higher education degrees, and professional technical certifications.',
-  // ⚡ Next.js inyecta automáticamente 'opengraph-image.png' de esta carpeta
+  description: 'Official academic diplomas, higher education degrees, and verified professional technical certifications for Federico Aguirre.',
+  openGraph: {
+    title: 'Academic Degrees & Credentials | Federico Aguirre',
+    description: 'Official academic diplomas, higher education degrees, and verified professional technical certifications for Federico Aguirre.',
+  },
 };
 
 export default function CredentialsBridgePage() {
-  // Enlace público a carpeta de Google Drive
-const driveUrl = 'https://drive.google.com/drive/folders/10ba68nUmdU_Oy7nGn8oUexGqy85KSSnU?usp=sharing';
+  const driveUrl = 'https://drive.google.com/drive/folders/10ba68nUmdU_Oy7nGn8oUexGqy85KSSnU?usp=sharing';
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center p-6 text-center">
