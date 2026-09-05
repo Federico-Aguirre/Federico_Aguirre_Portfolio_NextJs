@@ -2,7 +2,7 @@ import MotionProvider from "./components/MotionProvider";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages, getLocale } from "next-intl/server";
 import localFont from "next/font/local";
-import type { Metadata, Viewport } from "next";
+import type { Viewport } from "next";
 import ScrollbarCustom from "./components/ScrollbarCustom";
 import "scss/base/globals.scss";
 
@@ -27,27 +27,6 @@ export const viewport: Viewport = {
   ],
   width: "device-width",
   initialScale: 1,
-};
-
-// ⚡ Metadatos globales con URL base absoluta
-export const metadata: Metadata = {
-  metadataBase: new URL('https://federico-aguirre-portafolio-next-js.vercel.app'),
-  title: 'Federico Aguirre | Full Stack Developer',
-  description:
-    'Full Stack Web Developer specializing in scalable web applications, SaaS, and e-commerce built with Next.js, React, Node.js, and Laravel. | Desarrollador Web Full Stack especializado en aplicaciones web escalables, SaaS y e-commerce con Next.js, React, Node.js y Laravel.',
-  openGraph: {
-    title: 'Federico Aguirre | Full Stack Developer',
-    description:
-      'Full Stack Web Developer specializing in scalable web applications, SaaS, and e-commerce built with Next.js, React, Node.js, and Laravel. | Desarrollador Web Full Stack especializado en aplicaciones web escalables, SaaS y e-commerce con Next.js, React, Node.js y Laravel.',
-    images: [
-      {
-        url: '/opengraph-image.png',
-        width: 2400,
-        height: 1260,
-        alt: 'Federico Aguirre - Portafolio Full Stack Developer',
-      },
-    ],
-  },
 };
 
 export default async function RootLayout({

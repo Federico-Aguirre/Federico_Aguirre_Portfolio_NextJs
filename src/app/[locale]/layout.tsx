@@ -4,30 +4,29 @@ import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
 import { routing } from "@/i18n/routing";
 import Navbar from "../components/Navbar";
-import { getTranslations } from "next-intl/server";
+import type { Metadata } from "next";
 
-// Función dinámica para generar el <title> y <meta description> según el idioma
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ locale: string }> | { locale: string };
-}) {
-  const resolvedParams = await params;
-  const locale = resolvedParams?.locale || "es";
-
-  // Obtenemos las traducciones de la sección "metadata"
-  const t = await getTranslations({ locale, namespace: "metadata" });
-
-  return {
-    title: t("title"),
-    description: t("description"), // 👈 ESTA LÍNEA INYECTA LA METADESCRIPCIÓN
-    openGraph: {
-      title: t("title"),
-      description: t("description"),
-      type: "website",
-    },
-  };
-}
+// ⚡ Metadatos estáticos bilingües unificados para LinkedIn y redes sociales
+export const metadata: Metadata = {
+  metadataBase: new URL('https://federico-aguirre-portafolio-next-js.vercel.app'),
+  title: 'Federico Aguirre | Full Stack Developer',
+  description:
+    'Full Stack Web Developer specializing in scalable web applications, SaaS, and e-commerce built with Next.js, React, Node.js, and Laravel. | Desarrollador Web Full Stack especializado en aplicaciones web escalables, SaaS y e-commerce con Next.js, React, Node.js y Laravel.',
+  openGraph: {
+    title: 'Federico Aguirre | Full Stack Developer',
+    description:
+      'Full Stack Web Developer specializing in scalable web applications, SaaS, and e-commerce built with Next.js, React, Node.js, and Laravel. | Desarrollador Web Full Stack especializado en aplicaciones web escalables, SaaS y e-commerce con Next.js, React, Node.js y Laravel.',
+    type: 'website',
+    images: [
+      {
+        url: '/opengraph-image.png',
+        width: 2400,
+        height: 1260,
+        alt: 'Federico Aguirre - Portafolio Full Stack Developer',
+      },
+    ],
+  },
+};
 
 // Idiomas con lectura de derecha a izquierda (RTL)
 const RTL_LOCALES = ["ar", "he", "fa", "ur", "dv"];
@@ -47,12 +46,12 @@ export default async function LocaleLayout({
 }: LocaleLayoutProps) {
   const { locale } = await params;
 
-  // Validación de seguridad de idioma (Vinculada a la fuente única)
+  // Validación de seguridad de idioma
   if (!routing.locales.includes(locale as any)) {
     notFound();
   }
 
-  //Obtención segura de mensajes desde el servidor
+  // Obtención segura de mensajes desde el servidor
   const messages = await getMessages();
   
   // Determinación de direccionalidad del idioma (LTR / RTL)
