@@ -100,6 +100,28 @@ This project was thoroughly audited and optimized at the main thread level, Java
 - 🛡️ **Secure Contact Form:**
   - Client and server-side validation enforced with **React Hook Form** and strict **Zod** schema inference.
 
+  📁 Project Structure
+
+```text
+Federico_Aguirre_Portfolio_NextJs/
+├── public/                     # Static assets (OG images, SVGs, demo videos)
+├── src/
+│   ├── app/                    # Next.js 14 App Router
+│   │   ├── (bridges)/          # Isolated, unlocalized bridge routes for LinkedIn (/resume, /github, /credentials)
+│   │   ├── [locale]/           # Dynamic localized routing wrapper (en / es)
+│   │   │   └── (routes)/       # Primary application pages (about, contact, home, projects)
+│   │   ├── actions/            # Next.js Server Actions (Contact form handler)
+│   │   └── components/         # Reusable UI components & native TSX animated icons
+│   ├── assets/                 # Project screenshots and card media
+│   ├── data/                   # Dynamic project details and showcase metadata
+│   ├── i18n/                   # Internationalization request configuration & routing
+│   ├── lib/                    # Zod validation schemas and shared utilities
+│   ├── locales/                # Translation dictionary files (en.json, es.json)
+│   ├── scss/                   # Modular SCSS stylesheets, variables, and keyframe animations
+│   └── middleware.ts           # i18n middleware routing and crawler detection
+├── next.config.mjs             # Next.js framework configuration (Million.js, SASS)
+└── package.json                # Project dependencies and operational scripts
+
 ---
 
 ## 💻 Local Installation & Setup

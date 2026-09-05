@@ -107,6 +107,33 @@ Este proyecto está hosteado y desplegado de forma continua en Vercel, aprovecha
 
 ---
 
+### 📁 Versión en Español (para `README.es.md`)
+
+```markdown
+📁 Estructura del Proyecto
+
+```text
+Federico_Aguirre_Portfolio_NextJs/
+├── public/                     # Recursos estáticos (imágenes OpenGraph, SVGs, videos demo)
+├── src/
+│   ├── app/                    # Next.js 14 App Router
+│   │   ├── (bridges)/          # Rutas puente aisladas para previsualización en LinkedIn (/resume, /github, /credentials)
+│   │   ├── [locale]/           # Enrutamiento dinámico internacionalizado (en / es)
+│   │   │   └── (routes)/       # Páginas principales (sobre mí, contacto, inicio, proyectos)
+│   │   ├── actions/            # Server Actions de Next.js (procesamiento del formulario de contacto)
+│   │   └── components/         # Componentes de UI reutilizables e íconos animados en TSX nativo
+│   ├── assets/                 # Galería de imágenes y capturas de los proyectos
+│   ├── data/                   # Datos dinámicos y metadatos del catálogo de proyectos
+│   ├── i18n/                   # Configuración de peticiones y enrutamiento con next-intl
+│   ├── lib/                    # Esquemas de validación Zod y funciones de utilidad
+│   ├── locales/                # Diccionarios JSON de traducción (en.json, es.json)
+│   ├── scss/                   # Hojas de estilo SCSS modulares, variables y animaciones
+│   └── middleware.ts           # Middleware de internacionalización y detección de crawlers
+├── next.config.mjs             # Configuración del framework Next.js (Million.js, SASS)
+└── package.json                # Dependencias del proyecto y scripts de ejecución
+
+---
+
 ## 💻 Instalación y Configuración Local
 
 Sigue estos pasos para ejecutar el proyecto en tu entorno local:
