@@ -11,8 +11,7 @@ export const metadata: Metadata = {
 };
 
 export default function ResumeBridgePage() {
-  // ⚠️ Reemplaza con el enlace público directo a tu CV en PDF en Google Drive
-  const driveUrl = 'https://drive.google.com/file/d/TU_ID_DEL_ARCHIVO/view?usp=sharing';
+  const driveUrl = 'https://drive.google.com/file/d/1MXdM076OZg3wrDCh-G4aAh2z6KI3riPa/view?usp=drive_link';
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center p-6 text-center">
