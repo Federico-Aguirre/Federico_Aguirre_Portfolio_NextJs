@@ -252,6 +252,7 @@
     "skills": "Skills",
     "studiesTitle": "Studies",
     "studies": "Education & Certifications",
+    "url": "https://drive.google.com/file/d/1MXdM076OZg3wrDCh-G4aAh2z6KI3riPa/view?usp=sharing",
     "qualifications": {
       "title1": "Systems Analyst", 
       "title2": "Full Stack Developer",
@@ -340,9 +341,6 @@
     },
     "education": {
       "systemAnalyst": "System Analyst"
-    },
-    "CV": {
-      "url": "https://drive.google.com/file/d/1MXdM076OZg3wrDCh-G4aAh2z6KI3riPa/view?usp=sharing"
     },
     "description": {
       "line1": "I was always attracted to technology, and in 2018 I was able to start",
