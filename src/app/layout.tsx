@@ -31,12 +31,22 @@ export const viewport: Viewport = {
 
 // ⚡ Metadatos globales con tu información real
 export const metadata: Metadata = {
-  title: {
-    template: "%s | Federico Aguirre",
-    default: "Federico Aguirre | Full Stack Developer",
-  },
+  title: 'Federico Aguirre | Full Stack Developer',
   description:
-    "Portafolio profesional de Federico Aguirre, Desarrollador Web Full Stack especializado en React, Next.js, Node.js y desarrollo de interfaces accesibles.",
+    'Full Stack Web Developer specializing in scalable web applications, SaaS, and e-commerce built with Next.js, React, Node.js, and Laravel. | Desarrollador Web Full Stack especializado en aplicaciones web escalables, SaaS y e-commerce con Next.js, React, Node.js y Laravel.',
+  openGraph: {
+    title: 'Federico Aguirre | Full Stack Developer',
+    description:
+      'Full Stack Web Developer specializing in scalable web applications, SaaS, and e-commerce built with Next.js, React, Node.js, and Laravel. | Desarrollador Web Full Stack especializado en aplicaciones web escalables, SaaS y e-commerce con Next.js, React, Node.js y Laravel.',
+    images: [
+      {
+        url: '/opengraph-image.png',
+        width: 2400,
+        height: 1260,
+        alt: 'Federico Aguirre - Portafolio Full Stack Developer',
+      },
+    ],
+  },
 };
 
 export default async function RootLayout({
