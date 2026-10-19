@@ -89,9 +89,9 @@ const WebDeveloperCard = ({
         style={{
           rotateX: shouldReduceMotion ? 0 : rotateX,
           rotateY: shouldReduceMotion ? 0 : rotateY,
-          scale: 1.1, 
+          scale: 1.2,
           transformStyle: "preserve-3d",
-          width: "84%",
+          width: "90%",
           height: "100%",
           display: "flex",
           alignItems: "center",
@@ -101,7 +101,8 @@ const WebDeveloperCard = ({
         <m.div
           style={{
             transformStyle: "preserve-3d",
-            transform: shouldReduceMotion ? "none" : "translateZ(100px)", 
+            transform: shouldReduceMotion ? "none" : "translateZ(140px)",
+            width: "100%",
           }}
         >
           <Image
@@ -115,6 +116,9 @@ const WebDeveloperCard = ({
             width={400}
             height={400}
             style={{
+              width: "100%",
+              height: "auto",
+              maxWidth: "none",
               filter: "drop-shadow(0px 20px 30px rgba(0,0,0,0.35))",
               pointerEvents: "none"
             }}
