@@ -140,7 +140,8 @@
 
             &__aboutScroll {
                 display: grid;
-                height: calc((70dvh/3) - 7.5px);
+                // Coincide con la altura real de cada fila: (70dvh - dos gaps de 5px) / 3.
+                height: calc(23.333333dvh - 3.333333px);
                 grid-row: 1/-1;
                 background-color: variables.$skyBlue;
                 transition: 1s;

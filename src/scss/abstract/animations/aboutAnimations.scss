@@ -1,11 +1,12 @@
-@media (min-width:800px) {
+@media (min-width:1025px) {
+    /* Cada desplazamiento equivale a una fila más el gap de 5px. */
     .scrollToStudies {
-        margin-top: calc(23dvh + 2px);
+        margin-top: calc(23.333333dvh + 1.666667px);
         transition: 1s;
     }
 
     .scrollToAbout {
-        margin-top: calc(47dvh + 3px);
+        margin-top: calc(46.666667dvh + 3.333333px);
         transition: 1s;
     }
 }
