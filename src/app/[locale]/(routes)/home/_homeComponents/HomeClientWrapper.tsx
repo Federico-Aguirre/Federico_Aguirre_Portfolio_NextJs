@@ -189,11 +189,14 @@ export default function HomePageClientWrapper() {
 
       <h1
         id="home-headline"
-        className={`${homeStyle.homePage__title} ${
-          darkMode ? "darkModeLetterClass" : "brightModeLetterClass"
-        }`}
+        className={homeStyle.homePage__title}
         ref={homeSectionRef}
-        style={{ position: "relative", zIndex: 1 }}
+        style={{
+          position: "relative",
+          zIndex: 1,
+          color: darkMode ? "#f3f4f6" : "#111827",
+          backgroundColor: "transparent",
+        }}
       >
         {/* Texto accesible para lectores de pantalla */}
         <span style={srOnlyStyle}>{headlineText}</span>

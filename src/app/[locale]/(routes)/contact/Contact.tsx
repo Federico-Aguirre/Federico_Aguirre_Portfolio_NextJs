@@ -317,7 +317,7 @@ const Contact = () => {
           </a>
         </m.div>
         <m.div 
-          className={contactStyle.contact__links__github}
+          className={`${contactStyle.contact__links__github} ${toggleShadowClass}`}
           whileHover={shouldReduceMotion ? {} : { scale: 1.1 }}
         >
           <a 
