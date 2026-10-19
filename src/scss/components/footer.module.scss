@@ -3,10 +3,10 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 1rem;
+  gap: 0.55rem;
   width: 100%;
   box-sizing: border-box;
-  padding: 2.5rem clamp(1.25rem, 5vw, 4rem) 1.75rem;
+  padding: 1rem clamp(1.25rem, 5vw, 4rem) 0.9rem;
   border-top: 1px solid rgba(127, 127, 127, 0.28);
   color: inherit;
   text-align: center;
@@ -15,8 +15,8 @@
 .footerMessage {
   max-width: 760px;
   margin: 0;
-  font-size: clamp(0.9rem, 0.25vw + 0.82rem, 1rem);
-  line-height: 1.7;
+  font-size: clamp(0.82rem, 0.2vw + 0.76rem, 0.94rem);
+  line-height: 1.5;
 }
 
 .footerCopyright {
@@ -28,7 +28,7 @@
   margin: 0;
   color: inherit;
   opacity: 0.72;
-  font-size: 0.8rem;
+  font-size: 0.76rem;
   line-height: 1.5;
 }
 

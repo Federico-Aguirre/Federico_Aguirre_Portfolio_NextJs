@@ -1,31 +1,73 @@
 @use "../abstract/variables.scss" as variables;
 
 .contact {
-    height: 650px;
-    width: 100vw;
-    align-content: center;
-    justify-content: center;
+    width: 100%;
+    min-width: 100vw;
+    min-height: 90dvh;
+    height: auto;
+    box-sizing: border-box;
+    padding: clamp(0.75rem, 1.5dvh, 1.25rem) clamp(1rem, 4vw, 3rem) 0;
+    display: flex;
     flex-direction: column;
-    gap: 10px;
-    overflow: hidden !important; 
+    align-items: center;
+    justify-content: space-between;
+    gap: 0;
+    overflow: visible !important;
+
+    &__content {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr);
+        justify-items: center;
+        align-items: center;
+        gap: 1.25rem;
+        width: min(100%, 540px);
+        flex: 1;
+        min-height: 0;
+        padding: 0.75rem 0;
+        box-sizing: border-box;
+    }
 
     &__formContainer {
-        width: 80%;
+        width: 100%;
+        min-width: 0;
+        box-sizing: border-box;
         background-color: variables.$lightViolet;
         border-radius: 10px;
         border: 5px solid variables.$darkViolet;
-    
+
         &__form {
-            display: flex;
-            flex-direction: column;
+            display: grid;
+            grid-template-columns: minmax(0, 1fr);
+            column-gap: 16px;
+            row-gap: 0;
             text-align: start;
             color: variables.$white;
-            margin: 0 20px;
+            margin: 0 16px;
             box-sizing: border-box;
-            padding-bottom: 20px;
+            padding-bottom: 14px;
 
-            // Los controles necesitan estilos explícitos: Tailwind Preflight los deja
-            // sin fondo ni borde de forma predeterminada.
+            &__title {
+                grid-column: 1 / -1;
+                margin: 12px 0 2px;
+                text-align: center;
+                font-size: variables.$bigFont;
+                font-weight: 700;
+            }
+
+            &__field,
+            &__fieldAffair,
+            &__fieldMessage {
+                display: flex;
+                flex-direction: column;
+                min-width: 0;
+                margin-top: 10px;
+            }
+
+            &__fieldAffair,
+            &__fieldMessage {
+                grid-column: 1 / -1;
+            }
+
             &__name,
             &__email,
             &__affair,
@@ -34,7 +76,7 @@
                 width: 100%;
                 min-width: 0;
                 box-sizing: border-box;
-                padding: 10px 12px;
+                padding: 9px 11px;
                 border: 1px solid rgba(255, 255, 255, 0.8);
                 border-radius: 6px;
                 background-color: rgba(255, 255, 255, 0.12);
@@ -55,41 +97,37 @@
                 }
             }
 
-            &__textarea1 {
-                height: 120px;
-                margin-bottom: 25px;
-                resize: vertical;
-            }
-
-            &__title {
-                text-align: center;
-            }
-
-            div {
-                font-size: variables.$bigFont;
-                font-weight: 700;
-                text-align: center;
-            }
-
-            label,div {
-                margin-top: 12px;
-            }
-
             label {
-                margin-left: 4px;
+                margin: 0 0 0 4px;
+                line-height: 1.2;
+                font-size: 0.88rem;
+                font-weight: 600;
             }
 
-            textarea {
-                height: 120px;
-                margin-bottom: 25px;
+            &__textarea1 {
+                height: 100px;
+                min-height: 100px;
+                max-height: 145px;
+                margin-bottom: 0;
+                resize: vertical;
+                overflow-y: auto;
+            }
+
+            &__status {
+                grid-column: 1 / -1;
+                min-height: 1rem;
+                margin-top: 8px;
+                text-align: center;
+                font-size: 0.9rem;
             }
 
             &__send {
+                grid-column: 1 / -1;
                 display: block;
                 width: 100%;
-                min-height: 44px;
+                min-height: 42px;
                 margin-top: 8px;
-                padding: 11px 16px;
+                padding: 9px 16px;
                 border: 1px solid rgba(255, 255, 255, 0.85);
                 border-radius: 6px;
                 background-color: variables.$darkViolet;
@@ -121,10 +159,13 @@
         height: auto;
         display: flex;
         flex-direction: row;
-        place-content: center;
-        column-gap: 25px;
+        align-items: center;
+        justify-content: center;
+        gap: 18px;
 
-        &__linkedin, &__github {
+        &__linkedin,
+        &__github {
+            flex: 0 0 44px;
             height: 44px;
             width: 44px;
             border-radius: 23px;
@@ -132,18 +173,55 @@
     }
 }
 
-@media (min-width:375px) {
-    .contact__formContainer {
-        width: 300px;
+@media (min-width: 768px) {
+    .contact {
+        &__content {
+            width: min(100%, 1100px);
+            grid-template-columns: minmax(0, 1fr) 56px;
+            gap: clamp(1rem, 2.5vw, 2.25rem);
+        }
+
+        &__links {
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        &__formContainer {
+            &__form {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                margin: 0 20px;
+                padding-bottom: 12px;
+
+                &__field {
+                    grid-column: span 1;
+                }
+
+                &__fieldAffair,
+                &__fieldMessage,
+                &__title,
+                &__status,
+                &__send {
+                    grid-column: 1 / -1;
+                }
+
+                &__textarea1 {
+                    height: 88px;
+                    min-height: 88px;
+                    max-height: 130px;
+                }
+            }
+        }
     }
 }
 
-@media (min-width:800px) {
-    .contact {
-        height: 90dvh;
-
-        &__formContainer{
-            margin-top: 5%;
+@media (prefers-reduced-motion: reduce) {
+    .contact__formContainer__form {
+        &__name,
+        &__email,
+        &__affair,
+        &__textarea1,
+        &__send {
+            transition: none;
         }
     }
 }

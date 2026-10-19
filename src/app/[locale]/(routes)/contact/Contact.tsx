@@ -13,6 +13,7 @@ import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { contactSchema, type ContactFormData } from "@/lib/schemas/contactSchema"
 import { sendContactForm } from "@/app/actions/contactAction"
+import PortfolioFooter from "@/app/components/PortfolioFooter"
 
 const Contact = () => {
   const contactSectionRef = useRef<HTMLDivElement>(null)
@@ -123,12 +124,12 @@ const Contact = () => {
   }, [changeSectionVisible]);
 
   return (
-    <section 
-      className={contactStyle.contact} 
-      id="contact" 
+    <section
+      className={contactStyle.contact}
+      id="contact"
       aria-labelledby="contact-title"
-      style={{ display: "flex", flexDirection: "column", alignItems: "center" }}
     >
+      <div className={contactStyle.contact__content}>
       <m.div 
         className={`${contactStyle.contact__formContainer} ${toggleShadowClass}`} 
         variants={showFromLeftAnimation} 
@@ -159,6 +160,7 @@ const Contact = () => {
           </div>
 
           {/* ----- CAMPO NOMBRE ----- */}
+          <div className={contactStyle.contact__formContainer__form__field}>
           <m.label 
             className={contactStyle.contact__formContainer__form__labelName} 
             htmlFor="name"
@@ -186,8 +188,10 @@ const Contact = () => {
               {t(`errors.${errors.name.message}`)}
             </span>
           )}
+          </div>
 
           {/* ----- CAMPO EMAIL ----- */}
+          <div className={contactStyle.contact__formContainer__form__field}>
           <m.label 
             className={contactStyle.contact__formContainer__form__labelEmail} 
             htmlFor="email"
@@ -215,8 +219,10 @@ const Contact = () => {
               {t(`errors.${errors.email.message}`)}
             </span>
           )}
+          </div>
 
           {/* ----- CAMPO ASUNTO ----- */}
+          <div className={contactStyle.contact__formContainer__form__fieldAffair}>
           <m.label 
             className={contactStyle.contact__formContainer__form__labelAffair} 
             htmlFor="affair"
@@ -244,8 +250,10 @@ const Contact = () => {
               {t(`errors.${errors.affair.message}`)}
             </span>
           )}
+          </div>
 
           {/* ----- CAMPO MENSAJE ----- */}
+          <div className={contactStyle.contact__formContainer__form__fieldMessage}>
           <m.label 
             className={contactStyle.contact__formContainer__form__labelTextarea1} 
             htmlFor="textarea1"
@@ -271,9 +279,14 @@ const Contact = () => {
               {t(`errors.${errors.consultation.message}`)}
             </span>
           )}
+          </div>
 
-          {/* ----- MENTOR DE ESTADO ARIA-LIVE ----- */}
-          <div aria-live="polite" aria-atomic="true" style={{ marginTop: "10px" }}>
+          {/* ----- MENSAJE DE ESTADO ARIA-LIVE ----- */}
+          <div
+            className={contactStyle.contact__formContainer__form__status}
+            aria-live="polite"
+            aria-atomic="true"
+          >
             {serverStatus.type === "success" && (
               <p style={{ color: "#10b981", fontSize: "0.9rem", margin: 0 }}>{serverStatus.message}</p>
             )}
@@ -330,6 +343,8 @@ const Contact = () => {
           </a>
         </m.div>
       </m.div>
+      </div>
+      <PortfolioFooter />
     </section>
   )
 }
