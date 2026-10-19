@@ -33,8 +33,8 @@ export default function HomePageClientWrapper() {
   const aboutT = useTranslations("about");
   const locale = useLocale();
   const resumeFileName = locale === "es"
-    ? "Federico_Aguirre_CV_Desarrollador_Web.pdf"
-    : "Federico_Aguirre_Resume_Full_Stack_Developer.pdf";
+    ? "Federico_Aguirre_CV_Publico_Desarrollador_Web.pdf"
+    : "Federico_Aguirre_Public_Resume_Full_Stack_Developer.pdf";
   const searchParams = useSearchParams();
   const target = searchParams.get("target");
 
@@ -242,7 +242,7 @@ export default function HomePageClientWrapper() {
       <div className={homeStyle.homePage__actions}>
         <CallToAction styles={homeStyle} />
         <a
-          href={`/cv/${resumeFileName}`}
+          href={`/resume/${resumeFileName}`}
           download={resumeFileName}
           className={`${homeStyle.homePage__CallToAction} ${homeStyle.ctaAnimated} ${actionShadowClass}`}
           aria-label={aboutT("resumeLink")}
