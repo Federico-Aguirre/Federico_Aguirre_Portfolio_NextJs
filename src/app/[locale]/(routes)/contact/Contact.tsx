@@ -66,7 +66,7 @@ const Contact = () => {
   const labelAnimation = (isActive: boolean) => ({
     y: isActive ? 0 : 20,
     scale: isActive ? 0.85 : 1,
-    color: isActive ? "hsl(194, 85%, 62%)" : (darkMode ? "#f3f4f6" : "#111827") 
+    color: "#f3f4f6",
   })
 
   // Envío delegado al Server Action, con captura de errores inesperados.

@@ -19,6 +19,7 @@
             display: flex;
             flex-direction: column;
             text-align: start;
+            color: variables.$white;
             margin: 0 20px;
             box-sizing: border-box;
             padding-bottom: 20px;
@@ -101,7 +102,7 @@
                 &:hover:not(:disabled) {
                     border-color: variables.$skyBlue;
                     background-color: variables.$skyBlue;
-                    color: variables.$black;
+                    color: variables.$white;
                 }
 
                 &:focus-visible {

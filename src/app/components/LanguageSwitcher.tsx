@@ -5,12 +5,14 @@ import { usePathname, useRouter } from "@/createNavigation";
 import { useTransition, useEffect } from "react";
 import Image from "next/image";
 import navbarStyle from "scss/base/navbar.module.scss";
+import { useContextStore } from "@/store/Context";
 
 export default function LanguageSwitcher() {
   const [isPending, startTransition] = useTransition();
   const router = useRouter();
   const pathname = usePathname();
   const activeLocale = useLocale();
+  const darkMode = useContextStore((state) => state.darkMode);
 
   const nextLocale = activeLocale === 'es' ? 'en' : 'es';
 
@@ -116,6 +118,7 @@ export default function LanguageSwitcher() {
       <button
         onClick={onToggleLanguage}
         className={navbarStyle.navbar__mainButton}
+        data-darkmode={darkMode}
         disabled={isPending}
         type="button"
         // 1. Mantenemos title para el tooltip visual, pero agrega aria-label para el lector de pantalla
