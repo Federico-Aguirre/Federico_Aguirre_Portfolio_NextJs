@@ -272,7 +272,7 @@ const About = () => {
               {t("title")}
             </p>
 
-            <div className="custom-internal-scrollbar" style={{ maxHeight: "220px", overflowY: "auto", paddingRight: "15px", lineHeight: "1.7", fontSize: "0.95rem", boxSizing: "border-box" }}>
+            <div style={{ height: "auto", maxHeight: "none", overflow: "visible", lineHeight: "1.7", fontSize: "0.95rem", boxSizing: "border-box" }}>
               
               <p style={{ marginBottom: "25px", textAlign: "justify" }}>
                 {[1, 2, 3, 4, 5, 6, 7].map((num) => (
