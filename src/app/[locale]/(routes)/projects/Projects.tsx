@@ -151,6 +151,7 @@ export const Projects = () => {
       }}
     >
       <m.div
+        className={projectsStyle.projectsContent}
         variants={contentAnimationVariant}
         style={{
           display: "flex",

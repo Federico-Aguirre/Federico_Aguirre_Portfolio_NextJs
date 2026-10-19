@@ -89,7 +89,7 @@ const WebDeveloperCard = ({
         style={{
           rotateX: shouldReduceMotion ? 0 : rotateX,
           rotateY: shouldReduceMotion ? 0 : rotateY,
-          scale: 1.15,
+          scale: 1.05,
           transformStyle: "preserve-3d",
           width: "87%",
           height: "100%",
@@ -116,7 +116,7 @@ const WebDeveloperCard = ({
             width={400}
             height={400}
             style={{
-              width: "95%",
+              width: "90%",
               height: "auto",
               maxWidth: "none",
               filter: "drop-shadow(0px 20px 30px rgba(0,0,0,0.35))",
