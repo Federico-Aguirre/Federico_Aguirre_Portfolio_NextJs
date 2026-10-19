@@ -69,22 +69,24 @@ const Contact = () => {
     color: isActive ? "hsl(194, 85%, 62%)" : (darkMode ? "#f3f4f6" : "#111827") 
   })
 
-  // Envío delegado al Server Action
+  // Envío delegado al Server Action, con captura de errores inesperados.
   const onSubmit = async (data: ContactFormData) => {
     setServerStatus({ type: "idle" })
-    
-    // Inyecta el tiempo real de inicio
     const payload = { ...data, formTimestamp: mountTime }
 
-    const response = await sendContactForm(payload)
+    try {
+      const response = await sendContactForm(payload)
 
-    if (response.success) {
-      setServerStatus({ type: "success", message: t("messages.success") })
-      reset()
-      setActiveFields({ name: false, email: false, affair: false, consultation: false })
-    } else {
-      const errorMsg = response.error ? t(`messages.${response.error}`) : t("messages.serverError")
-      setServerStatus({ type: "error", message: errorMsg })
+      if (response.success) {
+        setServerStatus({ type: "success", message: t("messages.success") })
+        reset()
+        setActiveFields({ name: false, email: false, affair: false, consultation: false })
+      } else {
+        const errorMsg = response.error ? t(`messages.${response.error}`) : t("messages.serverError")
+        setServerStatus({ type: "error", message: errorMsg })
+      }
+    } catch {
+      setServerStatus({ type: "error", message: t("messages.serverError") })
     }
   }
 

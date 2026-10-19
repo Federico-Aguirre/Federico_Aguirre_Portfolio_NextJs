@@ -118,8 +118,8 @@ Federico_Aguirre_Portfolio_NextJs/
 │   ├── lib/                    # Zod validation schemas and shared utilities
 │   ├── locales/                # Translation dictionary files (en.json, es.json)
 │   ├── scss/                   # Modular SCSS stylesheets, variables, and keyframe animations
-│   └── middleware.ts           # i18n middleware routing and crawler detection
-├── next.config.mjs             # Next.js framework configuration (Million.js, SASS)
+│   └── proxy.ts               # i18n routing for Next.js 16
+├── next.config.mjs             # Next.js framework configuration (Sass, image settings)
 └── package.json                # Project dependencies and operational scripts
 
 ---

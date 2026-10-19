@@ -4,6 +4,7 @@ import { getMessages, getLocale } from "next-intl/server";
 import localFont from "next/font/local";
 import type { Viewport } from "next";
 import ScrollbarCustom from "./components/ScrollbarCustom";
+import "./tailwind.css";
 import "scss/base/globals.scss";
 
 // Configuración de la fuente local

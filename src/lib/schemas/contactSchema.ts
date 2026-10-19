@@ -26,8 +26,8 @@ export const contactSchema = z.object({
     .min(10, { message: "errorMinMessage" })
     .max(1000, { message: "errorMaxMessage" }),
 
-  // Trampa Honeypot para bots
-  hp_company: z.string().max(0, { message: "Bot detected" }).optional(),
+  // Honeypot para bots: debe poder llegar al servidor para que se descarte silenciosamente.
+  hp_company: z.string().optional(),
   
   // Timestamp de control de velocidad
   formTimestamp: z.number()

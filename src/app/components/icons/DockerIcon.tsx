@@ -11,7 +11,7 @@ interface IconProps extends React.HTMLAttributes<HTMLDivElement> {
 export const DockerIcon = ({ isActive = true, size = 40, style, ...props }: IconProps) => {
   const [isDeploying, setIsDeploying] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
-  const timeoutRef = useRef<NodeJS.Timeout>();
+  const timeoutRef = useRef<NodeJS.Timeout | undefined>(undefined);
 
   // ACCESIBILIDAD: Detectar preferencia de movimiento reducido
   const shouldReduceMotion = useReducedMotion();

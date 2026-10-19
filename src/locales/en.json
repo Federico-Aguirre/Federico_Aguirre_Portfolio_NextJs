@@ -290,7 +290,6 @@
         "bootstrap": { "name": "Bootstrap", "desc": "UI component toolkit." },
         "framerMotion": { "name": "FramerMotion", "desc": "Animation library." },
         "particle": { "name": "Particle.js", "desc": "Animation library." },
-        "million": { "name": "Million.js", "desc": "Accelerates React applications by optimizing the Virtual DOM." },
         "mantine": { "name": "Mantine", "desc": "Highly customizable UI component library for React." },
         
         "nodeJs": { "name": "Node.js", "desc": "JS runtime environment." },
@@ -353,15 +352,36 @@
     }
   },
 
-"contact": {
+  "contact": {
     "sendMessage": "Send Message",
     "name": "Name",
     "email": "Email",
     "affair": "Subject",
     "message": "Message",
     "send": "Send",
-    "linkedinAlt": "LinkedIn Icon",
-    "githubAlt": "GitHub Icon"
+    "sending": "Sending...",
+    "linkedinAlt": "LinkedIn icon",
+    "githubAlt": "GitHub icon",
+    "messages": {
+      "success": "Message sent successfully! I will get back to you soon.",
+      "serverError": "An unexpected error occurred. Please try again later.",
+      "rateLimitExceeded": "Too many attempts. Please wait a minute before submitting again.",
+      "invalidData": "The submitted data is invalid. Please check the form.",
+      "submittedTooFast": "The form was submitted too quickly. Wait a few seconds and try again.",
+      "serviceError": "The email service could not deliver your message.",
+      "configurationError": "Email delivery is not configured on the server."
+    },
+    "errors": {
+      "errorMinName": "Name must contain at least 2 characters.",
+      "errorMaxName": "Name must be 50 characters or fewer.",
+      "errorInvalidName": "Name may only contain letters, spaces, hyphens, and apostrophes.",
+      "errorInvalidEmail": "Please enter a valid email address.",
+      "errorMaxEmail": "Email must be 100 characters or fewer.",
+      "errorMinAffair": "Subject must contain at least 3 characters.",
+      "errorMaxAffair": "Subject must be 100 characters or fewer.",
+      "errorMinMessage": "Message must contain at least 10 characters.",
+      "errorMaxMessage": "Message must be 1000 characters or fewer."
+    }
   },
   "hiddenMenu": {
     "home": "Home",

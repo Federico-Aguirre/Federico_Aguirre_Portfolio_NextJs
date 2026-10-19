@@ -128,8 +128,8 @@ Federico_Aguirre_Portfolio_NextJs/
 │   ├── lib/                    # Esquemas de validación Zod y funciones de utilidad
 │   ├── locales/                # Diccionarios JSON de traducción (en.json, es.json)
 │   ├── scss/                   # Hojas de estilo SCSS modulares, variables y animaciones
-│   └── middleware.ts           # Middleware de internacionalización y detección de crawlers
-├── next.config.mjs             # Configuración del framework Next.js (Million.js, SASS)
+│   └── proxy.ts               # Enrutamiento de idiomas para Next.js 16
+├── next.config.mjs             # Configuración de Next.js (Sass y ajustes de imágenes)
 └── package.json                # Dependencias del proyecto y scripts de ejecución
 
 ---

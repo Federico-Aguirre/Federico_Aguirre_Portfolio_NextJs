@@ -288,7 +288,6 @@
         "bootstrap": { "name": "Bootstrap", "desc": "Toolkit de componentes UI." },
         "framerMotion": { "name": "FramerMotion", "desc": "Librería de animaciones." },
         "particle": { "name": "Particle.js", "desc": "Librería de animaciones." },
-        "million": { "name": "Million.js", "desc": "Acelera aplicaciones React optimizando su Virtual DOM." },
         "mantine": { "name": "Mantine", "desc": "Librería de componentes UI altamente personalizables para React." },
         
         "nodeJs": { "name": "Node.js", "desc": "Entorno de ejecución JS." },
@@ -358,8 +357,29 @@
     "affair": "Asunto",
     "message": "Mensaje",
     "send": "Enviar",
+    "sending": "Enviando...",
     "linkedinAlt": "Icono De LinkedIn",
-    "githubAlt": "Icono De GitHub"
+    "githubAlt": "Icono De GitHub",
+    "messages": {
+      "success": "¡Mensaje enviado con éxito! Me pondré en contacto a la brevedad.",
+      "serverError": "Ocurrió un error inesperado. Intentá de nuevo más tarde.",
+      "rateLimitExceeded": "Demasiados intentos. Esperá un minuto antes de volver a enviar el mensaje.",
+      "invalidData": "Los datos ingresados no son válidos. Revisá el formulario.",
+      "submittedTooFast": "El formulario se envió demasiado rápido. Esperá unos segundos e intentá de nuevo.",
+      "serviceError": "No se pudo entregar el mensaje a través del servicio de correo.",
+      "configurationError": "El envío de correo no está configurado en el servidor."
+    },
+    "errors": {
+      "errorMinName": "El nombre debe tener al menos 2 caracteres.",
+      "errorMaxName": "El nombre no puede superar los 50 caracteres.",
+      "errorInvalidName": "El nombre solo puede contener letras, espacios, guiones y apóstrofos.",
+      "errorInvalidEmail": "Ingresá un correo electrónico válido.",
+      "errorMaxEmail": "El correo no puede superar los 100 caracteres.",
+      "errorMinAffair": "El asunto debe tener al menos 3 caracteres.",
+      "errorMaxAffair": "El asunto no puede superar los 100 caracteres.",
+      "errorMinMessage": "El mensaje debe tener al menos 10 caracteres.",
+      "errorMaxMessage": "El mensaje no puede superar los 1000 caracteres."
+    }
   },
   "hiddenMenu": {
     "home": "Inicio",

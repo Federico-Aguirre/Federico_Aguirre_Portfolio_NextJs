@@ -10,7 +10,7 @@ const ICONS_MAP: Record<string, React.ElementType> = {
   "html": Icons.HtmlIcon, "css": Icons.CssIcon, "postCss": Icons.PostCssIcon,
   "sass": Icons.SassIcon, "tailwind": Icons.TailwindIcon, "materialUi": Icons.MaterialUiIcon,
   "bootstrap": Icons.BootstrapIcon, "framerMotion": Icons.FramerMotionIcon, "particle": Icons.ParticleIcon,
-  "million": Icons.MillionIcon, "mantine": Icons.MantineIcon, "nodeJs": Icons.NodeJsIcon,
+  "mantine": Icons.MantineIcon, "nodeJs": Icons.NodeJsIcon,
   "express": Icons.ExpressJsIcon, "php": Icons.PhpIcon, "laravel": Icons.LaravelIcon,
   "socketIo": Icons.SocketIoIcon, "wordPress": Icons.WordPressIcon, "wooCommerce": Icons.WooCommerceIcon,
   "restApi": Icons.RestApiIcon, "sql": Icons.SqlIcon, "mySql": Icons.MySqlIcon,
@@ -26,7 +26,7 @@ const ICONS_MAP: Record<string, React.ElementType> = {
 }
 
 const DATA_SKELETON = [
-  { id: "frontend", mainIcon: "reactJs", techs: [ { id: "javascript", icon: "javascript" }, { id: "typescript", icon: "typescript" }, { id: "reactJs", icon: "reactJs" }, { id: "nextJs", icon: "nextJs" }, { id: "redux", icon: "redux" }, { id: "zustand", icon: "zustand" }, { id: "html", icon: "html" }, { id: "css", icon: "css" }, { id: "postCss", icon: "postCss" }, { id: "sass", icon: "sass" }, { id: "tailwind", icon: "tailwind" }, { id: "materialUi", icon: "materialUi" }, { id: "bootstrap", icon: "bootstrap" }, { id: "framerMotion", icon: "framerMotion" }, { id: "particle", icon: "particle" }, { id: "million", icon: "million" }, { id: "mantine", icon: "mantine" } ] },
+  { id: "frontend", mainIcon: "reactJs", techs: [ { id: "javascript", icon: "javascript" }, { id: "typescript", icon: "typescript" }, { id: "reactJs", icon: "reactJs" }, { id: "nextJs", icon: "nextJs" }, { id: "redux", icon: "redux" }, { id: "zustand", icon: "zustand" }, { id: "html", icon: "html" }, { id: "css", icon: "css" }, { id: "postCss", icon: "postCss" }, { id: "sass", icon: "sass" }, { id: "tailwind", icon: "tailwind" }, { id: "materialUi", icon: "materialUi" }, { id: "bootstrap", icon: "bootstrap" }, { id: "framerMotion", icon: "framerMotion" }, { id: "particle", icon: "particle" }, { id: "mantine", icon: "mantine" } ] },
   { id: "backend", mainIcon: "nodeJs", techs: [ { id: "nodeJs", icon: "nodeJs" }, { id: "express", icon: "express" }, { id: "php", icon: "php" }, { id: "laravel", icon: "laravel" }, { id: "socketIo", icon: "socketIo" }, { id: "wordPress", icon: "wordPress" }, { id: "wooCommerce", icon: "wooCommerce" }, { id: "restApi", icon: "restApi" } ] },
   { id: "db", mainIcon: "sql", techs: [ { id: "sql", icon: "sql" }, { id: "mySql", icon: "mySql" }, { id: "postgreSql", icon: "postgreSql" }, { id: "supabase", icon: "supabase" }, { id: "firebase", icon: "firebase" } ] },
   { id: "hosting", mainIcon: "aws", techs: [ { id: "vercel", icon: "vercel" }, { id: "netlify", icon: "netlify" }, { id: "heroku", icon: "heroku" }, { id: "render", icon: "render" }, { id: "neon", icon: "neon" }, { id: "aws", icon: "aws" }, { id: "googleCloud", icon: "googleCloud" } ] },

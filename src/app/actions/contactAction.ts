@@ -1,75 +1,100 @@
-"use server";
+'use server';
 
-import "server-only";
-import { contactSchema } from "@/lib/schemas/contactSchema";
-import { headers } from "next/headers";
+import 'server-only';
+import { headers } from 'next/headers';
+import { sendBrevoEmail } from '@/lib/email/brevo';
+import { contactSchema } from '@/lib/schemas/contactSchema';
 
-// Rate limit en memoria (Para producción se recomienda Upstash Redis)
 const rateLimitMap = new Map<string, { count: number; lastReset: number }>();
 
-export async function sendContactForm(formData: unknown) {
-  // 1. RATE LIMITING por IP
-  // Nota: En Next.js 14 headers() es síncrono
-  const headerList = headers();
-  const ip = headerList.get("x-forwarded-for")?.split(",")[0] || "127.0.0.1";
-  
-  const now = Date.now();
-  const userRate = rateLimitMap.get(ip) || { count: 0, lastReset: now };
+function escapeHtml(value: string) {
+  return value.replace(/[&<>"']/g, (character) => {
+    const replacements: Record<string, string> = {
+      '&': '&amp;',
+      '<': '&lt;',
+      '>': '&gt;',
+      '"': '&quot;',
+      "'": '&#39;',
+    };
+    return replacements[character] ?? character;
+  });
+}
 
-  // Resetea el conteo cada 60 segundos
-  if (now - userRate.lastReset > 60000) {
+export async function sendContactForm(formData: unknown) {
+  // Next.js 15/16 exposes request headers asynchronously.
+  const headerList = await headers();
+  const ip = headerList.get('x-forwarded-for')?.split(',')[0]?.trim() ?? '127.0.0.1';
+
+  const now = Date.now();
+  const userRate = rateLimitMap.get(ip) ?? { count: 0, lastReset: now };
+
+  if (now - userRate.lastReset > 60_000) {
     userRate.count = 0;
     userRate.lastReset = now;
   }
 
   if (userRate.count >= 3) {
-    return { success: false, error: "rateLimitExceeded" };
+    return { success: false, error: 'rateLimitExceeded' };
   }
 
-  userRate.count++;
+  userRate.count += 1;
   rateLimitMap.set(ip, userRate);
 
-  // 2. VALIDACIÓN SERVIDOR CON ZOD
   const result = contactSchema.safeParse(formData);
-
   if (!result.success) {
-    return { success: false, error: "invalidData" };
+    return { success: false, error: 'invalidData' };
   }
 
   const { name, email, affair, consultation, hp_company, formTimestamp } = result.data;
 
-  // 3. SEGURO HONEYPOT: Si un bot llenó el campo trampa, simulamos un éxito falso
+  // Keep the same honeypot and minimum fill-time checks as the e-commerce form.
   if (hp_company && hp_company.length > 0) {
     return { success: true };
   }
 
-  // 4. CONTROL DE TIEMPO: Menos de 3 segundos de llenado = Bot
-  if (now - formTimestamp < 3000) {
-    return { success: false, error: "submittedTooFast" };
+  if (now - formTimestamp < 3001) {
+    return { success: false, error: 'submittedTooFast' };
   }
 
-  // 5. ENVÍO SEGURO DESDE EL SERVIDOR A FORMSPREE
+  const apiKey = process.env.BREVO_API_KEY?.trim();
+  const senderEmail = process.env.BREVO_FROM_EMAIL?.trim();
+  const recipientEmail = process.env.CONTACT_RECIPIENT_EMAIL?.trim();
+
+  if (!apiKey || !senderEmail || !recipientEmail) {
+    console.error('Contact email configuration is incomplete.', {
+      hasBrevoApiKey: Boolean(apiKey),
+      hasBrevoSender: Boolean(senderEmail),
+      hasRecipientEmail: Boolean(recipientEmail),
+    });
+    return { success: false, error: 'configurationError' };
+  }
+
   try {
-    const response = await fetch("https://formspree.io/f/mjvapnag", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Accept": "application/json"
-      },
-      body: JSON.stringify({
-        name,
-        email,
-        subject: affair,
-        message: consultation
-      })
+    await sendBrevoEmail({
+      to: recipientEmail,
+      replyTo: email,
+      subject: '[Portfolio] ' + affair,
+      html:
+        '<div style="font-family:sans-serif;max-width:600px;margin:0 auto;padding:20px;border:1px solid #e4e4e7;border-radius:8px;">' +
+        '<h2 style="color:#09090b;border-bottom:1px solid #e4e4e7;padding-bottom:10px;">Nuevo mensaje desde el portfolio</h2>' +
+        '<p><strong>Nombre:</strong> ' + escapeHtml(name) + '</p>' +
+        '<p><strong>Email de respuesta:</strong> <a href="mailto:' + escapeHtml(email) + '">' + escapeHtml(email) + '</a></p>' +
+        '<p><strong>Asunto:</strong> ' + escapeHtml(affair) + '</p>' +
+        '<div style="margin-top:15px;padding:15px;background:#f4f4f5;border-radius:6px;">' +
+        '<p style="margin:0;white-space:pre-wrap;color:#27272a;">' + escapeHtml(consultation) + '</p>' +
+        '</div></div>',
+      text:
+        'Nuevo mensaje desde el portfolio\nNombre: ' + name +
+        '\nEmail: ' + email +
+        '\nAsunto: ' + affair +
+        '\n\n' + consultation,
     });
 
-    if (response.ok) {
-      return { success: true };
-    } else {
-      return { success: false, error: "serviceError" };
-    }
-  } catch (err) {
-    return { success: false, error: "serverError" };
+    return { success: true };
+  } catch (error) {
+    console.error('Portfolio contact email delivery failed.', {
+      error: error instanceof Error ? error.name : 'UnknownError',
+    });
+    return { success: false, error: 'serviceError' };
   }
 }
