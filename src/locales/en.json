@@ -391,7 +391,7 @@
     "contact": "Contact"
   },
   "footer": {
-    "thanks": "Thank you for taking the time to explore my work. I hope these projects give you a sense of how I approach building software.",
+    "thanks": "Thank you for taking the time to explore my work.",
     "builtWith": "Designed and built with React and Next.js."
   },
   "metadata": {
