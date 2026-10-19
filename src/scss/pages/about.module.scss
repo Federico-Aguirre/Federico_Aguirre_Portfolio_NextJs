@@ -207,7 +207,7 @@
 
         &__containerWebDev {
             height: 70dvh;
-            width: calc(44% - 115px);
+            width: calc(42% - 120px);
             display: flex !important /*el important es parasobreescribir el estilo de framer motion*/;
             background-color: variables.$lightViolet;
 
