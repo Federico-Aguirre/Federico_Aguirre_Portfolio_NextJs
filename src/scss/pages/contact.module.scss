@@ -23,6 +23,43 @@
             box-sizing: border-box;
             padding-bottom: 20px;
 
+            // Los controles necesitan estilos explícitos: Tailwind Preflight los deja
+            // sin fondo ni borde de forma predeterminada.
+            &__name,
+            &__email,
+            &__affair,
+            &__textarea1 {
+                display: block;
+                width: 100%;
+                min-width: 0;
+                box-sizing: border-box;
+                padding: 10px 12px;
+                border: 1px solid rgba(255, 255, 255, 0.8);
+                border-radius: 6px;
+                background-color: rgba(255, 255, 255, 0.12);
+                color: variables.$white;
+                font: inherit;
+                line-height: 1.4;
+                box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.12);
+                transition: background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+
+                &:focus {
+                    border-color: variables.$skyBlue;
+                    background-color: rgba(255, 255, 255, 0.17);
+                    box-shadow: 0 0 0 3px rgba(45, 212, 235, 0.25);
+                }
+
+                &[aria-invalid="true"] {
+                    border-color: #fca5a5;
+                }
+            }
+
+            &__textarea1 {
+                height: 120px;
+                margin-bottom: 25px;
+                resize: vertical;
+            }
+
             &__title {
                 text-align: center;
             }
@@ -42,7 +79,7 @@
             }
 
             textarea {
-                height: 100px;
+                height: 120px;
                 margin-bottom: 25px;
             }
 
