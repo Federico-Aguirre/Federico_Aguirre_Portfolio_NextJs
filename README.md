@@ -1,16 +1,16 @@
 🌐 **Language:** **English** | [Versión en Español](README.es.md)
 
-# 🚀 Web Developer Portfolio — SPA
+# 🚀 Web Developer Portfolio
 
 [![View Live Project](https://img.shields.io/badge/🚀_View_Live_Project-007ACC?style=for-the-badge&logo=vercel&logoColor=white)](https://federico-aguirre-portfolio-next-js.vercel.app)
 
 [![Vercel Status](https://img.shields.io/badge/Vercel-Deployed-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://federico-aguirre-portfolio-next-js.vercel.app/)
-[![Next.js](https://img.shields.io/badge/Next.js-14_App_Router-000000?style=for-the-badge&logo=nextdotjs&logoColor=white)](https://nextjs.org/)
+[![Next.js](https://img.shields.io/badge/Next.js-16_App_Router-000000?style=for-the-badge&logo=nextdotjs&logoColor=white)](https://nextjs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.0-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![PageSpeed](https://img.shields.io/badge/PageSpeed-99%2F100_Desktop-brightgreen?style=for-the-badge&logo=googlechrome&logoColor=white)](https://pagespeed.web.dev/analysis/https-federico-aguirre-portfolio-next-js-vercel-app-en/rw1kyveopj?form_factor=desktop)
 [![License](https://img.shields.io/badge/License-MIT-green.style=for-the-badge)](LICENSE)
 
-> An interactive, high-performance web portfolio built as a **Single Page Application (SPA)** using Next.js 14, focused on universal accessibility (**a11y**), 3D & vector animations, multi-language support (**i18n**), and secure data validation.
+> An interactive web developer portfolio built with the **Next.js 16 App Router** and **React 19**, focused on accessibility (**a11y**), motion design, bilingual navigation (**i18n**), and maintainable implementation.
 
 ---
 
@@ -56,8 +56,8 @@ This project was thoroughly audited and optimized at the main thread level, Java
 
 ### Core & Framework
 
-![Next.js](https://img.shields.io/badge/Next.js_14-000000?style=for-the-badge&logo=nextdotjs&logoColor=white)
-![React](https://img.shields.io/badge/React_18-61DAFB?style=for-the-badge&logo=react&logoColor=black)
+![Next.js](https://img.shields.io/badge/Next.js_16-000000?style=for-the-badge&logo=nextdotjs&logoColor=white)
+![React](https://img.shields.io/badge/React_19-61DAFB?style=for-the-badge&logo=react&logoColor=black)
 ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
 
 ### Styling & Animations
@@ -82,7 +82,7 @@ This project was thoroughly audited and optimized at the main thread level, Java
 
 ## ✨ Key Features
 
-- ⚡ **Seamless SPA Experience:** Continuous navigation across _Home, Projects, About Me_, and _Contact_ without page reloads.
+- ⚡ **Smooth Section Navigation:** Easy navigation between _Home, Projects, About Me_, and _Contact_, alongside dedicated project-detail routes.
 - 🌍 **Internationalization (i18n):**
   - Multi-language support (English / Spanish) powered by `next-intl`.
   - Scroll position retention across locale switches managed through session storage and dynamic state sync.
@@ -106,7 +106,7 @@ This project was thoroughly audited and optimized at the main thread level, Java
 Federico_Aguirre_Portfolio_NextJs/
 ├── public/                     # Static assets (OG images, SVGs, demo videos)
 ├── src/
-│   ├── app/                    # Next.js 14 App Router
+│   ├── app/                    # Next.js 16 App Router
 │   │   ├── (bridges)/          # Isolated, unlocalized bridge routes for LinkedIn (/resume, /github, /credentials)
 │   │   ├── [locale]/           # Dynamic localized routing wrapper (en / es)
 │   │   │   └── (routes)/       # Primary application pages (about, contact, home, projects)

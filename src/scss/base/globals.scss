@@ -6,8 +6,29 @@ html, body {
   margin: 0;
   padding: 0;
   color: variables.$white;
+  background-color: variables.$black;
+  transition: background-color 750ms ease-in-out, color 750ms ease-in-out;
   scroll-snap-type: y mandatory;
   scroll-padding-top: 10dvh; /* define que el "punto 0 de encaje del snap" está 10dvh más abajo */
+}
+
+html[data-theme="light"],
+html[data-theme="light"] body {
+  background-color: variables.$white;
+  color: variables.$black;
+}
+
+html[data-theme="dark"],
+html[data-theme="dark"] body {
+  background-color: variables.$black;
+  color: variables.$white;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html,
+  body {
+    transition: none;
+  }
 }
 
 body {

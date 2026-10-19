@@ -96,3 +96,16 @@
     animation: cardHideImageAnimation 0.3s forwards ease-out;
   }
 }
+
+
+.projectDetailMain {
+  background-color: variables.$black;
+  color: variables.$white;
+  transition: background-color 750ms ease-in-out, color 750ms ease-in-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .projectDetailMain {
+    transition: none;
+  }
+}

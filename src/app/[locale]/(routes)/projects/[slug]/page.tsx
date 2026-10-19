@@ -14,7 +14,6 @@ export default function ProjectDetailPage() {
   const t = useTranslations("projects.projectDetail");
   
   const darkMode = useContextStore((state) => state.darkMode);
-  const toggleClass: string = darkMode ? projectsStyle.darkModeLetterClass : projectsStyle.brightModeLetterClass;
 
   // Busca proyecto por slug con tipado seguro
   const project = PROJECTS_DATA.find((p) => p.slug === slug);
@@ -22,8 +21,15 @@ export default function ProjectDetailPage() {
   if (!project) {
     return (
       <main 
-        className={`${projectsStyle.projectDetailMain} ${toggleClass}`} 
-        style={{ padding: "4rem", textAlign: "center", minHeight: "90vh", marginTop: "10dvh" }}
+        className={projectsStyle.projectDetailMain}
+        style={{
+          padding: "4rem",
+          textAlign: "center",
+          minHeight: "90vh",
+          marginTop: "10dvh",
+          backgroundColor: darkMode ? "hsl(0, 0%, 5%)" : "hsl(0, 0%, 98%)",
+          color: darkMode ? "hsl(0, 0%, 98%)" : "hsl(0, 0%, 5%)",
+        }}
       >
         <h1 style={{ fontSize: "2rem", marginBottom: "1rem" }}>{t("notFound")}</h1>
         <Link href="/" style={{ textDecoration: "underline" }} aria-label={t("backHomeLabel") || "Volver a la página de inicio"}>
@@ -86,14 +92,16 @@ export default function ProjectDetailPage() {
 
   return (
     <main 
-      className={`${projectsStyle.projectDetailMain} ${toggleClass}`}
+      className={projectsStyle.projectDetailMain}
       style={{ 
         width: "100%", 
         margin: "0 auto", 
         boxSizing: "border-box",
         minHeight: "90dvh",
         marginTop: "10dvh",
-        padding: "2rem 1rem"
+        padding: "2rem 1rem",
+        backgroundColor: darkMode ? "hsl(0, 0%, 5%)" : "hsl(0, 0%, 98%)",
+        color: darkMode ? "hsl(0, 0%, 98%)" : "hsl(0, 0%, 5%)",
       }}
     >
       <div style={{ maxWidth: "900px", margin: "0 auto" }}>

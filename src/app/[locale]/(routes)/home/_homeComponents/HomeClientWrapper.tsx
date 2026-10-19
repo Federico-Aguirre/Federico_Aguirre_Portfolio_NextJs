@@ -5,7 +5,7 @@ import { useContextStore } from "@/store/Context";
 import TextSpan from "./TextSpan";
 import CallToAction from "./CallToAction";
 import homeStyle from "scss/pages/home.module.scss";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { useSearchParams } from "next/navigation";
 import dynamic from "next/dynamic";
 import { Config as particleConfig } from "@/particlejsConfig/Config";
@@ -30,6 +30,11 @@ const srOnlyStyle: CSSProperties = {
 
 export default function HomePageClientWrapper() {
   const t = useTranslations("home");
+  const aboutT = useTranslations("about");
+  const locale = useLocale();
+  const resumeFileName = locale === "es"
+    ? "Federico_Aguirre_CV_Desarrollador_Web.pdf"
+    : "Federico_Aguirre_Resume_Full_Stack_Developer.pdf";
   const searchParams = useSearchParams();
   const target = searchParams.get("target");
 
@@ -231,7 +236,18 @@ export default function HomePageClientWrapper() {
         {t("description")}
       </p>
 
-      <CallToAction styles={homeStyle}/>
+      <div className={homeStyle.homePage__actions}>
+        <CallToAction styles={homeStyle} />
+        <a
+          href={`/cv/${resumeFileName}`}
+          download={resumeFileName}
+          className={homeStyle.homePage__ResumeDownload}
+          style={{ color: darkMode ? "#f3f4f6" : "#111827" }}
+          aria-label={aboutT("resumeLink")}
+        >
+          {aboutT("resumeLink")}
+        </a>
+      </div>
     </section>
   );
 }

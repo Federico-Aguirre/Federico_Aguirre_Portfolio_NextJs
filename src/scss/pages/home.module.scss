@@ -58,6 +58,43 @@
         text-wrap: pretty;
     }
 
+    &__actions {
+        position: relative;
+        z-index: 100;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        gap: 14px;
+        max-width: 95%;
+    }
+
+    &__ResumeDownload {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 44px;
+        box-sizing: border-box;
+        padding: 10px 14px;
+        border: 1px solid currentColor;
+        border-radius: 10px;
+        background: transparent;
+        text-decoration: none;
+        font-size: 0.95rem;
+        font-weight: 600;
+        transition: background-color 250ms ease, border-color 250ms ease, transform 250ms ease;
+
+        &:hover {
+            background-color: rgba(127, 127, 127, 0.12);
+            transform: translateY(-1px);
+        }
+
+        &:focus-visible {
+            outline: 3px solid variables.$skyBlue;
+            outline-offset: 3px;
+        }
+    }
+
     &__CallToAction {
         display: inline-block;
         text-decoration: none;
@@ -91,6 +128,10 @@
 
 /* Accesibilidad: Desactiva animaciones automáticamente si el sistema lo prefiere */
 @media (prefers-reduced-motion: reduce) {
+  .homePage__ResumeDownload {
+    transition: none;
+  }
+
   .ctaAnimated {
     opacity: 1;
     transform: none;
