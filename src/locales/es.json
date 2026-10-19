@@ -9,9 +9,10 @@
   },
 
   "home": {
-    "headline": "Federico Aguirre Desarrollador  Web",
+    "headline": "Federico Aguirre Desarrollador Web",
     "greeting": "¡Hola!",
-    "watchProjects": "Ver Proyectos"
+    "watchProjects": "Ver Proyectos",
+    "description": "Desarrollo aplicaciones web completas: desde interfaces claras y accesibles hasta funcionalidades de servidor e integraciones con APIs. Trabajo principalmente con React, Next.js, TypeScript y Laravel, con foco en el rendimiento, el código mantenible y una experiencia de usuario cuidada."
   },
   "projects": {
     "title": "Proyectos",
@@ -29,6 +30,7 @@
       "technologies": "Tecnologías utilizadas",
       "aboutProject": "Sobre el proyecto",
       "visitSite": "Visitar Sitio Web",
+      "viewSource": "Ver código en GitHub",
       "videoPlayerFor": "Reproductor De Video Para",
       
       "chatAppDescription": {
@@ -250,7 +252,6 @@
     "skills": "Habilidades",
     "studiesTitle": "Estudios",
     "studies": "Formación Académica y Complementaria",
-    "url": "https://drive.google.com/file/d/1c04OSSfY83KpoHyK0l5dpd-b3z8JdxSd/view?usp=sharing",
     "qualifications": {
       "title1": "Analista de Sistemas",
       "title2": "Desarrollador Full Stack",
@@ -260,7 +261,7 @@
       "title6": "Desarrollo React + Redux"
     },
     "certificatesLink": "Ver Certificados",
-    "resumeLink": "Ver CV",
+    "resumeLink": "Descargar CV",
     "SkillsSection": {
       "categories": {
         "frontend": "Frontend",

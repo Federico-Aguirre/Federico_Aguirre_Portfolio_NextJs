@@ -11,7 +11,8 @@
   "home": {
     "headline": "Federico Aguirre Web Developer",
     "greeting": "Hello!",
-    "watchProjects": "Watch Projects"
+    "watchProjects": "Watch Projects",
+    "description": "I build full-stack web applications, from clear and accessible interfaces to server-side features and API integrations. I mainly work with React, Next.js, TypeScript, and Laravel, focusing on performance, maintainable code, and thoughtful user experiences."
   },
 
   "projects": {
@@ -30,6 +31,7 @@
       "technologies": "Technologies used",
       "aboutProject": "About the project",
       "visitSite": "Visit Live Site",
+      "viewSource": "View Code on GitHub",
       "videoPlayerFor": "Video Player For",
       
 
@@ -252,7 +254,6 @@
     "skills": "Skills",
     "studiesTitle": "Studies",
     "studies": "Education & Certifications",
-    "url": "https://drive.google.com/file/d/1MXdM076OZg3wrDCh-G4aAh2z6KI3riPa/view?usp=sharing",
     "qualifications": {
       "title1": "Systems Analyst", 
       "title2": "Full Stack Developer",
@@ -262,7 +263,7 @@
       "title6": "React + Redux Development"
     },
     "certificatesLink": "View Certificates",
-    "resumeLink": "View Resume",
+    "resumeLink": "Download Resume",
     "SkillsSection": {
       "categories": {
         "frontend": "Frontend",

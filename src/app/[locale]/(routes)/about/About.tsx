@@ -11,12 +11,17 @@ import Link from "next/link"
 import { useContextStore } from "@/store/Context"
 import { useRef, useState, useEffect, startTransition } from "react"
 import { m, useReducedMotion } from "framer-motion"
-import { useTranslations } from "next-intl"
+import { useLocale, useTranslations } from "next-intl"
 
 type TabType = "skills" | "studies" | "about"
 
 const About = () => {
   const t = useTranslations("about")
+  const locale = useLocale()
+  const resumeFileName = locale === "es"
+    ? "Federico_Aguirre_CV_Desarrollador_Web.pdf"
+    : "Federico_Aguirre_Resume_Full_Stack_Developer.pdf"
+  const resumeFilePath = `/cv/${resumeFileName}`
 
   // Detección de movimiento reducido
   const shouldReduceMotion = useReducedMotion()
@@ -243,15 +248,14 @@ const About = () => {
                 whileTap={shouldReduceMotion ? {} : { scale: 0.95 }} 
                 style={{ borderRadius: "8px" }}
               >
-                <Link
-                  href={t('url')}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={`${t("resumeLink")} (abre en una pestaña nueva)`}
+                <a
+                  href={resumeFilePath}
+                  download={resumeFileName}
+                  aria-label={t("resumeLink")}
                   style={{ padding: "10px 24px", borderRadius: "8px", border: "1px solid currentColor", textDecoration: "none", fontSize: "0.95rem", fontWeight: "bold", display: "inline-block" }}
                 >
                   {t("resumeLink")}
-                </Link>
+                </a>
               </m.div>
             </div>
           </div>

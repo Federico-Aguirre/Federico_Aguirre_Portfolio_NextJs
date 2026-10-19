@@ -230,7 +230,7 @@ export default function ProjectDetailPage() {
 
         </div>
 
-        <footer style={{ marginTop: "2rem", borderTop: "1px solid currentColor", paddingTop: "2rem", width: "100%" }}>
+        <footer style={{ marginTop: "2rem", borderTop: "1px solid currentColor", paddingTop: "2rem", width: "100%", display: "flex", flexWrap: "wrap", alignItems: "center", gap: "1rem" }}>
           <a
             href={project.liveUrl || "#"}
             target="_blank"
@@ -250,6 +250,27 @@ export default function ProjectDetailPage() {
           >
             {t("visitSite")}
           </a>
+          {project.githubUrl && (
+            <a
+              href={project.githubUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={projectsStyle.visitSiteButton}
+              style={{
+                display: "inline-block",
+                padding: "0.8rem 2rem",
+                borderRadius: "10px",
+                color: darkMode ? "hsl(0, 0%, 98%)" : "hsl(0, 0%, 2%)",
+                textDecoration: "none",
+                fontWeight: "bold",
+                fontSize: "1.1rem",
+                border: "2px solid currentColor",
+              }}
+              aria-label={`${t("viewSource")} de ${projectTitle} (abre en una nueva pestaña)`}
+            >
+              {t("viewSource")}
+            </a>
+          )}
         </footer>
 
       </div>

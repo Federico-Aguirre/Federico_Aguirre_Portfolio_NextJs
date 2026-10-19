@@ -224,6 +224,13 @@ export default function HomePageClientWrapper() {
         </span>
       </h1>
 
+      <p
+        className={homeStyle.homePage__description}
+        style={{ color: darkMode ? "#f3f4f6" : "#111827" }}
+      >
+        {t("description")}
+      </p>
+
       <CallToAction styles={homeStyle}/>
     </section>
   );
