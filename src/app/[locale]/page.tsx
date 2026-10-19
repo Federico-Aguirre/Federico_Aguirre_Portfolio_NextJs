@@ -4,6 +4,7 @@ import dynamic from "next/dynamic";
 import { useTranslations } from "next-intl";
 // Se mantiene la importación estática de HomePage para que la pantalla inicial (LCP) cargue al instante
 import HomePage from "./(routes)/home/HomePage";
+import PortfolioFooter from "@/app/components/PortfolioFooter";
 
 // Carga diferida (Lazy Loading) de las secciones secundarias
 const Projects = dynamic(() => import("./(routes)/projects/Projects"));
@@ -24,6 +25,7 @@ export default function LocaleHome() {
       <Projects />
       <About />
       <Contact />
+      <PortfolioFooter />
     </div>
   );
 }

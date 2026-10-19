@@ -388,6 +388,10 @@
     "about": "Sobre Mí",
     "contact": "Contacto"
   },
+  "footer": {
+    "thanks": "Gracias por dedicar tiempo a conocer mi trabajo. Espero que mis proyectos te den una idea de cómo pienso y desarrollo software.",
+    "builtWith": "Diseñado y desarrollado con React y Next.js."
+  },
   "metadata": {
     "title": "Federico Aguirre | Desarrollador Full Stack",
     "description": "Portafolio profesional de Federico Aguirre, proyectos y experiencia."
