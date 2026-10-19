@@ -211,9 +211,9 @@ const About = () => {
                   {estudio.titulo}
                 </span>
                 
-                <span style={{ color: "#00E5FF" }}>|</span>
+                <span style={{ color: "#fff" }}>|</span>
                 
-                <span style={{ color: "#aaa", fontSize: "0.9em" }}>
+                <span style={{ color: "#fff", fontSize: "0.9em" }}>
                   {estudio.instituto}
                 </span>
               </div>

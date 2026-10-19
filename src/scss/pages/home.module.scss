@@ -69,24 +69,40 @@
         max-width: 95%;
     }
 
-    &__ResumeDownload {
+    &__CallToAction {
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        min-height: 44px;
+        gap: 10px;
         box-sizing: border-box;
-        padding: 10px 14px;
-        border: 1px solid currentColor;
+        min-width: 180px;
+        min-height: 48px;
+        padding: 12px 20px;
+        border: 1px solid transparent;
         border-radius: 10px;
-        background: transparent;
+        color: variables.$white;
+        background-color: variables.$lightViolet;
         text-decoration: none;
-        font-size: 0.95rem;
+        text-align: center;
+        font-size: 1rem;
         font-weight: 600;
-        transition: background-color 250ms ease, border-color 250ms ease, transform 250ms ease;
+        cursor: pointer;
+        place-self: center;
+        z-index: 100;
+        transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
+
+        &:focus-visible {
+            outline: 3px solid variables.$skyBlue;
+            outline-offset: 3px;
+        }
+    }
+
+    &__ResumeDownload {
+        border: 1px solid rgba(255, 255, 255, 0.75);
+        background: linear-gradient(135deg, variables.$lightViolet 0%, variables.$darkBlue 100%);
 
         &:hover {
-            background-color: rgba(127, 127, 127, 0.12);
-            transform: translateY(-1px);
+            filter: brightness(1.08);
         }
 
         &:focus-visible {
@@ -95,26 +111,13 @@
         }
     }
 
-    &__CallToAction {
-        display: inline-block;
-        text-decoration: none;
-        cursor: pointer;
-        place-self: center;
-        padding: 10px;
-        border-radius: 10px;
-        color: variables.$white;
-        background-color: variables.$lightViolet;
-        cursor: pointer;
-        z-index: 100;
-        transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
-    }
 }
 
 /* Animación de entrada y micro-interacciones nativas en CSS */
 .ctaAnimated {
   opacity: 1;
   transform: translateY(0);
-  transition: transform 0.2s cubic-bezier(0.2, 0, 0, 1), box-shadow 0.2s ease;
+  transition: filter 0.2s ease, transform 0.2s cubic-bezier(0.2, 0, 0, 1), box-shadow 0.2s ease;
   will-change: transform;
 
   &:hover {

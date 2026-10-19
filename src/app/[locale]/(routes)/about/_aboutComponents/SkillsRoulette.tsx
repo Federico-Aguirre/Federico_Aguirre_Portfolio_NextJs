@@ -97,10 +97,10 @@ const RouletteWheel = ({ items, selectedId, onSelect, size, gap, renderCard, ari
         <m.button 
           onClick={() => move(-1)} 
           aria-label="Elemento anterior"
-          whileHover={{ backgroundColor: "#00E5FF", color: "#000000", scale: 1.1 }}
+          whileHover={{ backgroundColor: "#00E5FF", color: "#fff", scale: 1.1 }}
           transition={{ duration: 0.2 }}
           style={{ 
-            pointerEvents: 'auto', background: 'rgba(0,0,0,0.8)', border: '1px solid #00E5FF', color: '#00E5FF', 
+            pointerEvents: 'auto', background: 'rgba(0,0,0,0.8)', border: '1px solid #00E5FF', color: '#fff',
             borderRadius: '50%', width: '35px', height: '35px', cursor: 'pointer', fontSize: '20px',
             display: 'flex', alignItems: 'center', justifyContent: 'center'
           }}
@@ -111,10 +111,10 @@ const RouletteWheel = ({ items, selectedId, onSelect, size, gap, renderCard, ari
         <m.button 
           onClick={() => move(1)} 
           aria-label="Elemento siguiente"
-          whileHover={{ backgroundColor: "#00E5FF", color: "#000000", scale: 1.1 }}
+          whileHover={{ backgroundColor: "#00E5FF", color: "#fff", scale: 1.1 }}
           transition={{ duration: 0.2 }}
           style={{ 
-            pointerEvents: 'auto', background: 'rgba(0,0,0,0.8)', border: '1px solid #00E5FF', color: '#00E5FF', 
+            pointerEvents: 'auto', background: 'rgba(0,0,0,0.8)', border: '1px solid #00E5FF', color: '#fff',
             borderRadius: '50%', width: '35px', height: '35px', cursor: 'pointer', fontSize: '20px',
             display: 'flex', alignItems: 'center', justifyContent: 'center'
           }}
@@ -208,7 +208,7 @@ const SkillsRoulette = () => {
               transition: 'all 0.3s ease-out'
             }}>
               {Icon && <Icon width={28} height={28} isActive={active} />}
-              <span style={{ fontSize: '0.6rem', marginTop: '5px', color: active ? '#fff' : '#888', textAlign: 'center' }}>{item.name}</span>
+              <span style={{ fontSize: '0.6rem', marginTop: '5px', color: '#fff', textAlign: 'center' }}>{item.name}</span>
             </div>
           )
         }}
@@ -246,8 +246,8 @@ const SkillsRoulette = () => {
             background: 'rgba(255,255,255,0.05)', borderLeft: '4px solid #00E5FF'
           }}
         >
-          <span style={{ color: '#00E5FF', margin: '0 0 5px 0', fontSize: '1rem' }}>{activeTech.label}</span>
-          <p style={{ color: '#ddd', fontSize: '0.85rem', margin: 0, lineHeight: '1.4' }}>{activeTech.description}</p>
+          <span style={{ color: '#fff', margin: '0 0 5px 0', fontSize: '1rem' }}>{activeTech.label}</span>
+          <p style={{ color: '#fff', fontSize: '0.85rem', margin: 0, lineHeight: '1.4' }}>{activeTech.description}</p>
         </m.div>
       </div>
     </div>

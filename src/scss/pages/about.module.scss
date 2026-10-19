@@ -2,6 +2,7 @@
 @use "../abstract/animations/aboutAnimations.scss";
 
 .about {
+    color: variables.$white;
     height: auto;
     width: 100%;
     max-width: 100vw;
