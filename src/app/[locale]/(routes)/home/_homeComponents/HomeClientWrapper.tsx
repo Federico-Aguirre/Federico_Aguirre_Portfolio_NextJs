@@ -244,7 +244,7 @@ export default function HomePageClientWrapper() {
         <a
           href={`/cv/${resumeFileName}`}
           download={resumeFileName}
-          className={`${homeStyle.homePage__CallToAction} ${homeStyle.ctaAnimated} ${actionShadowClass} ${homeStyle.homePage__ResumeDownload}`}
+          className={`${homeStyle.homePage__CallToAction} ${homeStyle.ctaAnimated} ${actionShadowClass}`}
           aria-label={aboutT("resumeLink")}
         >
           <svg

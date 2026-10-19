@@ -80,9 +80,22 @@
       place-items: center;
       text-align: center;
       background-color: variables.$lightViolet;
+      color: variables.$white;
+      font-size: clamp(0.72rem, 0.85vw, 0.82rem);
+      font-weight: 500;
+      line-height: 1.4;
+      overflow-wrap: anywhere;
+      text-wrap: pretty;
       z-index: 10; /* Se muestra por encima de la imagen y del texto al hacer hover */
       box-sizing: border-box;
-      padding: 10px;
+      padding: 12px;
+
+      &Content {
+        display: block;
+        width: 100%;
+        max-height: 100%;
+        overflow: hidden;
+      }
     }
   }
 

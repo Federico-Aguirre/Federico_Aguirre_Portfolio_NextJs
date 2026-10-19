@@ -6,6 +6,7 @@ import { PROJECTS_DATA } from "@/data/projectsData";
 import { useTranslations } from "next-intl";
 import { useContextStore } from "@/store/Context";
 import projectsStyle from "scss/pages/projects.module.scss";
+import homeStyle from "scss/pages/home.module.scss";
 
 export default function ProjectDetailPage() {
   const params = useParams();
@@ -14,6 +15,10 @@ export default function ProjectDetailPage() {
   const t = useTranslations("projects.projectDetail");
   
   const darkMode = useContextStore((state) => state.darkMode);
+  const actionShadowClass = darkMode
+    ? homeStyle.darkCallToActionClass
+    : homeStyle.brightCallToActionClass;
+  const actionButtonClass = `${homeStyle.homePage__CallToAction} ${homeStyle.ctaAnimated} ${actionShadowClass}`;
 
   // Busca proyecto por slug con tipado seguro
   const project = PROJECTS_DATA.find((p) => p.slug === slug);
@@ -243,17 +248,7 @@ export default function ProjectDetailPage() {
             href={project.liveUrl || "#"}
             target="_blank"
             rel="noopener noreferrer"
-            className={projectsStyle.visitSiteButton}
-            style={{
-              display: "inline-block",
-              padding: "0.8rem 2rem",
-              borderRadius: "10px",
-              color: darkMode ? "hsl(0, 0%, 98%)" : "hsl(0, 0%, 2%)",
-              textDecoration: "none",
-              fontWeight: "bold",
-              fontSize: "1.1rem",
-              border: "2px solid currentColor"
-            }}
+            className={actionButtonClass}
             aria-label={`${t("visitSite")} || "abre en nueva ventana"}`}
           >
             {t("visitSite")}
@@ -263,17 +258,7 @@ export default function ProjectDetailPage() {
               href={project.githubUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className={projectsStyle.visitSiteButton}
-              style={{
-                display: "inline-block",
-                padding: "0.8rem 2rem",
-                borderRadius: "10px",
-                color: darkMode ? "hsl(0, 0%, 98%)" : "hsl(0, 0%, 2%)",
-                textDecoration: "none",
-                fontWeight: "bold",
-                fontSize: "1.1rem",
-                border: "2px solid currentColor",
-              }}
+              className={actionButtonClass}
               aria-label={`${t("viewSource")} de ${projectTitle} (abre en una nueva pestaña)`}
             >
               {t("viewSource")}

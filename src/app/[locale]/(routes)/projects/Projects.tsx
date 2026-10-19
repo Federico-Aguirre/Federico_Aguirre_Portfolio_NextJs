@@ -355,9 +355,11 @@ export const Projects = () => {
                             >
                               <div className={projectsStyle.projects__card__text}>{project.title}</div>
 
-                              <div className={projectsStyle.projects__card__hiddenText} style={{ position: "relative", zIndex: 1 }}>
+                              <div className={projectsStyle.projects__card__hiddenText}>
                                 <span className="sr-only">Dependencias: </span>
-                                {project.dependencies}
+                                <span className={projectsStyle.projects__card__hiddenTextContent}>
+                                  {project.dependencies}
+                                </span>
                               </div>
 
                               {/* Contenedor absoluto que fije las dimensiones del fondo independientemente del slider */}
